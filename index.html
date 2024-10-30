@@ -24,13 +24,36 @@
 a:hover, a:active {
   background-color: #7c6140;
 }
+      * {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
     </style>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>
-      Socials
-    </h1>
+    <div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>Socials</h2>
     <p>
       <a href="https://www.reddit.com/user/gaimerI/?utm_source=share&utm_medium=mweb3x&utm_name=mweb3xcss&utm_term=1&utm_content=share_button/" target="_blank">Reddit (u/gaimerI)</a>
     </p>
@@ -40,14 +63,11 @@ a:hover, a:active {
     <p>
       <a href="https://x.com/gaimeri17" target="_blank">Twitter (gaimerI17)</a>
     </p>
-    <p>
-      <h1>
-        Images
-      </h1>
-      <h3>
-        Togedemaru (my icon)
-      </h3>
-    <img src="images/togedemaru.png">
-    </p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Images</h2>
+    <h3>Togedemaru (my icon)/h3>
+    <p><img src="images/togedemaru.png"></p>
+  </div>
   </body>
 </html>
