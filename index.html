@@ -1,119 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>gaimerI's website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-      body {
-        background-color: #d3d7d6; /* All colours are from Togedemaru */
-      }
-      h3 {
-        color: #444545;
-      }
-      
-      a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
-  background-color: #fef87d;
-  color: #444545;
-  padding: 15px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-style: groove;
-  border-width: medium;
-  border-radius: 8px
+<head>
+<title>gaimerI's website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+background-color: #d3d7d6; /* All colours are from Togedemaru */
 }
-
+h3 {
+color: #444545;
+}
+a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
+background-color: #fef87d;
+color: #444545;
+padding: 15px 25px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+border-style: groove;
+border-width: medium;
+border-radius: 8px
+}
 a:hover, a:active { /* Hovered links */
-  background-color: #7c6140;
+background-color: #7c6140;
 }
-      img {
-        border-style: groove;
-        border-width: medium;
-        border-color: #444545;
-        border-radius: 8px;
-      }
-      * {
-  box-sizing: border-box;
+img {
+border-style: groove;
+border-width: medium;
+border-color: #444545;
+border-radius: 8px;
 }
-
+* {
+box-sizing: border-box;
+}
 #reddit_link {
 background: linear-gradient(to right, #FF4500 0%, #FF4500 25%, #FEF87D 75%, #FEF87D 100%);
 }
-
 #bluesky_link {
 background: linear-gradient(to right, #1185FE 0%, #1185FE 25%, #FEF87D 75%, #FEF87D 100%);
 }
-
 #twitter_link {
 background: linear-gradient(to right, #1DA1F2 0%, #1DA1F2 25%, #FEF87D 75%, #FEF87D 100%);
 }
-
 /* Create two equal columns that floats next to each other */
 .column {
-  float: left;
-  width: 50%;
-  padding: 10px;
+float: left;
+width: 50%;
+padding: 10px;
 }
-
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+content: "";
+display: table;
+clear: both;
 }
 @media screen and (max-width: 600px) { /* The columns should not be too thin */
-  .column {
-    width: 100%;
-  }
+.column {
+width: 100%;
 }
-        </style>
-  </head>
-  <body>
-    <div class="row">
-  <div class="column" style="background-color:#aaa;">
-    
+}
+</style>
+</head>
+<body>
+<div class="row">
+<div class="column" style="background-color:#aaa;">
 <h2>
-  Who am I?
+Who am I?
 </h2>
-    
-    <p>
-      I'm a human being, from Finland. <br>
-      I'm male. <br>
-      I like mathematics, other sciences and programming. <br>
-      <br>
-      I can program HTML and CSS (this page was built with them), and am learning JavaScript.
-    </p>
-    
-    <h2>
-      Socials
-    </h2>
-    
-    <p>
-      <a id="reddit_link" href="https://www.reddit.com/user/gaimerI/?utm_source=share&utm_medium=mweb3x&utm_name=mweb3xcss&utm_term=1&utm_content=share_button/" target="_blank">Reddit (u/gaimerI)</a>
-    </p>
-    
-    <p>
-      <a id="bluesky_link" href="https://bsky.app/profile/gaimeri.bsky.social" target="_blank">Bluesky (gaimeri.bsky.social)</a>
-    </p>
-    
-    <p>
-      <a id="twitter_link" href="https://x.com/gaimeri17" target="_blank">Twitter (gaimerI17)</a>
-    </p>
-    
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    
-    <h2>
-      Images
-    </h2>
-    
-    <h3>
-      Togedemaru (my profile pic)
-    </h3>
-    <p>
+<p>
+I'm a human being, from Finland. <br>
+I'm male. <br>
+I like mathematics, other sciences and programming. <br>
+<br>
+I can program HTML and CSS (this page was built with them), and am learning JavaScript.
+</p>
+<h2>
+Socials
+</h2>
+<p>
+<a id="reddit_link" href="https://www.reddit.com/user/gaimerI/?utm_source=share&utm_medium=mweb3x&utm_name=mweb3xcss&utm_term=1&utm_content=share_button/" target="_blank">Reddit (u/gaimerI)</a>
+</p>
+<p>
+<a id="bluesky_link" href="https://bsky.app/profile/gaimeri.bsky.social" target="_blank">Bluesky (gaimeri.bsky.social)</a>
+</p>
+<p>
+<a id="twitter_link" href="https://x.com/gaimeri17" target="_blank">Twitter (gaimerI17)</a>
+</p>
+</div>
+<div class="column" style="background-color:#bbb;">
+<h2>
+Images
+</h2>
+<h3>
+Togedemaru (my profile pic)
+</h3>
+<p>
 <img src="images/togedemaru.png">
 </p>
-    
-  </div>
-  </body>
+</div>
+</body>
 </html>
