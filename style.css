@@ -1,20 +1,20 @@
 body {
-        background-color: #d3d7d6; /* All colours are from Togedemaru */
+      background-color: #d3d7d6; /* All colours are from Togedemaru */
       }
-      h3 {
-        color: #444545;
+h3 {
+      color: #444545;
       }
       
-      a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
-  background-color: #fef87d;
-  color: #444545;
-  padding: 15px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-style: groove;
-  border-width: medium;
-  border-radius: 8px
+a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
+      background-color: #fef87d;
+          color: #444545;
+          padding: 15px 25px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          border-style: groove;
+          border-width: medium;
+          border-radius: 8px
 }
 
 a:hover, a:active { /* Hovered links */
