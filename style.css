@@ -2,11 +2,6 @@ body {
       background-color: #d3d7d6; /* All colours are from Togedemaru or Rolycoly*/
 }
 
-body.dark-mode {
-      background-color: #403c39;
-      color: white;
-}
-
 h3 {
       color: #444545;
 }
