@@ -54,3 +54,9 @@
           width: 100%;
         }
       }
+
+#text-measure {
+            position: absolute;
+            visibility: hidden;
+            white-space: nowrap;
+}
