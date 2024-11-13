@@ -60,3 +60,8 @@
             visibility: hidden;
             white-space: nowrap;
 }
+
+.dark-mode {
+      background-color: black;
+      color: white;
+}
