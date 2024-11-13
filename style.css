@@ -5,7 +5,7 @@ body {
 h3 {
       color: #444545;
 }
-a:link, a:visited, button { /* Link style (they are buttons, unless otherwise stated) */
+a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
       background-color: #fef87d;
       color: #444545;
       padding: 15px 25px;
@@ -17,7 +17,7 @@ a:link, a:visited, button { /* Link style (they are buttons, unless otherwise st
       border-radius: 8px
 }
 
-input[type=text] {
+#text-input, #button-input {
       background-color: #fef87d;
       color: #444545;
       text-align: center;
