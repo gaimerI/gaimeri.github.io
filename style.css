@@ -14,7 +14,7 @@ a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
       display: inline-block;
       border-style: groove;
       border-width: medium;
-      border-radius: 8px
+      border-radius: 8px;
 }
 
 .text-input, .button-input {
@@ -25,7 +25,8 @@ a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
       display: inline-block;
       border-style: groove;
       border-width: medium;
-      border-radius: 8px
+      border-radius: 8px;
+}
 
 
 a:hover, a:active { /* Hovered links */
