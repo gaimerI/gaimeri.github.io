@@ -20,7 +20,6 @@ a:link, a:visited, button { /* Link style (they are buttons, unless otherwise st
 input[type=text] {
       background-color: #fef87d;
       color: #444545;
-      padding: 15px 15px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
