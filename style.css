@@ -1,62 +1,56 @@
-body {
-      background-color: #d3d7d6; /* All colours are from Togedemaru */
+      body {
+        background-color: #d3d7d6; /* All colours are from Togedemaru */
       }
-h3 {
-      color: #444545;
+      h3 {
+        color: #444545;
       }
-      
-a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
-      background-color: #fef87d;
-          color: #444545;
-          padding: 15px 25px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          border-style: groove;
-          border-width: medium;
-          border-radius: 8px
-}
-
-a:hover, a:active { /* Hovered links */
-  background-color: #7c6140;
-}
+      a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
+        background-color: #fef87d;
+        color: #444545;
+        padding: 15px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-style: groove;
+        border-width: medium;
+        border-radius: 8px
+      }
+      a:hover, a:active { /* Hovered links */
+        background-color: #7c6140;
+      }
       img {
         border-style: groove;
         border-width: medium;
         border-color: #444545;
         border-radius: 8px;
       }
+    
       * {
-  box-sizing: border-box;
-}
-
-#reddit_link {
-background: linear-gradient(to right, #FF4500 0%, #FF4500 25%, #FEF87D 75%, #FEF87D 100%);
-}
-
-#bluesky_link {
-background: linear-gradient(to right, #1185FE 0%, #1185FE 25%, #FEF87D 75%, #FEF87D 100%);
-}
-
-#twitter_link {
-background: linear-gradient(to right, #1DA1F2 0%, #1DA1F2 25%, #FEF87D 75%, #FEF87D 100%);
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-@media screen and (max-width: 600px) { /* The columns should not be too thin */
-  .column {
-    width: 100%;
-  }
-}
+        box-sizing: border-box;
+      }
+      #reddit_link {
+        background: linear-gradient(to right, #FF4500 0%, #FF4500 50%, #FEF87D 50%, #FEF87D 0%);
+      }
+      #bluesky_link {
+        background: linear-gradient(to right, #1185FE 0%, #1185FE 50%, #FEF87D 50%, #FEF87D 0%);
+      }
+      #twitter_link {
+        background: linear-gradient(to right, #1DA1F2 0%, #1DA1F2 50%, #FEF87D 50%, #FEF87D 0%);
+      }
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+      }
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      @media screen and (max-width: 600px) { /* The columns should not be too thin */
+        .column {
+          width: 100%;
+        }
+      }
