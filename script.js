@@ -30,7 +30,7 @@ function calculateHypotenuse() {
   }
 
   // Calculate the hypotenuse
-  const hypotenuse = Math.sqrt(sideA ** 2 + sideB ** 2).toFixed(2);
+  const hypotenuse = Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2)).toFixed(2);
 
   // Display the result
   document.getElementById("result").textContent = `The hypotenuse is ${hypotenuse}`;
