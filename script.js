@@ -18,20 +18,29 @@ function toggleDarkMode() {
   }
 }
 
-function calculateHypotenuse() {
-  // Get the values of side A and side B
-  const sideA = parseFloat(document.getElementById("sideA").value);
-  const sideB = parseFloat(document.getElementById("sideB").value);
+ function calculate() {
+        const sideType = document.getElementById("sideType").value;
+        const side1 = parseFloat(document.getElementById("side1").value);
+        const side2 = parseFloat(document.getElementById("side2").value);
+        const resultDiv = document.getElementById("result");
 
-  // Check if both inputs are valid numbers
-  if (isNaN(sideA) || isNaN(sideB)) {
-    document.getElementById("result").textContent = "Please enter valid numbers for both sides.";
-    return;
-  }
+        if (isNaN(side1) || isNaN(side2) || side1 <= 0 || side2 <= 0) {
+            resultDiv.textContent = "Please enter valid positive numbers for both sides.";
+            return;
+        }
 
-  // Calculate the hypotenuse
-  const hypotenuse = Math.sqrt(Math.pow(sideA, 2) + Math.pow(sideB, 2)).toFixed(2);
-
-  // Display the result
-  document.getElementById("result").textContent = `The hypotenuse is ${hypotenuse}`;
-}
+        let missingSide;
+        if (sideType === "legs") {
+            // Using Pythagorean theorem: c = √(a² + b²)
+            missingSide = Math.sqrt(side1 * side1 + side2 * side2);
+            resultDiv.textContent = `The hypotenuse (c) is approximately: ${missingSide.toFixed(2)}`;
+        } else if (sideType === "hypotenuseAndLeg") {
+            if (side1 <= side2) {
+                resultDiv.textContent = "The hypotenuse must be the longer side.";
+                return;
+            }
+            // Using Pythagorean theorem: a = √(c² - b²)
+            missingSide = Math.sqrt(side1 * side1 - side2 * side2);
+            resultDiv.textContent = `The missing leg is approximately: ${missingSide.toFixed(2)}`;
+        }
+    }
