@@ -29,7 +29,7 @@ a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
 }
 
 
-a:hover, a:active, [class*="input"] { /* Hovered links */
+a:hover, a:active, .button-input:hover { /* Hovered links */
       background-color: #7c6140;
 }
 img {
