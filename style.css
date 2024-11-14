@@ -17,7 +17,7 @@ a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
       border-radius: 8px;
 }
 
-.text-input, .button-input {
+.text-input, .button-input, .number-input {
       background-color: #fef87d;
       color: #444545;
       text-align: center;
