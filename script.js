@@ -18,7 +18,7 @@ function toggleDarkMode() {
   }
 }
 
- function calculate() {
+ function calculatePythagoras() {
         const sideType = document.getElementById("sideType").value;
         const side1 = parseFloat(document.getElementById("side1").value);
         const side2 = parseFloat(document.getElementById("side2").value);
