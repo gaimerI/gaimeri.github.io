@@ -17,3 +17,21 @@ function toggleDarkMode() {
   else { localStorage.setItem("dark-mode", "disabled");
   }
 }
+
+function calculateHypotenuse() {
+  // Get the values of side A and side B
+  const sideA = parseFloat(document.getElementById("sideA").value);
+  const sideB = parseFloat(document.getElementById("sideB").value);
+
+  // Check if both inputs are valid numbers
+  if (isNaN(sideA) || isNaN(sideB)) {
+    document.getElementById("result").textContent = "Please enter valid numbers for both sides.";
+    return;
+  }
+
+  // Calculate the hypotenuse
+  const hypotenuse = Math.sqrt(sideA ** 2 + sideB ** 2).toFixed(2);
+
+  // Display the result
+  document.getElementById("result").textContent = `The hypotenuse is ${hypotenuse}`;
+}
