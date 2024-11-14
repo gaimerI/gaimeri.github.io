@@ -1,3 +1,8 @@
+:root {
+  --togeYellow: #fef87d;
+  --togeGray: #ffffff;
+}
+
 body {
       background-color: #d3d7d6; /* All colours are from Togedemaru or Rolycoly*/
 }
@@ -6,7 +11,7 @@ h3 {
       color: #444545;
 }
 a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
-      background-color: #fef87d;
+      background-color: var(--togeYellow);
       color: #444545;
       padding: 15px 25px;
       text-align: center;
@@ -18,7 +23,7 @@ a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
 }
 
 .text-input, .button-input, .number-input {
-      background-color: #fef87d;
+      background-color: var(--togeYellow);
       color: #444545;
       text-align: center;
       text-decoration: none;
@@ -43,16 +48,16 @@ img {
         box-sizing: border-box;
       }
       #reddit_link {
-        background: linear-gradient(to right, #FF4500 0%, #FF4500 50%, #FEF87D 50%, #FEF87D 0%);
+        background: linear-gradient(to right, #FF4500 0%, #FF4500 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
       }
       #bluesky_link {
-        background: linear-gradient(to right, #1185FE 0%, #1185FE 50%, #FEF87D 50%, #FEF87D 0%);
+        background: linear-gradient(to right, #1185FE 0%, #1185FE 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
       }
       #twitter_link {
-        background: linear-gradient(to right, #1DA1F2 0%, #1DA1F2 50%, #FEF87D 50%, #FEF87D 0%);
+        background: linear-gradient(to right, #1DA1F2 0%, #1DA1F2 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
       }
       #login_link {
-        background: linear-gradient(to right, #1f2636 0%, #1f2636 50%, #FEF87D 50%, #FEF87D 0%);
+        background: linear-gradient(to right, #1f2636 0%, #1f2636 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
       }
       /* Create two equal columns that floats next to each other */
       .column {
