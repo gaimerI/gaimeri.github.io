@@ -1,90 +1,94 @@
-:root {
-  --togeYellow: #fef87d;
-  --togeGray: #ffffff;
+:root {
+    --togeYellow: #fef87d;
+    --togeGray: #ffffff;
+    --togeDarkGray: #444545;
+    --togeHover: #7c6140;
+    --backgroundColor: #d3d7d6;
 }
 
 body {
-      background-color: #d3d7d6; /* All colours are from Togedemaru or Rolycoly*/
+    background-color: var(--backgroundColor);
 }
 
 h3 {
-      color: #444545;
-}
-a:link, a:visited { /* Link style (they are buttons, unless otherwise stated) */
-      background-color: var(--togeYellow);
-      color: #444545;
-      padding: 15px 25px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      border-style: groove;
-      border-width: medium;
-      border-radius: 8px;
+    color: var(--togeDarkGray);
 }
 
-.text-input, .button-input, .number-input {
-      background-color: var(--togeYellow);
-      color: #444545;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      border-style: groove;
-      border-width: medium;
-      border-radius: 8px;
+/* Consolidated styles for button-like elements */
+.button-style, a, .text-input, .button-input, .number-input {
+    background-color: var(--togeYellow);
+    color: var(--togeDarkGray);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-style: groove;
+    border-width: medium;
+    border-radius: 8px;
+    padding: 15px 25px;
 }
 
-
-a:hover, a:active, .button-input:hover { /* Hovered links */
-      background-color: #7c6140;
+/* Hover effects */
+a:hover, .button-input:hover {
+    background-color: var(--togeHover);
 }
+
 img {
-      border-style: groove;
-      border-width: medium;
-      border-color: #444545;
-      border-radius: 8px;
+    border-style: groove;
+    border-width: medium;
+    border-color: var(--togeDarkGray);
+    border-radius: 8px;
 }
-    
-      * {
-        box-sizing: border-box;
-      }
-      #reddit_link {
-        background: linear-gradient(to right, #FF4500 0%, #FF4500 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
-      }
-      #bluesky_link {
-        background: linear-gradient(to right, #1185FE 0%, #1185FE 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
-      }
-      #twitter_link {
-        background: linear-gradient(to right, #1DA1F2 0%, #1DA1F2 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
-      }
-      #login_link {
-        background: linear-gradient(to right, #1f2636 0%, #1f2636 50%, var(--togeYellow) 50%, var(--togeYellow) 0%);
-      }
-      /* Create two equal columns that floats next to each other */
-      .column {
-        float: left;
-        width: 50%;
-        padding: 10px;
-      }
-      /* Clear floats after the columns */
-      .row:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-      @media screen and (max-width: 600px) { /* The columns should not be too thin */
-        .column {
-          width: 100%;
-        }
-      }
 
-.text-measure {
-            position: absolute;
-            visibility: hidden;
-            white-space: nowrap;
+* {
+    box-sizing: border-box;
+}
+
+/* Gradient button base class */
+.gradient-button {
+    background: linear-gradient(
+        to right,
+        var(--primary-color) 0%,
+        var(--primary-color) 50%,
+        var(--togeYellow) 50%,
+        var(--togeYellow) 100%
+    );
+}
+
+#reddit_link {
+    --primary-color: #FF4500;
+}
+
+#bluesky_link {
+    --primary-color: #1185FE;
+}
+
+#twitter_link {
+    --primary-color: #1DA1F2;
+}
+
+#login_link {
+    --primary-color: #1f2636;
+}
+
+/* Flex-based layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        flex-basis: 100%;
+    }
 }
 
 #result {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
 }
