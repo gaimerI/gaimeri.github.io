@@ -19,28 +19,31 @@ function toggleDarkMode() {
 }
 
  function calculatePythagoras() {
-        const sideType = document.getElementById("sideType").value;
-        const side1 = parseFloat(document.getElementById("side1").value);
-        const side2 = parseFloat(document.getElementById("side2").value);
-        const resultDiv = document.getElementById("result");
+    const sideType = document.getElementById("sideType").value;
+    const side1 = parseFloat(document.getElementById("side1").value);
+    const side2 = parseFloat(document.getElementById("side2").value);
+    const resultDiv = document.getElementById("result");
 
-        if (isNaN(side1) || isNaN(side2) || side1 <= 0 || side2 <= 0) {
-            resultDiv.textContent = "Please enter valid positive numbers for both sides.";
+    // Validate inputs
+    if (isNaN(side1) || isNaN(side2) || side1 <= 0 || side2 <= 0) {
+        resultDiv.textContent = "Please enter valid positive numbers for both sides.";
+        return;
+    }
+
+    let missingSide;
+
+    if (sideType === "legs") {
+        // Calculate hypotenuse (c = √(a² + b²))
+        missingSide = Math.sqrt(side1 * side1 + side2 * side2);
+        resultDiv.textContent = `The hypotenuse (c) is approximately: ${missingSide.toFixed(2)}`;
+    } else if (sideType === "hypotenuseAndLeg") {
+        // Ensure side1 is the hypotenuse
+        if (side1 <= side2) {
+            resultDiv.textContent = "The hypotenuse must be the longer side.";
             return;
         }
-
-        let missingSide;
-        if (sideType === "legs") {
-            // Using Pythagorean theorem: c = √(a² + b²)
-            missingSide = Math.sqrt(side1 * side1 + side2 * side2);
-            resultDiv.textContent = `The hypotenuse (c) is approximately: ${missingSide.toFixed(2)}`;
-        } else if (sideType === "hypotenuseAndLeg") {
-            if (side1 <= side2) {
-                resultDiv.textContent = "The hypotenuse must be the longer side.";
-                return;
-            }
-            // Using Pythagorean theorem: a = √(c² - b²)
-            missingSide = Math.sqrt(side1 * side1 - side2 * side2);
-            resultDiv.textContent = `The missing leg is approximately: ${missingSide.toFixed(2)}`;
-        }
+        // Calculate missing leg (a = √(c² - b²))
+        missingSide = Math.sqrt(side1 * side1 - side2 * side2);
+        resultDiv.textContent = `The missing leg is approximately: ${missingSide.toFixed(2)}`;
     }
+}
