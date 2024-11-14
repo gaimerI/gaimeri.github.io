@@ -54,19 +54,19 @@ img {
     );
 }
 
-#reddit_link {
+#reddit-link {
     --primary-color: #FF4500;
 }
 
-#bluesky_link {
+#bluesky-link {
     --primary-color: #1185FE;
 }
 
-#twitter_link {
+#twitter-link {
     --primary-color: #1DA1F2;
 }
 
-#login_link {
+#login-link {
     --primary-color: #1f2636;
 }
 
