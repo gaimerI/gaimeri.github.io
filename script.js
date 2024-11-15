@@ -50,18 +50,30 @@ function toggleDarkMode() {
 
 function measureTextWidth() {
   // Get user input and the hidden measuring span
-  const text = document.getElementById('text-input').value;
-  const textMeasureSpan = document.getElementById('text-measure');
-  // Apply styles to the measuring span to match the input
   const input = document.getElementById('text-input');
+  const textMeasureSpan = document.getElementById('text-measure');
+  const textWidthDisplay = document.getElementById('text-width');
+
+  if (!input || !textMeasureSpan || !textWidthDisplay) return;
+
+  const text = input.value;
+
+  // Apply styles to the measuring span to match the input
   const style = window.getComputedStyle(input);
   textMeasureSpan.style.fontFamily = style.fontFamily;
   textMeasureSpan.style.fontSize = style.fontSize;
   textMeasureSpan.style.fontWeight = style.fontWeight;
   textMeasureSpan.style.letterSpacing = style.letterSpacing;
+  textMeasureSpan.style.position = 'absolute';
+  textMeasureSpan.style.visibility = 'hidden';
+
   // Set the text to the span and measure its width
   textMeasureSpan.textContent = text;
-  const width = textMeasureSpan.offsetWidth;
+  const width = textMeasureSpan.clientWidth; // or use getBoundingClientRect().width
+
   // Display the width
-  document.getElementById('text-width').textContent = width;
+  textWidthDisplay.textContent = width;
+
+  // Clear the span's textContent after measurement (optional)
+  textMeasureSpan.textContent = '';
 }
