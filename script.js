@@ -60,3 +60,41 @@ function measureTextWidth() {
   const width = textWidthSpan.offsetWidth;
   textWidthDisplay.textContent = width;
 }
+
+function calculateSides() {
+      const angle = parseFloat(document.getElementById("angle").value);
+      const side = parseFloat(document.getElementById("side").value);
+      const sideType = document.getElementById("sideType").value;
+
+      if (isNaN(angle) || isNaN(side) || angle <= 0 || angle >= 90 || side <= 0) {
+        document.getElementById("result").textContent = "Please enter valid inputs.";
+        return;
+      }
+
+      // Convert angle from degrees to radians
+      const angleRad = angle * Math.PI / 180;
+
+      let opposite, adjacent, hypotenuse;
+
+      // Calculate other sides based on the known side
+      if (sideType === "adjacent") {
+        adjacent = side;
+        opposite = Math.tan(angleRad) * adjacent;
+        hypotenuse = adjacent / Math.cos(angleRad);
+      } else if (sideType === "opposite") {
+        opposite = side;
+        adjacent = opposite / Math.tan(angleRad);
+        hypotenuse = opposite / Math.sin(angleRad);
+      } else if (sideType === "hypotenuse") {
+        hypotenuse = side;
+        adjacent = hypotenuse * Math.cos(angleRad);
+        opposite = hypotenuse * Math.sin(angleRad);
+      }
+
+      // Display the results
+      document.getElementById("result").innerHTML = `
+        Adjacent side: ${adjacent.toFixed(2)}<br>
+        Opposite side: ${opposite.toFixed(2)}<br>
+        Hypotenuse: ${hypotenuse.toFixed(2)}
+      `;
+}
