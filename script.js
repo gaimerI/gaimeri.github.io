@@ -47,3 +47,21 @@ function toggleDarkMode() {
         resultDiv.textContent = `The missing leg is approximately: ${missingSide.toFixed(2)}`;
     }
 }
+
+function measureTextWidth() {
+  // Get user input and the hidden measuring span
+  const text = document.getElementById('text-input').value;
+  const textMeasureSpan = document.getElementById('text-measure');
+  // Apply styles to the measuring span to match the input
+  const input = document.getElementById('text-input');
+  const style = window.getComputedStyle(input);
+  textMeasureSpan.style.fontFamily = style.fontFamily;
+  textMeasureSpan.style.fontSize = style.fontSize;
+  textMeasureSpan.style.fontWeight = style.fontWeight;
+  textMeasureSpan.style.letterSpacing = style.letterSpacing;
+  // Set the text to the span and measure its width
+  textMeasureSpan.textContent = text;
+  const width = textMeasureSpan.offsetWidth;
+  // Display the width
+  document.getElementById('text-width').textContent = width;
+}
