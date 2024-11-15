@@ -87,8 +87,16 @@ img {
     }
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 1.2em;
-    font-weight: bold;
-}
+/* Style the input field */
+  #textInput {
+    font-size: 16px; /* Make sure font-size matches in both input and span */
+    padding: 5px;
+    width: 300px;
+  }
+  
+  /* Hidden span to measure the text width */
+  #textWidthSpan {
+    visibility: hidden;
+    white-space: pre; /* Preserve spaces in the text */
+    position: absolute;
+  }
