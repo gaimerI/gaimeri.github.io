@@ -100,3 +100,26 @@ img {
     white-space: pre; /* Preserve spaces in the text */
     position: absolute;
   }
+
+canvas {
+            border: 2px solid #000;
+            background-color: #fff;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .controls button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+        }
+        .up, .down, .left, .right {
+            background-color: #ccc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
