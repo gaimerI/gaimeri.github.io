@@ -87,11 +87,15 @@ img {
     }
 }
 
-/* Style the input field */
+/* Style for text input */
 #textInput {
     font-size: 16px;
     padding: 5px;
     width: 300px;
+    border: 2px solid var(--togeDarkGray);
+    border-radius: 4px;
+    background-color: var(--togeGray);
+    color: var(--togeDarkGray);
 }
 
 /* Hidden span to measure the text width */
@@ -101,16 +105,69 @@ img {
     position: absolute;
 }
 
-canvas {
-    border: 2px solid #000;
-    background-color: #fff;
+/* Checkbox and radio styling */
+input[type="checkbox"], input[type="radio"] {
+    accent-color: var(--togeYellow);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
 
-.canvas-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
+/* Range slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: var(--togeGray);
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--togeYellow);
+    border: 2px solid var(--togeDarkGray);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--togeYellow);
+    border: 2px solid var(--togeDarkGray);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Date and file inputs */
+input[type="date"], input[type="file"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 2px solid var(--togeDarkGray);
+    border-radius: 4px;
+    background-color: var(--togeGray);
+    color: var(--togeDarkGray);
+    cursor: pointer;
+}
+
+/* Submit button */
+input[type="submit"] {
+    background-color: var(--togeYellow);
+    color: var(--togeDarkGray);
+    border: 2px solid var(--togeDarkGray);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--togeHover);
 }
 
 canvas {
@@ -119,60 +176,30 @@ canvas {
     cursor: crosshair;
 }
 
-/* Add styles for new input types */
-input[type="checkbox"], input[type="radio"] {
-    accent-color: var(--togeDarkGray);
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
 }
 
-textarea {
-    background-color: var(--togeGray);
-    color: var(--togeDarkGray);
-    border: 2px solid var(--togeDarkGray);
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 16px;
-    resize: vertical;
-    width: 100%;
+.controls button {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    font-size: 20px;
 }
 
-select {
-    background-color: var(--togeYellow);
-    color: var(--togeDarkGray);
-    border: 2px solid var(--togeDarkGray);
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 8px;
-    background-color: var(--togeYellow);
+.up, .down, .left, .right {
+    background-color: #ccc;
+    border: none;
     border-radius: 5px;
-    outline: none;
-    transition: background 0.3s ease-in-out;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: var(--togeDarkGray);
-    border-radius: 50%;
     cursor: pointer;
 }
 
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: var(--togeDarkGray);
-    border-radius: 50%;
-    cursor: pointer;
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
 }
