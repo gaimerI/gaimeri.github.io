@@ -108,7 +108,7 @@ img {
 
 /* Checkbox and radio styling */
 input[type="checkbox"], input[type="radio"] {
-    accent-color: var(--togeYellow);
+    accent-color: var(--togeHover);
     width: 18px;
     height: 18px;
     cursor: pointer;
@@ -118,7 +118,7 @@ input[type="checkbox"], input[type="radio"] {
 input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 100%;
+    width: 10%;
     height: 8px;
     background: var(--togeGray);
     border-radius: 4px;
