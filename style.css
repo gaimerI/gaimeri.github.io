@@ -15,7 +15,7 @@ h3 {
 }
 
 /* Consolidated styles for button-like elements */
-.button-style, a, .text-input, .button-input, .number-input {
+input[type="button"], a, input[type="text"], input[type="number"] {
     background-color: var(--togeYellow);
     color: var(--togeDarkGray);
     text-align: center;
@@ -28,7 +28,7 @@ h3 {
 }
 
 /* Hover effects */
-.button-style:hover, a:hover, .text-input:hover, .number-input:hover {
+input[type="button"]:hover, a:hover, input[type="text"]:hover, input[type="number"]:hover {
     background-color: var(--togeHover);
 }
 
