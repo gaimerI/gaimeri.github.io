@@ -119,7 +119,7 @@ input[type="checkbox"], input[type="radio"] {
 input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 10%;
+    width: 30%;
     height: 8px;
     background: var(--togeGray);
     border-radius: 4px;
