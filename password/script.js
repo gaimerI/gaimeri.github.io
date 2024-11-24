@@ -1,12 +1,6 @@
 (function(){
   const _0x8b7f = atob("dGhpcyBpc19hX3ZlcnlfbG9uZ19waGByYXNlX3RoYXRfaG9wZWZ1bGx5X2lzX25vdF9pbl9hbnlfZGljdGlvbmFyeQ==");
-  const _0x9b3a = atob("aW5zdHJ1Y3Rpb25zX3JlbWFya19wZXJmb3JtX3RvX2RldmVsb3BtZW50X2xvZ2ljYWxseQ==");
-  const _0x5d68 = atob("Y29tcGxleF9pbmZsdWVuY2VfYWRkZXRvX3RvcF9saWZlX3Nob3J0X2NvbmRpdGlvbnM=");
-  const _0x1f2e = atob("aW5mZXJfY29tcGxldG9yaW5nX2lkZWFsX2FjY2Vzc19vbl9wZXJzb25hbF9kZWNpc2lvbg==");
-  const _0x2a4f = atob("YWN0aW9uX2F1dG9fY2h1bmtzX2luX2VjZWRpX2FjdGl2aXRpZXM=");
-  const _0x73b8 = atob("ZXhwZWRpZW5jZXMgb2ZfdGVzdF9hbmFseXNpc3RfY2VydGFpbnM=");
-  const _0x7d39 = atob("cG9saWN5X2Fzc3VtcHRpb25faW4xZGVwZW5kZW50X2FjdGl2aXRpZXM=");
-  const _0x401c = atob("bGVnYXRvcnkgaW5fY3VsdHVyYWxlX3BvcyBmb3JfdHJhbnNmZXJfZGVzaWduX2ludGVnZXJz");
+
 
   const _0x5a4d = document.getElementById("password-prompt");
   const _0x1cbf = document.getElementById("protected-content");
