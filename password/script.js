@@ -1,36 +1,107 @@
-(function(){
-  const _0x8b7f = atob("dGhpcyBpc19hX3ZlcnlfbG9uZ19waGByYXNlX3RoYXRfaG9wZWZ1bGx5X2lzX25vdF9pbl9hbnlfZGljdGlvbmFyeQ=="), 
-        _0x5a4d = document.getElementById("password-prompt"), 
-        _0x1cbf = document.getElementById("protected-content"), 
-        _0x1294 = document.getElementById("password-input"), 
-        _0x439a = document.getElementById("submit-button"), 
-        _0x6a45 = document.getElementById("error-message"), 
-        _0x7f30 = document.getElementById("random-element-1"), 
-        _0x5e73 = document.getElementById("random-element-2"), 
-        _0x62c2 = document.getElementById("random-element-3"), 
-        _0x3c17 = document.getElementById("random-element-4");
+// Obfuscated password protection mechanism with added bloat
+(function() {
+    var _ = (function() { 
+        var filler = function(x) { 
+            return x + ""; 
+        };
+        return (function() {
+            var mix = [114, "l", String.fromCharCode(105), 97, 110];
+            return mix[1] + "e" + mix[2] + mix[4] + (~~mix[0] - 14).toString();
+        })();
+    })();
 
-  _0x439a.addEventListener("click", function() {
-    let _0x5e29 = _0x1294.value.trim();
-    let _0x233e = _0x5e29.length;
-    let _0x34a7 = _0x233e > 0 ? true : false;
-    let _0x5810 = _0x34a7 && _0x5e29 !== '';
-    let _0x4b91 = _0x5810 ? _0x5e29 : null;
+    var confusingElements = [
+        "password-prompt",
+        "protected-content",
+        "password-input",
+        "submit-button",
+        "error-message"
+    ].reduce((object, key) => { 
+        object[key] = document.getElementById(key); 
+        return object; 
+    }, {});
 
-    if (_0x4b91 === _0x8b7f) {
-      _0x5a4d.style.display = "none";
-      _0x1cbf.style.display = "block";
-    } else {
-      _0x6a45.style.display = "block";
+    // Unnecessary repeated mapping and variable assignments
+    var randomList = [
+        confusingElements["password-prompt"],
+        confusingElements["protected-content"],
+        confusingElements["password-input"],
+        confusingElements["submit-button"],
+        confusingElements["error-message"]
+    ];
+
+    // Extra variable assignments to make things more complex
+    var z0 = randomList[0];
+    var z1 = randomList[1];
+    var z2 = randomList[2];
+    var z3 = randomList[3];
+    var z4 = randomList[4];
+
+    var tempVars = ["unused1", "unused2", "unused3", "unused4"];
+    tempVars[0] = "Hello, I am unused!";
+    tempVars[1] = tempVars[0] + " Just taking up space.";
+    tempVars[2] = tempVars[1] + " More noise.";
+    tempVars[3] = tempVars[2] + " I serve no purpose.";
+
+    var uselessFunction = function() {
+        return tempVars.join(";");
+    };
+
+    z3.addEventListener("click", function() {
+        var secretValidation = (function() {
+            var scrambled = z2.value + "";
+            var deobfuscate = scrambled.split("").reverse();
+            return deobfuscate.reverse().join("") === _;
+        })();
+
+        var randomlyChangeStyle = function(targetElement, styleValue) {
+            targetElement.style["display"] = styleValue;
+        };
+
+        var emptyFunction = function() {
+            var randomValue = Math.random();
+            var filler = "filler";
+            return randomValue + filler;
+        };
+
+        // Call empty function just for no reason
+        emptyFunction();
+
+        if (secretValidation) {
+            console.log("Access permitted!");
+            randomlyChangeStyle(z0, "none");
+            console.log("Confidential content incoming...");
+            randomlyChangeStyle(z1, "block");
+        } else {
+            console.log("Access denied! Maybe next time.");
+            setTimeout(function() {
+                randomlyChangeStyle(z4, "block");
+            }, 0);
+        }
+
+        // Additional pointless logging
+        console.log("End of the click handler.");
+    });
+
+    // Excessive garbage logic for distraction
+    var smokeScreen = new Array(250).fill(null).map(function(value, index) { 
+        return "bloat" + index * Math.random().toFixed(4); 
+    }).join(";");
+    console.log("Garbage data:", smokeScreen.substring(0, 20));
+
+    // Another pointless loop to add complexity
+    for (var i = 0; i < 50; i++) {
+        (function() {
+            var innerValue = i * Math.random();
+            if (innerValue > 0.5) {
+                console.log("I am iterating, but I do nothing.");
+            }
+        })();
     }
 
-    if (_0x5e29 === '') {
-      _0x7f30.style.display = "none";
-    } else {
-      _0x5e73.style.display = "inline-block";
-    }
-
-    let _0x14b6 = _0x62c2 ? _0x62c2.style.display = "flex" : '';
-    let _0x4f1b = (_0x5e29.length % 2 === 0) ? _0x3c17.style.display = "inline-block" : _0x3c17.style.display = "none";
-  });
+    // Randomly invoke another useless function
+    var anotherUselessFunction = function() {
+        return Math.random().toString(36).substring(2);
+    };
+    anotherUselessFunction();
 })();
