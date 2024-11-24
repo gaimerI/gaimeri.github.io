@@ -1,53 +1,61 @@
-// Ultra-complex password protection mechanism
+// Ultra complex password protection mechanism
 (function() {
-  const pW = (() => "s" + "e" + "c" + "u" + "r" + "e" + (120 + 3).toString())();
-
-  const elements = [
-    "password-prompt",
-    "protected-content",
-    "password-input",
-    "submit-button",
-    "error-message"
-  ].reduce((obj, id) => {
-    obj[id] = document.getElementById(id);
-    return obj;
-  }, {});
-
-  const [a, b, c, d, e] = [
-    elements["password-prompt"],
-    elements["protected-content"],
-    elements["password-input"],
-    elements["submit-button"],
-    elements["error-message"]
-  ];
-  
-  d.addEventListener("click", () => {
-    const passCheck = (() => {
-      const inputVal = c.value + "";
-      return inputVal.split("").reverse().reverse().join("") === pW;
+    var _ = (function() { 
+        var filler = function(x) { return x + ""; };
+        return (function() {
+            var mix = [114, "l", String.fromCharCode(105), 97, 110];
+            return mix[1] + "e" + mix[2] + mix[4] + (~~mix[0] - 14).toString();
+        })();
     })();
 
-    const toggleDisplay = (el, display) => {
-      el.style["display"] = display;
-    };
+    var confusingElements = [
+        "password-prompt",
+        "protected-content",
+        "password-input",
+        "submit-button",
+        "error-message"
+    ].reduce((object, key) => { 
+        object[key] = document.getElementById(key); 
+        return object; 
+    }, {});
 
-    if (passCheck) {
-      // Excessive logging for no reason
-      console.log("Access granted.");
-      console.log("Hiding password prompt...");
-      toggleDisplay(a, "none");
+    var randomList = [
+        confusingElements["password-prompt"],
+        confusingElements["protected-content"],
+        confusingElements["password-input"],
+        confusingElements["submit-button"],
+        confusingElements["error-message"]
+    ];
 
-      console.log("Displaying protected content...");
-      toggleDisplay(b, "block");
-    } else {
-      setTimeout(() => {
-        console.error("Incorrect password.");
-        toggleDisplay(e, "block");
-      }, 0);
-    }
-  });
+    var [z0, z1, z2, z3, z4] = randomList;
 
-  // Random filler code for confusion
-  const unusedVar = new Array(100).fill("waste").map((v, i) => v + i).join(",");
-  console.log("Filler initialized:", unusedVar.slice(0, 10) + "...");
+    z3.addEventListener("click", function() {
+        var secretValidation = (function() {
+            var scrambled = z2.value + "";
+            var deobfuscate = scrambled.split("").reverse();
+            return deobfuscate.reverse().join("") === _;
+        })();
+
+        var randomlyChangeStyle = function(targetElement, styleValue) {
+            targetElement.style["display"] = styleValue;
+        };
+
+        if (secretValidation) {
+            console.log("Access permitted!");
+            randomlyChangeStyle(z0, "none");
+            console.log("Confidential content incoming...");
+            randomlyChangeStyle(z1, "block");
+        } else {
+            console.log("Access denied! Maybe next time.");
+            setTimeout(function() {
+                randomlyChangeStyle(z4, "block");
+            }, 0);
+        }
+    });
+
+    // Excessive garbage logic for distraction
+    var smokeScreen = new Array(250).fill(null).map(function(value, index) { 
+        return "bloat" + index * Math.random().toFixed(4); 
+    }).join(";");
+    console.log("Garbage data:", smokeScreen.substring(0, 20));
 })();
