@@ -1,5 +1,5 @@
 // Define the correct password
-const correctPassword = "password122";
+const correctPassword = "secure123";
 
 // Get references to the HTML elements
 const passwordPrompt = document.getElementById("password-prompt");
