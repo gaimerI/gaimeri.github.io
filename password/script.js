@@ -1,61 +1,12 @@
-// Ultra complex password protection mechanism
-(function() {
-    var _ = (function() { 
-        var filler = function(x) { return x + ""; };
-        return (function() {
-            var mix = [114, "l", String.fromCharCode(105), 97, 110];
-            return mix[1] + "e" + mix[2] + mix[4] + (~~mix[0] - 14).toString();
-        })();
-    })();
+const _0x1f5b = "this_is_a_very_long_phrase_that_hopefully_is_not_in_any_dictionary", _0x4c2f = document.getElementById("password-prompt"), _0x5a8e = document.getElementById("protected-content"), _0x2d85 = document.getElementById("password-input"), _0x376f = document.getElementById("submit-button"), _0x1e61 = document.getElementById("error-message");
 
-    var confusingElements = [
-        "password-prompt",
-        "protected-content",
-        "password-input",
-        "submit-button",
-        "error-message"
-    ].reduce((object, key) => { 
-        object[key] = document.getElementById(key); 
-        return object; 
-    }, {});
+_0x376f.addEventListener("click", () => {
+  const _0x7b3e = _0x2d85.value;
 
-    var randomList = [
-        confusingElements["password-prompt"],
-        confusingElements["protected-content"],
-        confusingElements["password-input"],
-        confusingElements["submit-button"],
-        confusingElements["error-message"]
-    ];
-
-    var [z0, z1, z2, z3, z4] = randomList;
-
-    z3.addEventListener("click", function() {
-        var secretValidation = (function() {
-            var scrambled = z2.value + "";
-            var deobfuscate = scrambled.split("").reverse();
-            return deobfuscate.reverse().join("") === _;
-        })();
-
-        var randomlyChangeStyle = function(targetElement, styleValue) {
-            targetElement.style["display"] = styleValue;
-        };
-
-        if (secretValidation) {
-            console.log("Access permitted!");
-            randomlyChangeStyle(z0, "none");
-            console.log("Confidential content incoming...");
-            randomlyChangeStyle(z1, "block");
-        } else {
-            console.log("Access denied! Maybe next time.");
-            setTimeout(function() {
-                randomlyChangeStyle(z4, "block");
-            }, 0);
-        }
-    });
-
-    // Excessive garbage logic for distraction
-    var smokeScreen = new Array(250).fill(null).map(function(value, index) { 
-        return "bloat" + index * Math.random().toFixed(4); 
-    }).join(";");
-    console.log("Garbage data:", smokeScreen.substring(0, 20));
-})();
+  if (_0x7b3e === _0x1f5b) {
+    _0x4c2f.style.display = "none";
+    _0x5a8e.style.display = "block";
+  } else {
+    _0x1e61.style.display = "block";
+  }
+});
