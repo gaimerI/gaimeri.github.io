@@ -10,7 +10,7 @@
 
   const _0x5a4d = document.getElementById("password-prompt");
   const _0x1cbf = document.getElementById("protected-content");
-  const _0x1294 = document.getElementById("passwopassword-input
+  const _0x1294 = document.getElementById("passwopassword-input;
   const _0x439a = document.getElementById("submit-button");
   const _0x6a45 = document.getElementById("error-message");
   const _0x7f30 = document.getElementById("random-element-1");
