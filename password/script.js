@@ -1,17 +1,14 @@
 (function(){
-  const _0x8b7f = atob("dGhpcyBpc19hX3ZlcnlfbG9uZ19waGByYXNlX3RoYXRfaG9wZWZ1bGx5X2lzX25vdF9pbl9hbnlfZGljdGlvbmFyeQ==");
-
-
-  const _0x5a4d = document.getElementById("password-prompt");
-  const _0x1cbf = document.getElementById("protected-content");
-  const _0x1294 = document.getElementById("passwopassword-input;
-  const _0x439a = document.getElementById("submit-button");
-  const _0x6a45 = document.getElementById("error-message");
-  const _0x7f30 = document.getElementById("random-element-1");
-  const _0x5e73 = document.getElementById("random-element-2");
-  const _0x62c2 = document.getElementById("random-element-3");
-  const _0x3c17 = document.getElementById("random-element-4");
-
+  const _0x8b7f = atob("dGhpcyBpc19hX3ZlcnlfbG9uZ19waGByYXNlX3RoYXRfaG9wZWZ1bGx5X2lzX25vdF9pbl9hbnlfZGljdGlvbmFyeQ=="), 
+        _0x5a4d = document.getElementById("password-prompt"), 
+        _0x1cbf = document.getElementById("protected-content"), 
+        _0x1294 = document.getElementById("password-input"), 
+        _0x439a = document.getElementById("submit-button"), 
+        _0x6a45 = document.getElementById("error-message"), 
+        _0x7f30 = document.getElementById("random-element-1"), 
+        _0x5e73 = document.getElementById("random-element-2"), 
+        _0x62c2 = document.getElementById("random-element-3"), 
+        _0x3c17 = document.getElementById("random-element-4");
 
   _0x439a.addEventListener("click", function() {
     let _0x5e29 = _0x1294.value.trim();
