@@ -8,6 +8,10 @@
 
 body {
     background-color: var(--backgroundColor);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 h3 {
@@ -31,7 +35,6 @@ input[type="button"], a, input[type="text"], input[type="number"] {
 input[type="button"]:hover, a:hover, input[type="text"]:hover, input[type="number"]:hover {
     background-color: var(--togeHover);
 }
-
 
 img {
     border-style: groove;
@@ -180,8 +183,35 @@ canvas {
 }
 
 input[type="color"] {
-  width: 40px;
-  height: 40px;
-  border: none;
-  cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Section styling */
+section {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: var(--togeGray);
+    border-radius: 8px;
+    border: 2px solid var(--togeDarkGray);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Article styling */
+article {
+    padding: 15px;
+    margin: 15px 0;
+    background-color: var(--togeYellow);
+    border-radius: 8px;
+    border: 2px solid var(--togeDarkGray);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional hover effect for articles */
+article:hover {
+    background-color: var(--togeHover);
+    transform: translateY(-3px);
+    transition: 0.3s ease-in-out;
 }
