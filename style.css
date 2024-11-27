@@ -88,17 +88,6 @@ img {
     }
 }
 
-/* Style for text input */
-#textInput {
-    font-size: 16px;
-    padding: 5px;
-    width: 300px;
-    border: 2px solid var(--togeDarkGray);
-    border-radius: 4px;
-    background-color: var(--togeGray);
-    color: var(--togeDarkGray);
-}
-
 /* Hidden span to measure the text width */
 #textWidthSpan {
     visibility: hidden;
