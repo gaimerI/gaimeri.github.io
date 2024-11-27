@@ -8,43 +8,54 @@
 
 body {
     background-color: var(--backgroundColor);
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif;
 }
 
 h3 {
     color: var(--togeDarkGray);
 }
 
-/* Consolidated styles for button-like elements */
-input[type="button"], a, input[type="text"], input[type="number"] {
+* {
+    box-sizing: border-box;
+}
+
+/* Common styles for bordered elements */
+.bordered {
+    border: 2px solid var(--togeDarkGray);
+    border-radius: 8px;
+}
+
+/* Button-like elements */
+.button-like, input[type="submit"] {
     background-color: var(--togeYellow);
     color: var(--togeDarkGray);
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-style: groove;
-    border-width: medium;
+    border: 2px solid var(--togeDarkGray);
     border-radius: 8px;
-    padding: 15px 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
-/* Hover effects */
-input[type="button"]:hover, a:hover, input[type="text"]:hover, input[type="number"]:hover {
+.button-like:hover, input[type="submit"]:hover {
     background-color: var(--togeHover);
 }
 
-img {
+/* Specific button types */
+input[type="button"], a, input[type="text"], input[type="number"] {
+    padding: 15px 25px;
     border-style: groove;
     border-width: medium;
-    border-color: var(--togeDarkGray);
+}
+
+img {
+    border: medium groove var(--togeDarkGray);
     border-radius: 8px;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-/* Gradient button base class */
 .gradient-button {
     background: linear-gradient(
         to right,
@@ -53,22 +64,6 @@ img {
         var(--togeYellow) 50%,
         var(--togeYellow) 100%
     );
-}
-
-#reddit-link {
-    --primary-color: #FF4500;
-}
-
-#bluesky-link {
-    --primary-color: #1185FE;
-}
-
-#twitter-link {
-    --primary-color: #1DA1F2;
-}
-
-#login-link {
-    --primary-color: #1f2636;
 }
 
 /* Flex-based layout */
@@ -88,7 +83,6 @@ img {
     }
 }
 
-/* Hidden span to measure the text width */
 #textWidthSpan {
     visibility: hidden;
     white-space: pre;
@@ -97,7 +91,6 @@ img {
 
 /* Checkbox and radio styling */
 input[type="checkbox"], input[type="radio"] {
-    color: var(--togeYellow);
     accent-color: var(--togeHover);
     width: 18px;
     height: 18px;
@@ -115,18 +108,7 @@ input[type="range"] {
     outline: none;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: var(--togeYellow);
-    border: 2px solid var(--togeDarkGray);
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-input[type="range"]::-moz-range-thumb {
+input[type="range"]::-webkit-slider-thumb, input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
     background: var(--togeYellow);
@@ -139,33 +121,9 @@ input[type="range"]::-moz-range-thumb {
 input[type="date"], input[type="file"] {
     padding: 8px;
     font-size: 14px;
-    border: 2px solid var(--togeDarkGray);
-    border-radius: 4px;
     background-color: var(--togeGray);
     color: var(--togeDarkGray);
     cursor: pointer;
-}
-
-/* Submit button */
-input[type="submit"] {
-    background-color: var(--togeYellow);
-    color: var(--togeDarkGray);
-    border: 2px solid var(--togeDarkGray);
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    text-transform: uppercase;
-}
-
-input[type="submit"]:hover {
-    background-color: var(--togeHover);
-}
-
-canvas {
-    border: 2px solid #333;
-    background-color: #fff;
-    cursor: crosshair;
 }
 
 input[type="color"] {
@@ -175,8 +133,8 @@ input[type="color"] {
     cursor: pointer;
 }
 
-/* Section styling */
-section {
+/* Section and Article */
+section, article {
     padding: 20px;
     margin: 20px 0;
     background-color: var(--togeGray);
@@ -185,19 +143,25 @@ section {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Article styling */
 article {
     padding: 15px;
     margin: 15px 0;
-    background-color: var(--togeGray);
-    border-radius: 8px;
-    border: 2px solid var(--togeDarkGray);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Additional hover effect for articles */
 article:hover {
     background-color: var(--togeHover);
     transform: translateY(-3px);
     transition: 0.3s ease-in-out;
 }
+
+canvas {
+    border: 2px solid #333;
+    background-color: #fff;
+    cursor: crosshair;
+}
+
+/* Gradient button color overrides */
+#reddit-link { --primary-color: #FF4500; }
+#bluesky-link { --primary-color: #1185FE; }
+#twitter-link { --primary-color: #1DA1F2; }
+#login-link { --primary-color: #1f2636; }
