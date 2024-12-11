@@ -48,3 +48,8 @@ body {
 .border-hidden {
   border-style: hidden;
 }
+
+.inline {
+  display: inline-block;
+  padding: 10px;
+}
