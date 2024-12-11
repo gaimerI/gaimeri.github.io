@@ -9,6 +9,7 @@ body {
   color: var(--togeBlack);
   background-color: var(--togeGray);
   border-color: var(--togeBlack);
+  border-width: 3px;
 }
 
 .dotted {
