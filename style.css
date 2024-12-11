@@ -1,1 +1,10 @@
+:root {
+  --togeYellow: #fef87d;
+  --togeBrown: #7c6140fe;
+  --togeGray: #d3d7d6;
+  --togeBlack: #444545;
+}
 
+body {
+  background-color: var(--togeGray);
+}
