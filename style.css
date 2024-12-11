@@ -1,6 +1,6 @@
 :root {
   --togeYellow: #fef87d;
-  --togeBrown: #7c6140fe;
+  --togeBrown: #7c6140;
   --togeGray: #d3d7d6;
   --togeBlack: #444545;
 }
@@ -15,25 +15,25 @@ body {
   border-style: dotted;
 }
 .dashed {
-  border-style: dashed;
+  border-style: dashed;
 }
 .solid {
-  border-style: solid;
+  border-style: solid;
 }
 .double {
-  border-style: double;
+  border-style: double;
 }
 .groove {
-  border-style: groove;
+  border-style: groove;
 }
 .ridge {
   border-style: ridge;
 }
-.inset{
+.inset {
   border-style: inset;
 }
 .outset {
-  border-style: outset;
+  border-style: outset;
 }
 .none {
   border-style: none;
