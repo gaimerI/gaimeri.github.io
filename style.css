@@ -8,38 +8,39 @@
 body {
   color: var(--togeBlack);
   background-color: var(--togeGray);
-  border-style: none;
+  border-style: solid; /* Explicit border style */
   border-color: var(--togeBlack);
   border-width: 18px;
 }
 
-.dotted {
+/* Border Utility Classes */
+.border-dotted {
   border-style: dotted;
 }
-.dashed {
+.border-dashed {
   border-style: dashed;
 }
-.solid {
+.border-solid {
   border-style: solid;
 }
-.double {
+.border-double {
   border-style: double;
 }
-.groove {
+.border-groove {
   border-style: groove;
 }
-.ridge {
+.border-ridge {
   border-style: ridge;
 }
-.inset {
+.border-inset {
   border-style: inset;
 }
-.outset {
+.border-outset {
   border-style: outset;
 }
-.none {
+.border-none {
   border-style: none;
 }
-.hidden {
+.border-hidden {
   border-style: hidden;
 }
