@@ -10,6 +10,7 @@ body {
   background-color: var(--togeGray);
   border-style: hidden;                    /* Fallback */
   border-color: var(--togeBlack);
+  white-space: pre;                        /* Get out, <br>! */
 }
 
 [class*="border-"] {
