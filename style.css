@@ -8,12 +8,12 @@
 body {
   color: var(--togeBlack);
   background-color: var(--togeGray);
-  border-style: solid;                    /* Fallback */
+  border-style: hidden;                    /* Fallback */
   border-color: var(--togeBlack);
 }
 
 [class*="border-"] {
-  border-width: medium;
+  border-width: 6px;
 }
 
 /* Border Utility Classes */
