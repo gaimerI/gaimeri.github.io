@@ -13,7 +13,7 @@ body {
 }
 
 [class*="border-"] {
-  border-width: 1rem;
+  border-width: medium;
 }
 
 /* Border Utility Classes */
