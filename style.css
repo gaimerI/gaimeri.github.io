@@ -5,13 +5,6 @@
   --togeBlack: #444545;
 }
 
-body {
-  color: var(--togeBlack);
-  background-color: var(--togeGray);
-  border-color: var(--togeBlack);
-  border-width: 18px;
-}
-
 .dotted {
   border-style: dotted;
 }
@@ -41,4 +34,11 @@ body {
 }
 .hidden {
   border-style: hidden;
+}
+
+body {
+  color: var(--togeBlack);
+  background-color: var(--togeGray);
+  border-color: var(--togeBlack);
+  border-width: 18px;
 }
