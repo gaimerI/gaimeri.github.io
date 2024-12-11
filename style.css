@@ -39,6 +39,7 @@
 body {
   color: var(--togeBlack);
   background-color: var(--togeGray);
+  border-style: none;
   border-color: var(--togeBlack);
   border-width: 18px;
 }
