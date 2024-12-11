@@ -8,35 +8,36 @@
 body {
   color: var(--togeBlack);
   background-color: var(--togeGray);
+  border-color: var(--togeBlack);
 }
 
-p.dotted {
+.dotted {
   border-style: dotted;
 }
-p.dashed {
+.dashed {
   border-style: dashed;
 }
-p.solid {
+.solid {
   border-style: solid;
 }
-p.double {
+.double {
   border-style: double;
 }
-p.groove {
+.groove {
   border-style: groove;
 }
-p.ridge {
+.ridge {
   border-style: ridge;
 }
-p.inset{
+.inset{
   border-style: inset;
 }
-p.outset {
+.outset {
   border-style: outset;
 }
-p.none {
+.none {
   border-style: none;
 }
-p.hidden {
+.hidden {
   border-style: hidden;
 }
