@@ -8,8 +8,11 @@
 body {
   color: var(--togeBlack);
   background-color: var(--togeGray);
-  border-style: solid; /* Explicit border style */
+  border-style: solid;                    /* Fallback */
   border-color: var(--togeBlack);
+}
+
+[class*="border-"] {
   border-width: 18px;
 }
 
