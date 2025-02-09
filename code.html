@@ -14,7 +14,6 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
-  <link rel="stylesheet" href="/style.css">
   
   <style>
     body {
@@ -39,7 +38,7 @@
       width: 50%;
       height: 100%;
       border: none;
-      resize: both;
+      resize: none;
       outline: none;
       padding: 1rem;
       background: #fff;
@@ -70,10 +69,6 @@
       margin-right: 5px;
     }
 
-    #file-upload {
-      display: none;
-    }
-
     .dark-mode {
       background: #222;
       color: #fff;
@@ -88,6 +83,12 @@
       background: #444;
     }
 
+    #error-output {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
     @media (max-width: 760px) {
       main {
         flex-direction: column;
@@ -97,10 +98,6 @@
         height: 50%;
       }
     }
-
-    #stats {
-      font-size: 0.9rem;
-    }
   </style>
 </head>
 <body>
@@ -109,9 +106,7 @@
     <div>
       <button id="clear">Clear</button>
       <button id="toggle-mode">Dark Mode</button>
-      <button id="download">Download</button>
-      <label for="file-upload" class="button">Upload</label>
-      <input type="file" id="file-upload" accept=".md">
+      <button id="run-js">Run JavaScript</button>
     </div>
     <span id="stats">Words: 0 | Characters: 0</span>
   </div>
@@ -120,6 +115,8 @@
     <textarea id="input" wrap="off" spellcheck="false"></textarea>
     <div id="preview"></div>
   </main>
+
+  <div id="error-output"></div>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
@@ -130,8 +127,8 @@
     const preview = document.getElementById("preview");
     const clearBtn = document.getElementById("clear");
     const toggleModeBtn = document.getElementById("toggle-mode");
-    const downloadBtn = document.getElementById("download");
-    const fileUpload = document.getElementById("file-upload");
+    const runJsBtn = document.getElementById("run-js");
+    const errorOutput = document.getElementById("error-output");
     const stats = document.getElementById("stats");
 
     // Load saved content and theme
@@ -145,23 +142,28 @@
       preview.innerHTML = marked.parse(input.value);
       Prism.highlightAll();
       updateStats();
-      executeJS();
     }
 
     function updateStats() {
       const text = input.value.trim();
-      const words = text ? text.match(/\b\w+\b/g).length : 0;
+      const words = text ? text.match(/\b\w+\b/g)?.length || 0 : 0;
       const chars = text.length;
       stats.textContent = `Words: ${words} | Characters: ${chars}`;
     }
 
-    function executeJS() {
+    function runJavaScript() {
+      errorOutput.textContent = "";
       const codeBlocks = preview.querySelectorAll("code.language-js");
+      if (codeBlocks.length === 0) {
+        errorOutput.textContent = "No JavaScript code found to execute.";
+        return;
+      }
+
       codeBlocks.forEach(block => {
         try {
-          eval(block.textContent);
+          new Function(block.textContent)();
         } catch (e) {
-          console.error("JavaScript Error:", e);
+          errorOutput.textContent = "JavaScript Error: " + e.message;
         }
       });
     }
@@ -178,6 +180,9 @@
       handleInput();
     });
 
+    // Run JavaScript manually
+    runJsBtn.addEventListener("click", runJavaScript);
+
     // Handle tab key in textarea
     input.addEventListener("keydown", (e) => {
       if (e.key === "Tab") {
@@ -186,30 +191,6 @@
         const end = input.selectionEnd;
         input.value = input.value.substring(0, start) + "\t" + input.value.substring(end);
         input.selectionStart = input.selectionEnd = start + 1;
-      }
-    });
-
-    // Download file
-    downloadBtn.addEventListener("click", () => {
-      const blob = new Blob([input.value], { type: "text/markdown" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "tadi-lab.md";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-
-    // Upload file
-    fileUpload.addEventListener("change", (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          input.value = e.target.result;
-          handleInput();
-        };
-        reader.readAsText(file);
       }
     });
 
