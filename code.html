@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tadi lab</title>
+  <title>Tadi Lab</title>
   <link rel="shortcut icon" href="/favicon.png">
 
   <!-- Open Graph & Twitter Cards -->
   <meta property="og:image" content="https://todepond.com/lab/og.png">
-  <meta property="og:title" content="Tadi lab">
+  <meta property="og:title" content="Tadi Lab">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tadi lab">
+  <meta name="twitter:title" content="Tadi Lab">
   <meta name="twitter:image" content="https://todepond.com/lab/og.png">
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
-  <link rel="stylesheet" href="https://www.todepond.com/style.css">
+  <link rel="stylesheet" href="/style.css">
   
   <style>
     body {
@@ -31,7 +31,7 @@
     main {
       display: flex;
       width: 100%;
-      height: 100%;
+      height: calc(100% - 50px);
       overflow: hidden;
     }
 
@@ -60,12 +60,18 @@
       padding: 0.5rem;
       background: #ddd;
       justify-content: space-between;
+      align-items: center;
     }
 
     button {
       padding: 0.5rem 1rem;
       border: none;
       cursor: pointer;
+      margin-right: 5px;
+    }
+
+    #file-upload {
+      display: none;
     }
 
     .dark-mode {
@@ -91,13 +97,23 @@
         height: 50%;
       }
     }
+
+    #stats {
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
 
   <div id="toolbar">
-    <button id="clear">Clear</button>
-    <button id="toggle-mode">Dark Mode</button>
+    <div>
+      <button id="clear">Clear</button>
+      <button id="toggle-mode">Dark Mode</button>
+      <button id="download">Download</button>
+      <label for="file-upload" class="button">Upload</label>
+      <input type="file" id="file-upload" accept=".md">
+    </div>
+    <span id="stats">Words: 0 | Characters: 0</span>
   </div>
 
   <main>
@@ -114,19 +130,46 @@
     const preview = document.getElementById("preview");
     const clearBtn = document.getElementById("clear");
     const toggleModeBtn = document.getElementById("toggle-mode");
+    const downloadBtn = document.getElementById("download");
+    const fileUpload = document.getElementById("file-upload");
+    const stats = document.getElementById("stats");
 
-    // Load saved content
+    // Load saved content and theme
     input.value = localStorage.getItem("editor-content") || `# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here.\n\n\`\`\`js\nconsole.log('Hello, world!');\n\`\`\``;
-    
+    if (localStorage.getItem("dark-mode") === "enabled") {
+      document.body.classList.add("dark-mode");
+    }
+
     function handleInput() {
       localStorage.setItem("editor-content", input.value);
       preview.innerHTML = marked.parse(input.value);
       Prism.highlightAll();
+      updateStats();
+      executeJS();
+    }
+
+    function updateStats() {
+      const text = input.value.trim();
+      const words = text ? text.match(/\b\w+\b/g).length : 0;
+      const chars = text.length;
+      stats.textContent = `Words: ${words} | Characters: ${chars}`;
+    }
+
+    function executeJS() {
+      const codeBlocks = preview.querySelectorAll("code.language-js");
+      codeBlocks.forEach(block => {
+        try {
+          eval(block.textContent);
+        } catch (e) {
+          console.error("JavaScript Error:", e);
+        }
+      });
     }
 
     // Dark mode toggle
     toggleModeBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
+      localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
     });
 
     // Clear input
@@ -143,6 +186,30 @@
         const end = input.selectionEnd;
         input.value = input.value.substring(0, start) + "\t" + input.value.substring(end);
         input.selectionStart = input.selectionEnd = start + 1;
+      }
+    });
+
+    // Download file
+    downloadBtn.addEventListener("click", () => {
+      const blob = new Blob([input.value], { type: "text/markdown" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "tadi-lab.md";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+
+    // Upload file
+    fileUpload.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          input.value = e.target.result;
+          handleInput();
+        };
+        reader.readAsText(file);
       }
     });
 
