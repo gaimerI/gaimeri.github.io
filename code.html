@@ -187,6 +187,43 @@
 
     input.addEventListener("input", handleInput);
     handleInput();
+
+     const input = document.getElementById("input");
+
+    function insertTextAtCursor(text) {
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+      const before = input.value.substring(0, start);
+      const after = input.value.substring(end);
+      input.value = before + text + after;
+      input.selectionStart = input.selectionEnd = start + text.length;
+    }
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "(") insertTextAtCursor("()") && event.preventDefault();
+      if (event.key === "[") insertTextAtCursor("[]") && event.preventDefault();
+      if (event.key === "{") insertTextAtCursor("{}") && event.preventDefault();
+      if (event.key === "'") insertTextAtCursor("''") && event.preventDefault();
+      if (event.key === '"') insertTextAtCursor("\"\"") && event.preventDefault();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.ctrlKey && event.key === "b") {
+        insertTextAtCursor("****");
+        input.selectionStart -= 2;
+        event.preventDefault();
+      }
+      if (event.ctrlKey && event.key === "i") {
+        insertTextAtCursor("**");
+        input.selectionStart -= 1;
+        event.preventDefault();
+      }
+      if (event.ctrlKey && event.key === "k") {
+        insertTextAtCursor("[text](url)");
+        input.selectionStart -= 4;
+        event.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
