@@ -128,9 +128,9 @@
 
     function handleInput() {
       localStorage.setItem("editor-content", input.value);
-      preview.innerHTML = marked.parse(input.value);
-      Prism.highlightAll();
-      updateStats();
+      const parsedMarkdown = marked.parse(input.value);
+      preview.innerHTML = replaceEmojis(parsedMarkdown);
+      Prism.highlightAll(); updateStats();
     }
 
     function updateStats() {
@@ -223,6 +223,27 @@
         event.preventDefault();
       }
     });
+
+    const emojiMap = {
+      ":smile:": "😀",
+      ":laughing:": "😆",
+      ":wink:": "😉",
+      ":heart:": "❤️",
+      ":thumbsup:": "👍",
+      ":star:": "⭐",
+      ":fire:": "🔥",
+      ":rocket:": "🚀",
+      ":coffee:": "☕",
+      ":check:": "✔️",
+      ":x:": "❌",
+      ":warning:": "⚠️",
+      ":question:": "❓",
+      ":exclamation:": "❗"
+    };
+    
+    function replaceEmojis(text) {
+      return text.replace(/:\w+:/g, (match) => emojiMap[match] || match);
+    }
   </script>
 </body>
 </html>
