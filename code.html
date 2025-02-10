@@ -90,10 +90,10 @@
     <div>
       <button id="clear">Clear</button>
       <button id="toggle-mode">Dark Mode</button>
-      <button id="run-js">Run JavaScript</button>
-      <button id="download">Download</button>
-      <input type="file" id="upload" style="display:none">
-      <button id="upload-btn">Upload</button>
+      <button id="toggle-html">Toggle HTML</button>
+      <button id="run-js">Run JS</button>
+      <button id="copy">Copy</button>
+      <button id="find-replace">Find & Replace</button>
     </div>
     <span id="stats">Words: 0 | Characters: 0</span>
   </div>
@@ -112,25 +112,27 @@
   <script>
     const input = document.getElementById("input");
     const preview = document.getElementById("preview");
+    const toggleHtmlBtn = document.getElementById("toggle-html");
     const clearBtn = document.getElementById("clear");
-    const toggleModeBtn = document.getElementById("toggle-mode");
-    const runJsBtn = document.getElementById("run-js");
-    const errorOutput = document.getElementById("error-output");
+    const copyBtn = document.getElementById("copy");
+    const findReplaceBtn = document.getElementById("find-replace");
     const stats = document.getElementById("stats");
-    const downloadBtn = document.getElementById("download");
-    const uploadBtn = document.getElementById("upload-btn");
-    const uploadInput = document.getElementById("upload");
-
-    input.value = localStorage.getItem("editor-content") || "# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here.";
+    let htmlMode = false;
+    
+    input.value = localStorage.getItem("editor-content") || "# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here."; 
+    
     if (localStorage.getItem("dark-mode") === "enabled") {
       document.body.classList.add("dark-mode");
     }
 
     function handleInput() {
       localStorage.setItem("editor-content", input.value);
-      const parsedMarkdown = marked.parse(replaceEmojis(input.value)); // Apply emoji replacement before parsing
-      preview.innerHTML = parsedMarkdown;
-      Prism.highlightAll();
+      if (htmlMode) {
+        preview.innerHTML = input.value;
+      } else {
+        preview.innerHTML = marked.parse(input.value);
+        Prism.highlightAll();
+      }
       updateStats();
     }
 
@@ -141,6 +143,20 @@
       const chars = text.length;
       stats.textContent = `Words: ${words} | Characters: ${chars}`;
     }
+
+    toggleHtmlBtn.addEventListener("click", () => {
+      htmlMode = !htmlMode;
+      handleInput();
+    });
+
+    findReplaceBtn.addEventListener("click", () => {
+      const find = prompt("Find:");
+      if (find) {
+        const replace = prompt("Replace with:");
+        input.value = input.value.replaceAll(find, replace);
+        handleInput();
+      }
+    });
 
     function runJavaScript() {
       errorOutput.textContent = "";
