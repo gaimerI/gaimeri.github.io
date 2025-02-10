@@ -34,7 +34,7 @@
     }
     #input {
       width: 50%;
-      height: auto;
+      height: 100%;
       border: none;
       resize: vertical;
       outline: none;
@@ -130,7 +130,8 @@
       localStorage.setItem("editor-content", input.value);
       const parsedMarkdown = marked.parse(input.value);
       preview.innerHTML = replaceEmojis(parsedMarkdown);
-      Prism.highlightAll(); updateStats();
+      Prism.highlightAll();
+      updateStats();
     }
 
     function updateStats() {
@@ -199,11 +200,12 @@
     }
 
     input.addEventListener("keydown", (event) => {
-      if (event.key === "(") insertTextAtCursor("()") && event.preventDefault();
-      if (event.key === "[") insertTextAtCursor("[]") && event.preventDefault();
-      if (event.key === "{") insertTextAtCursor("{}") && event.preventDefault();
-      if (event.key === "'") insertTextAtCursor("''") && event.preventDefault();
-      if (event.key === '"') insertTextAtCursor("\"\"") && event.preventDefault();
+      if (event.key === "(") { insertTextAtCursor("()"); event.preventDefault(); }
+      if (event.key === "[") { insertTextAtCursor("[]"); event.preventDefault(); }
+      if (event.key === "{") { insertTextAtCursor("{}"); event.preventDefault(); }
+      if (event.key === "'") { insertTextAtCursor("''"); event.preventDefault(); }
+      if (event.key === '"') { insertTextAtCursor("\"\""); event.preventDefault(); }
+
     });
 
     document.addEventListener("keydown", (event) => {
