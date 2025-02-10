@@ -128,11 +128,12 @@
 
     function handleInput() {
       localStorage.setItem("editor-content", input.value);
-      const parsedMarkdown = marked.parse(input.value);
-      preview.innerHTML = replaceEmojis(parsedMarkdown);
+      const parsedMarkdown = marked.parse(replaceEmojis(input.value)); // Apply emoji replacement before parsing
+      preview.innerHTML = parsedMarkdown;
       Prism.highlightAll();
       updateStats();
     }
+
 
     function updateStats() {
       const text = input.value.trim();
