@@ -94,6 +94,8 @@
       <button id="run-js">Run JS</button>
       <button id="copy">Copy</button>
       <button id="find-replace">Find & Replace</button>
+      <button id="download">Copy</button>
+      <button id="upload">Find & Replace</button>
     </div>
     <span id="stats">Words: 0 | Characters: 0</span>
   </div>
@@ -117,6 +119,12 @@
     const copyBtn = document.getElementById("copy");
     const findReplaceBtn = document.getElementById("find-replace");
     const stats = document.getElementById("stats");
+    const errorOutput = document.getElementById("error-output");
+    const toggleModeBtn = document.getElementById("toggle-mode");
+    const runJsBtn = document.getElementById("run-js");
+    const downloadBtn = document.getElementById("download"); // Ensure an element with ID "download" exists
+    const uploadBtn = document.getElementById("upload"); // Ensure an element with ID "upload" exists
+
     let htmlMode = false;
     
     input.value = localStorage.getItem("editor-content") || "# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here."; 
