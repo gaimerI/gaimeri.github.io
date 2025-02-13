@@ -83,6 +83,14 @@
       font-size: 0.9rem;
       margin-top: 5px;
     }
+    .character-image {
+      display: inline-block;
+      width: 1em; /* Adjust width to match font size */
+      height: auto; /* Maintain aspect ratio */
+      vertical-align: middle; /* Align with text */
+      background-size: contain;
+      background-repeat: no-repeat; /* Prevent repeating */
+    }
   </style>
 </head>
 <body>
@@ -171,7 +179,7 @@
       const blob = new Blob([input.value], { type: "text/plain" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "tadi_lab.md";
+      a.download = "tadi_lab.txt";
       a.click();
     });
 
@@ -243,6 +251,7 @@
       ":warning:": "⚠️",
       ":question:": "❓",
       ":exclamation:": "❗",
+      ":javascript:": "<img src=\"images/js.png\">
     };
     
     function replaceEmojis(text) {
