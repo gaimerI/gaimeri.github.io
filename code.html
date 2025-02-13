@@ -84,13 +84,30 @@
       margin-top: 5px;
     }
     .character-image {
-      display: inline-block;
-      width: 1em; /* Adjust width to match font size */
-      height: 1em; /* Maintain aspect ratio */
-      vertical-align: middle; /* Align with text */
-      background-size: contain;
-      background-repeat: no-repeat; /* Prevent repeating */
-    }
+    display: inline-block;
+    width: 1em; /* Adjust width to match font size */
+    height: 1em; /* Maintain aspect ratio */
+    vertical-align: middle; /* Align with text */
+    background-size: contain;
+    background-repeat: no-repeat; /* Prevent repeating */
+    max-width: 100%; /* Prevent overflow */
+    max-height: 100%; /* Prevent overflow */
+    line-height: 1; /* Ensure proper alignment */
+    /* Optional: Add a transition for hover effects */
+    transition: transform 0.2s ease; /* Smooth scaling on hover */
+}
+
+.character-image:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* If using an <img> tag instead of background */
+.character-image img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove bottom space */
+}
+
   </style>
 </head>
 <body>
