@@ -96,6 +96,7 @@
       <button id="upload-btn">Upload</button>
     </div>
     <span id="stats">Words: 0 | Characters: 0</span>
+    <span id="timer">Time spent editing: 0 seconds</span>
   </div>
 
   <main>
@@ -247,6 +248,14 @@
     function replaceEmojis(text) {
       return text.replace(/:\w+:/g, (match) => emojiMap[match] || match);
     }
+
+    const startTime = performance.now(); // Function to update the timer
+    function updateTimer() {
+      const currentTime = performance.now();
+      const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Convert to seconds
+      document.getElementById('timer').textContent = `Time spent editing: ${elapsedTime} seconds`; } // Update the timer every second
+    
+    setInterval(updateTimer, 1000);
   </script>
 </body>
 </html>
