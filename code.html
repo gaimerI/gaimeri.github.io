@@ -88,12 +88,12 @@
     width: 1em; /* Adjust width to match font size */
     height: 1em; /* Maintain aspect ratio */
     vertical-align: middle; /* Align with text */
-    background-size: contain;
+    background-size: contain; /* Scale the image to fit */
     background-repeat: no-repeat; /* Prevent repeating */
+    background-position: center; /* Center the image */
     max-width: 100%; /* Prevent overflow */
     max-height: 100%; /* Prevent overflow */
     line-height: 1; /* Ensure proper alignment */
-    /* Optional: Add a transition for hover effects */
     transition: transform 0.2s ease; /* Smooth scaling on hover */
 }
 
@@ -101,11 +101,24 @@
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
-/* If using an <img> tag instead of background */
-.character-image img {
-    width: 100%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space */
+/* Optional: Add a class for setting the background image */
+.character-image.html-icon {
+    background-image: url('images/html.png'); /* Replace with your image path */
+}
+
+.character-image.css-icon {
+    background-image: url('images/css.png'); /* Replace with your image path */
+}
+
+.character-image.js-icon {
+    background-image: url('images/js.png'); /* Replace with your image path */
+}
+
+/* Add more classes as needed for different icons */
+
+
+.character-image:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
   </style>
@@ -268,9 +281,9 @@
       ":warning:": "⚠️",
       ":question:": "❓",
       ":exclamation:": "❗",
-      ":javascript:": "<img src=\"images/js.png\">",
-      ":html:": "<img src=\"images/html.png\">",
-      ":css:": "<img src=\"images/css.png\">",
+      ":javascript:": "<span class=\"character-image js-icon\"></span>",
+      ":html:": "<span class=\"character-image html-icon\"></span>"
+      ":css:": "<span class=\"character-image css-icon\"></span>",
 
     };
     
