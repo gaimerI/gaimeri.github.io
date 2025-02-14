@@ -350,6 +350,9 @@
 
     });
 
+    document.getElementById('lapBtn').addEventListener('click', recordLap);
+
+
     document.addEventListener("keydown", (event) => {
       if (event.ctrlKey && event.key === "b") {
         insertTextAtCursor("****");
