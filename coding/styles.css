@@ -1,0 +1,199 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+main {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow: hidden;
+}
+#input {
+    width: 50%;
+    height: 100%;
+    border: none;
+    resize: vertical;
+    outline: none;
+    padding: 1rem;
+    background: #fff;
+    font-family: monospace;
+    tab-size: 4;
+}
+#preview {
+    width: 50%;
+    padding: 1rem;
+    overflow-y: auto;
+    background: #f9f9f9;
+    border-left: 1px solid #ccc;
+}
+#toolbar {
+    display: flex;
+    padding: 0.5rem;
+    background: #ddd;
+    justify-content: space-between;
+    align-items: center;
+}
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.dark-mode {
+    background: #222;
+    color: #fff;
+}
+.dark-mode #input {
+    background: #333;
+    color: #fff;
+}
+.dark-mode #preview {
+    background: #444;
+}
+.dark-mode #toolbar {
+    background: #555;
+    color: #fff;
+}
+#error-output {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+.character-image {
+    display: inline-block;
+    width: 1em; /* Adjust width to match font size */
+    height: 1em; /* Maintain aspect ratio */
+    vertical-align: middle; /* Align with text */
+    background-size: contain; /* Scale the image to fit */
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-position: center; /* Center the image */
+    max-width: 100%; /* Prevent overflow */
+    max-height: 100%; /* Prevent overflow */
+    line-height: 1; /* Ensure proper alignment */
+    transition: transform 0.2s ease; /* Smooth scaling on hover */
+}
+
+.character-image:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Optional: Add a class for setting the background image */
+.character-image.html-icon {
+    background-image: url("images/html.png"); /* Replace with your image path */
+}
+
+.character-image.css-icon {
+    background-image: url("images/css.png"); /* Replace with your image path */
+}
+
+.character-image.js-icon {
+    background-image: url("images/js.png"); /* Replace with your image path */
+}
+
+.character-image.bash-icon {
+    background-image: url("images/bash.png"); /* Replace with your image path */
+}
+
+.character-image.c-icon {
+    background-image: url("images/c.png"); /* Replace with your image path */
+}
+
+.character-image.cpp-icon {
+    background-image: url("images/cpp.png"); /* Replace with your image path */
+}
+
+.character-image.csharp-icon {
+    background-image: url("images/csharp.png"); /* Replace with your image path */
+}
+
+.character-image.go-icon {
+    background-image: url("images/go.png"); /* Replace with your image path */
+}
+
+.character-image.java-icon {
+    background-image: url("images/java.png"); /* Replace with your image path */
+}
+
+.character-image.json-icon {
+    background-image: url("images/json.png"); /* Replace with your image path */
+}
+
+.character-image.md-icon {
+    background-image: url("images/md.png"); /* Replace with your image path */
+}
+
+.character-image.php-icon {
+    background-image: url("images/php.png"); /* Replace with your image path */
+}
+
+.character-image.python-icon {
+    background-image: url("images/python.png"); /* Replace with your image path */
+}
+
+.character-image.regex-icon {
+    background-image: url("images/regex.png"); /* Replace with your image path */
+}
+
+.character-image.ts-icon {
+    background-image: url("images/ts.png"); /* Replace with your image path */
+}
+
+.character-image.xml-icon {
+    background-image: url("images/xml.png"); /* Replace with your image path */
+}
+
+.character-image.yaml-icon {
+    background-image: url("images/yaml.png"); /* Replace with your image path */
+}
+
+.character-image.scratch-icon {
+    background-image: url("images/scratch.png"); /* Replace with your image path */
+}
+
+.character-image.spacetode-icon {
+    background-image: url("images/spacetode.png");
+}
+
+.character-image.haskell-icon {
+    background-image: url("images/haskell.png");
+}
+
+.character-image.tidalcycles-icon {
+    background-image: url("images/tidalcycles.png");
+}
+
+.character-image.clojure-icon {
+    background-image: url("images/clojure.png");
+}
+
+.character-image.fsharp-icon {
+    background-image: url("images/fsharp.png");
+}
+
+.character-image.brainfuck-icon {
+    background-image: url("images/brainfuck.png");
+}
+
+.character-image.piet-icon {
+    background-image: url("images/piet.png");
+}
+
+.character-image.lua-icon {
+    background-image: url("images/lua.png");
+}
+
+.character-image.powershell-icon {
+    background-image: url("images/powershell.png");
+}
+
+/* Add more classes as needed for different icons */
+
+.character-image:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
