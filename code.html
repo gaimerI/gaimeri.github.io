@@ -235,6 +235,7 @@
     <button id="pauseButton" onclick="pauseTimer()">Pause</button>
     <button id="resumeButton" onclick="resumeTimer()">Resume</button>
     <button id="resetButton" onclick="resetTimer()">Reset</button>
+    <ul id="lapTimes"></ul>
 
   </div>
 
@@ -415,7 +416,10 @@
       return text.replace(/:\w+:/g, (match) => emojiMap[match] || match);
     }
 
-    let startTime = performance.now();
+    const timer = document.getElementById('timer');
+const lapContainer = document.getElementById('lapTimes');
+
+let startTime = performance.now();
 let elapsedTime = 0;
 let isPaused = false;
 let intervalId;
@@ -431,24 +435,33 @@ function updateTimer() {
   if (!isPaused) {
     const currentTime = performance.now();
     elapsedTime = Math.floor((currentTime - startTime) / 1000);
-    document.getElementById('timer').textContent = `Time spent editing: ${formatTime(elapsedTime)}`;
+    timer.textContent = `Time spent editing: ${formatTime(elapsedTime)}`;
   }
 }
 
 function pauseTimer() {
   isPaused = true;
+  timer.style.color = "red";
 }
 
 function resumeTimer() {
   isPaused = false;
-  startTime = performance.now() - elapsedTime * 1000; // Adjust for pause duration
+  startTime = performance.now() - elapsedTime * 1000;
+  timer.style.color = "initial";
 }
 
 function resetTimer() {
   startTime = performance.now();
   elapsedTime = 0;
   isPaused = false;
-  document.getElementById('timer').textContent = "Time spent editing: 00:00:00";
+  timer.textContent = "Time spent editing: 00:00:00";
+  lapContainer.innerHTML = ""; // Clear lap times
+}
+
+function recordLap() {
+  const lapTime = document.createElement('li');
+  lapTime.textContent = `Lap at: ${formatTime(elapsedTime)}`;
+  lapContainer.appendChild(lapTime);
 }
 
 intervalId = setInterval(updateTimer, 1000);
