@@ -218,21 +218,17 @@
     const uploadInput = document.getElementById("upload");
 
     input.value = localStorage.getItem("editor-content") || "# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here.";
-    input.value = replaceEmojis(input.value); // Apply emoji replacement before rendering the input content
-
     if (localStorage.getItem("dark-mode") === "enabled") {
       document.body.classList.add("dark-mode");
     }
 
     function handleInput() {
-      const contentWithEmojis = replaceEmojis(input.value); // Apply emoji replacement before saving
-      localStorage.setItem("editor-content", contentWithEmojis);
-      const parsedMarkdown = marked.parse(contentWithEmojis); // Apply emoji replacement before parsing
+      localStorage.setItem("editor-content", input.value);
+      const parsedMarkdown = marked.parse(replaceEmojis(input.value)); // Apply emoji replacement before parsing
       preview.innerHTML = parsedMarkdown;
       Prism.highlightAll();
       updateStats();
     }
-
 
 
     function updateStats() {
