@@ -230,6 +230,7 @@
     <button id="pauseButton" onclick="pauseTimer()">Pause</button>
     <button id="resumeButton" onclick="resumeTimer()">Resume</button>
     <button id="resetButton" onclick="resetTimer()">Reset</button>
+    <button id="lapButton">Lap</button>
     <ul id="lapTimes"></ul>
 
   </div>
@@ -345,7 +346,7 @@
 
     });
 
-    document.getElementById('lapBtn').addEventListener('click', recordLap);
+    document.getElementById('lapButton').addEventListener('click', recordLap);
 
 
     document.addEventListener("keydown", (event) => {
