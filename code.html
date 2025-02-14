@@ -231,7 +231,11 @@
       <button id="upload-btn">Upload</button>
     </div>
     <span id="stats">Words: 0 | Characters: 0</span>
-    <span id="timer">Time spent editing: 0 seconds</span>
+    <div id="timer">Time spent editing: 00:00:00</div>
+    <button id="pauseButton" onclick="pauseTimer()">Pause</button>
+    <button id="resumeButton" onclick="resumeTimer()">Resume</button>
+    <button id="resetButton" onclick="resetTimer()">Reset</button>
+
   </div>
 
   <main>
@@ -411,13 +415,43 @@
       return text.replace(/:\w+:/g, (match) => emojiMap[match] || match);
     }
 
-    const startTime = performance.now(); // Function to update the timer
-    function updateTimer() {
-      const currentTime = performance.now();
-      const elapsedTime = Math.floor((currentTime - startTime) / 1000); // Convert to seconds
-      document.getElementById('timer').textContent = `Time spent editing: ${elapsedTime} seconds`; } // Update the timer every second
-    
-    setInterval(updateTimer, 1000);
+    let startTime = performance.now();
+let elapsedTime = 0;
+let isPaused = false;
+let intervalId;
+
+function formatTime(seconds) {
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+  return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateTimer() {
+  if (!isPaused) {
+    const currentTime = performance.now();
+    elapsedTime = Math.floor((currentTime - startTime) / 1000);
+    document.getElementById('timer').textContent = `Time spent editing: ${formatTime(elapsedTime)}`;
+  }
+}
+
+function pauseTimer() {
+  isPaused = true;
+}
+
+function resumeTimer() {
+  isPaused = false;
+  startTime = performance.now() - elapsedTime * 1000; // Adjust for pause duration
+}
+
+function resetTimer() {
+  startTime = performance.now();
+  elapsedTime = 0;
+  isPaused = false;
+  document.getElementById('timer').textContent = "Time spent editing: 00:00:00";
+}
+
+intervalId = setInterval(updateTimer, 1000);
   </script>
 </body>
 </html>
