@@ -32,6 +32,10 @@
       height: calc(100% - 50px);
       overflow: hidden;
     }
+    ul {
+      height: 200px;
+      overflow: auto;
+    }
     #input {
       width: 50%;
       height: 100%;
@@ -67,6 +71,7 @@
       background: #222;
       color: #fff;
     }
+
     .dark-mode #input {
       background: #333;
       color: #fff;
@@ -446,7 +451,7 @@ function pauseTimer() {
 function resumeTimer() {
   isPaused = false;
   startTime = performance.now() - elapsedTime * 1000;
-  timer.style.color = "initial";
+  timer.style.color = "inherit";
 }
 
 function resetTimer() {
