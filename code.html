@@ -35,7 +35,7 @@
           overflow: hidden;
         }
         
-        ul {
+        ul.ui {
           height: 100px;
           width: 100px;
           overflow: auto;
@@ -73,7 +73,7 @@
           display: none;
         }
         
-        button {
+        button.ui {
           padding: 0.5rem 1rem;
           border: none;
           cursor: pointer;
@@ -157,20 +157,20 @@
 <body>
     <div id="toolbar">
         <div>
-            <button id="clear">Clear</button>
-            <button id="toggle-mode">Dark Mode</button>
-            <button id="run-code">Run Code</button>
-            <button id="download">Download</button>
+            <button class="ui" id="clear">Clear</button>
+            <button class="ui" id="toggle-mode">Dark Mode</button>
+            <button class="ui" id="run-code">Run Code</button>
+            <button class="ui" id="download">Download</button>
             <input type="file" id="upload" style="display:none">
-            <button id="upload-btn">Upload</button>
+            <button class="ui" id="upload-btn">Upload</button>
         </div>
         <span id="stats">Words: 0 | Characters: 0</span>
         <div id="timer">Time spent editing: 00:00:00</div>
-        <button id="pause-timer">Pause</button>
-        <button id="resume-timer">Resume</button>
-        <button id="reset-timer">Reset</button>
-        <button id="lap-timer">Lap</button>
-        <ul id="lap-list"></ul>
+        <button class="ui" id="pause-timer">Pause</button>
+        <button class="ui" id="resume-timer">Resume</button>
+        <button class="ui" id="reset-timer">Reset</button>
+        <button class="ui" id="lap-timer">Lap</button>
+        <ul class="ui" id="lap-list"></ul>
 
     </div>
 
