@@ -245,6 +245,9 @@
           runJavaScript();
           runTidalCycles();
           runRust();
+          runCpp()
+          runSwift()
+          runHaskell()
         });
 
 
@@ -460,7 +463,56 @@
           });
         }
 
+        function runCpp() {
+          errorOutput.textContent = "";
+          const codeBlocks = preview.querySelectorAll("code.language-cpp");
+          codeBlocks.forEach(block => {
+            try {
+              const encodedCode = encodeURIComponent(block.textContent);
+              const iframe = document.createElement("iframe");
+              iframe.src = `https://godbolt.org/?code=${encodedCode}`;
+              iframe.width = "100%";
+              iframe.height = "400px";
+              block.replaceWith(iframe);
+            } catch (e) {
+              errorOutput.textContent = "C++ Error: " + e.message;
+            }
+          });
+        }
 
+        function runSwift() {
+          errorOutput.textContent = "";
+          const codeBlocks = preview.querySelectorAll("code.language-swift");
+          codeBlocks.forEach(block => {
+            try {
+              const encodedCode = encodeURIComponent(block.textContent);
+              const iframe = document.createElement("iframe");
+              iframe.src = `https://swiftfiddle.com/?code=${encodedCode}`;
+              iframe.width = "100%";
+              iframe.height = "400px";
+              block.replaceWith(iframe);
+            } catch (e) {
+              errorOutput.textContent = "Swift Error: " + e.message;
+            }
+          });
+        }
+
+          function runHaskell() {
+            errorOutput.textContent = "";
+            const codeBlocks = preview.querySelectorAll("code.language-haskell");
+            codeBlocks.forEach(block => {
+              try {
+                const encodedCode = encodeURIComponent(block.textContent);
+                const iframe = document.createElement("iframe");
+                iframe.src = `https://tryhaskell.org/?code=${encodedCode}`;
+                iframe.width = "100%";
+                iframe.height = "400px";
+                block.replaceWith(iframe);
+              } catch (e) {
+                errorOutput.textContent = "Haskell Error: " + e.message;
+              }
+             });
+           }
         //
         // Maps
         //
