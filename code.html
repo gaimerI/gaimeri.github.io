@@ -236,7 +236,11 @@
           a.click();
         });
 
-        runJsBtn.addEventListener("click", runJavaScript);
+        runCodeBtn.addEventListener("click", () => {
+          runJavaScript();
+          runTidalCycles();
+        });
+
 
         uploadBtn.addEventListener("click", () => uploadInput.click());
       
@@ -392,6 +396,29 @@
           lapTime.textContent = `Lap at: ${formatTime(elapsedTime)}`;
           lapContainer.appendChild(lapTime);
         }
+
+        function runTidalCycles() {
+          errorOutput.textContent = "";
+          const codeBlocks = preview.querySelectorAll("code.language-tidalcycles");
+    
+          codeBlocks.forEach(block => {
+            try {
+              const tidalCode = block.textContent;
+              const base64Code = btoa(unescape(encodeURIComponent(tidalCode))); // Encode to Base64
+              const iframe = document.createElement("iframe");
+              iframe.src = `https://strudel.cc/#${base64Code}`;
+              iframe.width = "100%";
+              iframe.height = "400px";
+              iframe.style.border = "none";
+            
+              // Append the iframe to the preview area
+              block.replaceWith(iframe);
+            } catch (e) {
+              errorOutput.textContent = "TidalCycles Error: " + e.message;
+            }
+          });
+        }
+
 
         //
         // Maps
