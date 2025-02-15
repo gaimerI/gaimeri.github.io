@@ -1,569 +1,672 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tadi Lab</title>
-    <link rel="shortcut icon" href="/favicon.png">
-
-    <!-- Open Graph & Twitter Cards -->
-    <meta property="og:image" content="https://todepond.com/lab/og.png">
-    <meta property="og:title" content="Tadi Lab">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tadi Lab">
-    <meta name="twitter:image" content="https://todepond.com/lab/og.png">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
-
-    <style>
-        body {
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          height: 100%;
-          font-family: Arial, sans-serif;
-          background-color: #f5f5f5;
-          color: #333;
-          transition: background 0.3s, color 0.3s;
-        }
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tadi Lab</title>
+        <link rel="shortcut icon" href="/favicon.png" />
         
-        main {
-          display: flex;
-          width: 100%;
-          height: calc(100% - 50px);
-          overflow: hidden;
-        }
-        
-        ul.ui {
-          height: 100px;
-          width: 100px;
-          overflow: auto;
-          border-style: groove;
-        }
-        
-        #input {
-          width: 50%;
-          height: 100%;
-          border: none;
-          resize: vertical;
-          outline: none;
-          padding: 1rem;
-          background: #fff;
-          font-family: monospace;
-          tab-size: 4;
-        }
-        
-        #preview {
-          width: 50%;
-          padding: 1rem;
-          overflow-y: auto;
-          background: #f9f9f9;
-          border-left: 1px solid #ccc;
-        }
-        
-        #toolbar {
-          display: flex;
-          padding: 0.5rem;
-          background: #ddd;
-          justify-content: space-between;
-          align-items: center;
-        }
+        <!-- Open Graph & Twitter Cards -->
+        <meta property="og:image" content="https://todepond.com/lab/og.png" />
+        <meta property="og:title" content="Tadi Lab" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tadi Lab" />
+        <meta name="twitter:image" content="https://todepond.com/lab/og.png" />
 
-        #resume-timer {
-          display: none;
-        }
-        
-        button.ui {
-          padding: 0.5rem 1rem;
-          border: none;
-          cursor: pointer;
-          margin-right: 5px;
-          margin-down: 5px;
-        }
-        
-        .dark-mode {
-          background: #222;
-          color: #fff;
-        }
-    
-        .dark-mode #input {
-          background: #333;
-          color: #fff;
-        }
-        .dark-mode #preview {
-          background: #444;
-        }
-        .dark-mode #toolbar {
-          background: #555;
-          color: #fff;
-        }
-        #error-output {
-          color: red;
-          font-size: 0.9rem;
-          margin-top: 5px;
-        }
-        .character-image {
-          display: inline-block;
-          width: 1em; /* Adjust width to match font size */
-          height: 1em; /* Maintain aspect ratio */
-          vertical-align: middle; /* Align with text */
-          background-size: contain; /* Scale the image to fit */
-          background-repeat: no-repeat; /* Prevent repeating */
-          background-position: center; /* Center the image */
-          max-width: 100%; /* Prevent overflow */
-          max-height: 100%; /* Prevent overflow */
-          line-height: 1; /* Ensure proper alignment */
-          transition: transform 0.2s ease; /* Smooth scaling on hover */
-        }
-    
-        .character-image:hover {
-          transform: scale(1.1); /* Slightly enlarge on hover */
-        }
-    
-        .character-image.html-icon { background-image: url('images/html.png'); }
-        .character-image.css-icon { background-image: url('images/css.png'); }
-        .character-image.js-icon { background-image: url('images/js.png');}
-        .character-image.bash-icon { background-image: url('images/bash.png'); }
-        .character-image.c-icon { background-image: url('images/c.png'); }
-        .character-image.cpp-icon { background-image: url('images/cpp.png'); }
-        .character-image.csharp-icon { background-image: url('images/csharp.png'); }
-        .character-image.go-icon { background-image: url('images/go.png'); }
-        .character-image.java-icon { background-image: url('images/java.png'); }
-        .character-image.json-icon { background-image: url('images/json.png'); }
-        .character-image.md-icon { background-image: url('images/md.png'); }
-        .character-image.php-icon { background-image: url('images/php.png'); }
-        .character-image.python-icon { background-image: url('images/python.png'); }
-        .character-image.regex-icon { background-image: url('images/regex.png'); }
-        .character-image.ts-icon { background-image: url('images/ts.png'); }
-        .character-image.xml-icon { background-image: url('images/xml.png'); }
-        .character-image.yaml-icon { background-image: url('images/yaml.png'); }
-        .character-image.scratch-icon { background-image: url('images/scratch.png'); }
-        .character-image.spacetode-icon { background-image: url('images/spacetode.png'); }
-        .character-image.haskell-icon { background-image: url('images/haskell.png'); }
-        .character-image.tidalcycles-icon { background-image: url('images/tidalcycles.png'); }
-        .character-image.clojure-icon { background-image: url('images/clojure.png'); }
-        .character-image.fsharp-icon { background-image: url('images/fsharp.png'); }
-        .character-image.brainfuck-icon { background-image: url('images/brainfuck.png'); }
-        .character-image.piet-icon { background-image: url('images/piet.png'); }
-        .character-image.lua-icon { background-image: url('images/lua.png'); }
-        .character-image.powershell-icon { background-image: url('images/powershell.png'); }
-        .character-image.tadilab-icon { background-image: url('https://todepond.com/lab/og.png'); }
-        .character-image.wasm-icon { background-image: url('images/wasm.png');}
-        .character-image.rust-icon { background-image: url('images/rust.png');}
-        
-    
-    /* Add more classes as needed for different icons */
-    </style>
-</head>
-
-<body>
-    <div id="toolbar">
-        <div>
-            <button class="ui" id="clear">Clear</button>
-            <button class="ui" id="toggle-mode">Dark Mode</button>
-            <button class="ui" id="run-code">Run Code</button>
-            <button class="ui" id="download">Download</button>
-            <input type="file" id="upload" style="display:none">
-            <button class="ui" id="upload-btn">Upload</button>
-        </div>
-        <span id="stats">Words: 0 | Characters: 0</span>
-        <div id="timer">Time spent editing: 00:00:00</div>
-        <button class="ui" id="pause-timer">Pause</button>
-        <button class="ui" id="resume-timer">Resume</button>
-        <button class="ui" id="reset-timer">Reset</button>
-        <button class="ui" id="lap-timer">Lap</button>
-        <button class="ui" id="export-lap">Export Laps</button>
-        <ul class="ui" id="lap-list"></ul>
-
-    </div>
-
-    <main>
-        <textarea id="input" wrap="off" spellcheck="false"></textarea>
-        <div id="preview"></div>
-    </main>
-
-    <div id="error-output"></div>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-
-    <script>
-
-        //
-        // Global Constants
-        //
-
-
-        const input = document.getElementById("input");
-        const preview = document.getElementById("preview");
-        const clearBtn = document.getElementById("clear");
-        const toggleModeBtn = document.getElementById("toggle-mode");
-        const runCodeBtn = document.getElementById("run-code");
-        const errorOutput = document.getElementById("error-output");
-        const stats = document.getElementById("stats");
-        const downloadBtn = document.getElementById("download");
-        const uploadBtn = document.getElementById("upload-btn");
-        const uploadInput = document.getElementById("upload");
-        const timer = document.getElementById('timer');
-        const resumeTimerBtn = document.getElementById('resume-timer');
-        const pauseTimerBtn = document.getElementById('pause-timer');
-        const resetTimerBtn = document.getElementById('reset-timer');
-        const lapContainer = document.getElementById('lap-list');
-        const lapBtn = document.getElementById('lap-timer');
-        const exportLapTimesBtn = document.getElementById('export-lap');
-    
-        let startTime = performance.now();
-        let elapsedTime = 0;
-        let isPaused = false;
-        let intervalId;
-
-        //
-        // Event Listeners
-        //
-      
-        toggleModeBtn.addEventListener("click", () => {
-          document.body.classList.toggle("dark-mode");
-          localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
-        });
-
-        clearBtn.addEventListener("click", () => {
-          input.value = "";
-          handleInput();
-        });
-
-        downloadBtn.addEventListener("click", () => {
-          const blob = new Blob([input.value], { type: "text/plain" });
-          const a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = "tadi_lab.txt";
-          a.click();
-        });
-
-        runCodeBtn.addEventListener("click", () => {
-          runJavaScript();
-          runTidalCycles();
-          runRust();
-          runCpp()
-          runSwift()
-          runHaskell()
-        });
-
-
-        uploadBtn.addEventListener("click", () => uploadInput.click());
-      
-        uploadInput.addEventListener("change", (event) => {
-          const file = event.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              input.value = e.target.result;
-              handleInput();
-            };
-            reader.readAsText(file);
-          }
-        });
-
-        input.addEventListener("input", handleInput);
-        handleInput();
-
-        input.addEventListener("keydown", (event) => {
-          if (event.key === "(") { insertTextAtCursor("()"); event.preventDefault(); }
-          if (event.key === "[") { insertTextAtCursor("[]"); event.preventDefault(); }
-          if (event.key === "{") { insertTextAtCursor("{}"); event.preventDefault(); }
-          if (event.key === "'") { insertTextAtCursor("''"); event.preventDefault(); }
-          if (event.key === '"') { insertTextAtCursor("\"\""); event.preventDefault(); }
-    
-        });
-
-        lapBtn.addEventListener('click', recordLap);
-        exportLapTimesBtn.addEventListener('click', exportLapTimes);
-
-        document.addEventListener("keydown", (event) => {
-          if (event.ctrlKey && event.key === "b") {
-            insertTextAtCursor("****");
-            input.selectionStart -= 2;
-            event.preventDefault();
-          }
-          if (event.ctrlKey && event.key === "i") {
-            insertTextAtCursor("**");
-            input.selectionStart -= 1;
-            event.preventDefault();
-          }
-          if (event.ctrlKey && event.key === "k") {
-            insertTextAtCursor("[text](url)");
-            input.selectionStart -= 4;
-            event.preventDefault();
-          }
-        });
-
-        resumeTimerBtn.addEventListener("click", resumeTimer);
-        pauseTimerBtn.addEventListener("click", pauseTimer);
-        resetTimerBtn.addEventListener("click", resetTimer);
-
-        //
-        // Setup
-        //
-
-        input.value = localStorage.getItem("editor-content") || "# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here.";
-        if (localStorage.getItem("dark-mode") === "enabled") {
-          document.body.classList.add("dark-mode");
-        }
-      
-        intervalId = setInterval(updateTimer, 1000);
-
-        handleInput()
-    
-        //
-        // Functions
-        //
-    
-        function handleInput() {
-          // localStorage.setItem("editor-content", input.value);
-          const parsedMarkdown = marked.parse(replaceEmojis(input.value)); // Apply emoji replacement before parsing
-          preview.innerHTML = parsedMarkdown;
-          Prism.highlightAll();
-          updateStats();
-        }
-    
-    
-        function updateStats() {
-          const text = input.value.trim();
-          const words = text ? text.match(/\b\w+\b/g)?.length || 0 : 0;
-          const chars = text.length;
-          stats.textContent = `Words: ${words} | Characters: ${chars}`;
-        }
-    
-        function runJavaScript() {
-          errorOutput.textContent = "";
-          const codeBlocks = preview.querySelectorAll("code.language-js");
-          codeBlocks.forEach(block => {
-            try {
-              new Function(block.textContent)();
-            } catch (e) {
-              errorOutput.textContent = "JavaScript Error: " + e.message;
+        <!-- Styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
+                color: #333;
+                transition: background 0.3s, color 0.3s;
             }
-          });
-        }
-    
-        function insertTextAtCursor(text) {
-          const start = input.selectionStart;
-          const end = input.selectionEnd;
-          const before = input.value.substring(0, start);
-          const after = input.value.substring(end);
-          input.value = before + text + after;
-          input.selectionStart = input.selectionEnd = start + text.length;
-        }
-      
-        function replaceEmojis(text) {
-          return text.replace(/:\w+:/g, (match) => emojiMap[match] || match);
-        }
-    
-        function formatTime(seconds) {
-          const hrs = Math.floor(seconds / 3600);
-          const mins = Math.floor((seconds % 3600) / 60);
-          const secs = seconds % 60;
-          return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-    
-        function updateTimer() {
-          if (!isPaused) {
-            const currentTime = performance.now();
-            elapsedTime = Math.floor((currentTime - startTime) / 1000);
-            timer.textContent = `Time spent editing: ${formatTime(elapsedTime)}`;
-          }
-        }
-    
-        function pauseTimer() {
-          isPaused = true;
-          timer.style.color = "red";
-          pauseTimerBtn.style.display = "none";
-          resumeTimerBtn.style.display = "inherit";
-        }
-    
-        function resumeTimer() {
-          isPaused = false;
-          startTime = performance.now() - elapsedTime * 1000;
-          timer.style.color = "inherit";
-          resumeTimerBtn.style.display = "none";
-          pauseTimerBtn.style.display = "inherit";
-        }
-    
-        function resetTimer() {
-          startTime = performance.now();
-          elapsedTime = 0;
-          isPaused = false;
-          timer.style.color = "inherit";
-          timer.textContent = "Time spent editing: 00:00:00";
-          lapContainer.innerHTML = ""; // Clear lap times
-          resumeTimerBtn.style.display = "none";
-          pauseTimerBtn.style.display = "inherit";
-        }
-    
-        function recordLap() {
-          const lapTime = document.createElement('li');
-          lapTime.textContent = `Lap at: ${formatTime(elapsedTime)}`;
-          lapContainer.appendChild(lapTime);
-        }
 
-        function runTidalCycles() {
-          errorOutput.textContent = "";
-          const codeBlocks = preview.querySelectorAll("code.language-tidalcycles");
-    
-          codeBlocks.forEach(block => {
-            try {
-              const tidalCode = block.textContent;
-              const base64Code = btoa(unescape(encodeURIComponent(tidalCode))); // Encode to Base64
-              const iframe = document.createElement("iframe");
-              iframe.src = `https://strudel.cc/#${base64Code}`;
-              iframe.width = "100%";
-              iframe.height = "400px";
-              iframe.style.border = "none";
+            main {
+                display: flex;
+                width: 100%;
+                height: calc(100% - 50px);
+                overflow: hidden;
+            }
+            ul.ui {
+                height: 100px;
+                width: 100px;
+                overflow: auto;
+                border-style: groove;
+            }
             
-              // Append the iframe to the preview area
-              block.replaceWith(iframe);
-            } catch (e) {
-              errorOutput.textContent = "TidalCycles Error: " + e.message;
+            #input {
+                width: 50%;
+                height: 100%;
+                border: none;
+                resize: vertical;
+                outline: none;
+                padding: 1rem;
+                background: #fff;
+                font-family: monospace;
+                tab-size: 4;
             }
-          });
-        }
 
-        function exportLapTimes() {
-          const lapTimes = Array.from(lapContainer.children).map(lap => lap.textContent);
-          const lapTimesText = lapTimes.join('\n'); // Join lap times with new lines
-          const blob = new Blob([lapTimesText], { type: 'text/plain' });
-          const url = URL.createObjectURL(blob);
-    
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'lap_times.txt'; // Name of the file to be downloaded
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url); // Clean up the URL object
-        }
-
-        function runRust() {
-          errorOutput.textContent = "";
-          const codeBlocks = preview.querySelectorAll("code.language-rust");
-
-          codeBlocks.forEach(block => {
-            try {
-              const code = block.textContent;
-              const encodedCode = encodeURIComponent(code);
-              const iframe = document.createElement("iframe");
-              iframe.src = `https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=${encodedCode}`;
-              iframe.width = "100%";
-              iframe.height = "400px";
-              block.replaceWith(iframe);
-            } catch (e) {
-              errorOutput.textContent = "Rust Error: " + e.message;
+            #preview {
+                width: 50%;
+                padding: 1rem;
+                overflow-y: auto;
+                background: #f9f9f9;
+                border-left: 1px solid #ccc;
             }
-          });
-        }
 
-        function runCpp() {
-          errorOutput.textContent = "";
-          const codeBlocks = preview.querySelectorAll("code.language-cpp");
-          codeBlocks.forEach(block => {
-            try {
-              const encodedCode = encodeURIComponent(block.textContent);
-              const iframe = document.createElement("iframe");
-              iframe.src = `https://cppinsights.io/lnk?code=${encodedCode}`;
-              iframe.width = "100%";
-              iframe.height = "400px";
-              block.replaceWith(iframe);
-            } catch (e) {
-              errorOutput.textContent = "C++ Error: " + e.message;
+            #toolbar {
+                display: flex;
+                padding: 0.5rem;
+                background: #ddd;
+                justify-content: space-between;
+                align-items: center;
             }
-          });
-        }
 
-        function runSwift() {
-          errorOutput.textContent = "";
-          const codeBlocks = preview.querySelectorAll("code.language-swift");
-          codeBlocks.forEach(block => {
-            try {
-              const encodedCode = encodeURIComponent(block.textContent);
-              const iframe = document.createElement("iframe");
-              iframe.src = `https://swiftfiddle.com/?code=${encodedCode}`;
-              iframe.width = "100%";
-              iframe.height = "400px";
-              block.replaceWith(iframe);
-            } catch (e) {
-              errorOutput.textContent = "Swift Error: " + e.message;
+            #resume-timer {
+                display: none;
             }
-          });
-        }
 
-          function runHaskell() {
-            errorOutput.textContent = "";
-            const codeBlocks = preview.querySelectorAll("code.language-haskell");
-            codeBlocks.forEach(block => {
-              try {
-                const encodedCode = encodeURIComponent(block.textContent);
-                const iframe = document.createElement("iframe");
-                iframe.src = `https://tryhaskell.org/?code=${encodedCode}`;
-                iframe.width = "100%";
-                iframe.height = "400px";
-                block.replaceWith(iframe);
-              } catch (e) {
-                errorOutput.textContent = "Haskell Error: " + e.message;
-              }
-             });
-           }
-        //
-        // Maps
-        //
+            button.ui {
+                padding: 0.5rem 1rem;
+                border: none;
+                cursor: pointer;
+                margin-right: 5px;
+                margin-down: 5px;
+            }
 
-        const emojiMap = {
-          ":smile:": "😀",
-          ":laughing:": "😆",
-          ":wink:": "😉",
-          ":heart:": "❤️",
-          ":thumbsup:": "👍",
-          ":star:": "⭐",
-          ":fire:": "🔥",
-          ":rocket:": "🚀",
-          ":coffee:": "☕",
-          ":check:": "✔️",
-          ":x:": "❌",
-          ":warning:": "⚠️",
-          ":question:": "❓",
-          ":exclamation:": "❗",
-          ":js:": "<span class=\"character-image js-icon\"></span>",
-          ":html:": "<span class=\"character-image html-icon\"></span>",
-          ":css:": "<span class=\"character-image css-icon\"></span>",
-          ":bash:": "<span class=\"character-image bash-icon\"></span>",
-          ":c:": "<span class=\"character-image c-icon\"></span>",
-          ":cpp:": "<span class=\"character-image cpp-icon\"></span>",
-          ":csharp:": "<span class=\"character-image csharp-icon\"></span>",
-          ":go:": "<span class=\"character-image go-icon\"></span>",
-          ":java:": "<span class=\"character-image java-icon\"></span>",
-          ":json:": "<span class=\"character-image json-icon\"></span>",
-          ":md:": "<span class=\"character-image md-icon\"></span>",
-          ":php:": "<span class=\"character-image php-icon\"></span>",
-          ":python:": "<span class=\"character-image python-icon\"></span>",
-          ":regex:": "<span class=\"character-image regex-icon\"></span>",
-          ":ts:": "<span class=\"character-image ts-icon\"></span>",
-          ":xml:": "<span class=\"character-image xml-icon\"></span>",
-          ":yaml:": "<span class=\"character-image yaml-icon\"></span>",
-          ":scratch:": "<span class=\"character-image scratch-icon\"></span>",
-          ":spacetode:": "<span class=\"character-image spacetode-icon\"></span>",
-          ":haskell:": "<span class=\"character-image haskell-icon\"></span>",
-          ":tidalcycles:": "<span class=\"character-image tidalcycles-icon\"></span>",
-          ":clojure:": "<span class=\"character-image clojure-icon\"></span>",
-          ":fsharp:": "<span class=\"character-image fsharp-icon\"></span>",
-          ":brainfuck:": "<span class=\"character-image brainfuck-icon\"></span>",
-          ":piet:": "<span class=\"character-image piet-icon\"></span>",
-          ":lua:": "<span class=\"character-image lua-icon\"></span>",
-          ":powershell:": "<span class=\"character-image powershell-icon\"></span>",
-          ":tadilab:": "<span class=\"character-image tadilab-icon\"></span>",
-          ":wasm:": "<span class=\"character-image wasm-icon\"></span>",
-          ":rust:": "<span class=\"character-image rust-icon\"></span>",
-        };
-    </script>
-</body>
+            .dark-mode {
+                background: #222;
+                color: #fff;
+            }
 
+            .dark-mode #input {
+                background: #333;
+                color: #fff;
+            }
+
+            .dark-mode #preview {
+                background: #444;
+            }
+
+            .dark-mode #toolbar {
+                background: #555;
+                color: #fff;
+            }
+
+            #error-output {
+                color: red;
+                font-size: 0.9rem;
+                margin-top: 5px;
+            }
+
+            .character-image {
+                display: inline-block;
+                width: 1em;
+                height: 1em;
+                vertical-align: middle;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                max-width: 100%;
+                max-height: 100%;
+                line-height: 1;
+                transition: transform 0.2s ease;
+            }
+
+            .character-image:hover {
+                transform: scale(1.1);
+            }
+
+            .character-image.html-icon {
+                background-image: url("images/html.png");
+            }
+            .character-image.css-icon {
+                background-image: url("images/css.png");
+            }
+
+            .character-image.js-icon {
+                background-image: url("images/js.png");
+            }
+
+            .character-image.bash-icon {
+                background-image: url("images/bash.png");
+            }
+
+            .character-image.c-icon {
+                background-image: url("images/c.png");
+            }
+
+            .character-image.cpp-icon {
+                background-image: url("images/cpp.png");
+            }
+
+            .character-image.csharp-icon {
+                background-image: url("images/csharp.png");
+            }
+
+            .character-image.go-icon {
+                background-image: url("images/go.png");
+            }
+
+            .character-image.java-icon {
+                background-image: url("images/java.png");
+            }
+
+            .character-image.json-icon {
+                background-image: url("images/json.png");
+            }
+
+            .character-image.md-icon {
+                background-image: url("images/md.png");
+            }
+
+            .character-image.php-icon {
+                background-image: url("images/php.png");
+            }
+
+            .character-image.python-icon {
+                background-image: url("images/python.png");
+            }
+
+            .character-image.regex-icon {
+                background-image: url("images/regex.png");
+            }
+
+            .character-image.ts-icon {
+                background-image: url("images/ts.png");
+            }
+
+            .character-image.xml-icon {
+                background-image: url("images/xml.png");
+            }
+
+            .character-image.yaml-icon {
+                background-image: url("images/yaml.png");
+            }
+
+            .character-image.scratch-icon {
+                background-image: url("images/scratch.png");
+            }
+
+            .character-image.spacetode-icon {
+                background-image: url("images/spacetode.png");
+            }
+
+            .character-image.haskell-icon {
+                background-image: url("images/haskell.png");
+            }
+
+            .character-image.tidalcycles-icon {
+                background-image: url("images/tidalcycles.png");
+            }
+
+            .character-image.clojure-icon {
+                background-image: url("images/clojure.png");
+            }
+
+            .character-image.fsharp-icon {
+                background-image: url("images/fsharp.png");
+            }
+
+            .character-image.brainfuck-icon {
+                background-image: url("images/brainfuck.png");
+            }
+
+            .character-image.piet-icon {
+                background-image: url("images/piet.png");
+            }
+
+            .character-image.lua-icon {
+                background-image: url("images/lua.png");
+            }
+
+            .character-image.powershell-icon {
+                background-image: url("images/powershell.png");
+            }
+
+            .character-image.tadilab-icon {
+                background-image: url("https://todepond.com/lab/og.png");
+            }
+
+            .character-image.wasm-icon {
+                background-image: url("images/wasm.png");
+            }
+
+            .character-image.rust-icon {
+                background-image: url("images/rust.png");
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="toolbar">
+            <div>
+                <button class="ui" id="clear">Clear</button>
+                <button class="ui" id="toggle-mode">Dark Mode</button>
+                <button class="ui" id="run-code">Run Code</button>
+                <button class="ui" id="download">Download</button>
+                <input type="file" id="upload" style="display: none;" />
+                <button class="ui" id="upload-btn">Upload</button>
+            </div>
+
+            <span id="stats">Words: 0 | Characters: 0</span>
+            <div id="timer">Time spent editing: 00:00:00</div>
+            <button class="ui" id="pause-timer">Pause</button>
+            <button class="ui" id="resume-timer">Resume</button>
+            <button class="ui" id="reset-timer">Reset</button>
+            <button class="ui" id="lap-timer">Lap</button>
+            <button class="ui" id="export-lap">Export Laps</button>
+            <ul class="ui" id="lap-list"></ul>
+        </div>
+
+        <main>
+            <textarea id="input" wrap="off" spellcheck="false"></textarea>
+            <div id="preview"></div>
+        </main>
+
+        <div id="error-output"></div>
+
+        <!-- Scripts -->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+        <script>
+            //
+            // Global Constants
+            //
+
+            const input = document.getElementById("input");
+            const preview = document.getElementById("preview");
+            const clearBtn = document.getElementById("clear")
+            const toggleModeBtn = document.getElementById("toggle-mode");
+            const runCodeBtn = document.getElementById("run-code");
+            const errorOutput = document.getElementById("error-output");
+            const stats = document.getElementById("stats");
+            const downloadBtn = document.getElementById("download");
+            const uploadBtn = document.getElementById("upload-btn");
+            const uploadInput = document.getElementById("upload");
+            const timer = document.getElementById("timer");
+            const resumeTimerBtn = document.getElementById("resume-timer");
+            const pauseTimerBtn = document.getElementById("pause-timer");
+            const resetTimerBtn = document.getElementById("reset-timer");
+            const lapContainer = document.getElementById("lap-list");
+            const lapBtn = document.getElementById("lap-timer");
+            const exportLapTimesBtn = document.getElementById("export-lap");
+            
+            let startTime = performance.now();
+            let elapsedTime = 0;
+            let isPaused = false;
+            let intervalId;
+
+            //
+            // Event Listeners
+            //
+
+            toggleModeBtn.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
+            });
+
+            clearBtn.addEventListener("click", () => {
+                input.value = "";
+                handleInput();
+            });
+
+            downloadBtn.addEventListener("click", () => {
+                const blob = new Blob([input.value], { type: "text/plain" });
+                const a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "tadi_lab.txt";
+                a.click();
+            });
+
+            runCodeBtn.addEventListener("click", () => {
+                runJavaScript();
+                runTidalCycles();
+                runRust();
+                runCpp();  // wrong url encoding
+                runSwift(); // not tested
+                runHaskell(); // find new compiler
+            });
+
+            uploadBtn.addEventListener("click", () => uploadInput.click());
+
+            uploadInput.addEventListener("change", (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        input.value = e.target.result;
+                        handleInput();
+                    };
+                    reader.readAsText(file);
+                }
+            });
+
+            input.addEventListener("input", handleInput);
+
+            input.addEventListener("keydown", (event) => {
+                if (event.key === "(") {
+                    insertTextAtCursor("()");
+                    event.preventDefault();
+                }
+
+                if (event.key === "[") {
+                    insertTextAtCursor("[]");
+                    event.preventDefault();
+                }
+
+                if (event.key === "{") {
+                    insertTextAtCursor("{}");
+                    event.preventDefault();
+                }
+
+                if (event.key === "'") {
+                    insertTextAtCursor("''");
+                    event.preventDefault();
+                }
+
+                if (event.key === '"') {
+                    insertTextAtCursor('""');
+                    event.preventDefault();
+                }
+            });
+
+            lapBtn.addEventListener("click", recordLap);
+
+            exportLapTimesBtn.addEventListener("click", exportLapTimes);
+
+            document.addEventListener("keydown", (event) => {
+                if (event.ctrlKey && event.key === "b") {
+                    insertTextAtCursor("****");
+                    input.selectionStart -= 2;
+                    event.preventDefault();
+                }
+
+                if (event.ctrlKey && event.key === "i") {
+                    insertTextAtCursor("**");
+                    input.selectionStart -= 1;
+                    event.preventDefault();
+                }
+
+                if (event.ctrlKey && event.key === "k") {
+                    insertTextAtCursor("[text](url)");
+                    input.selectionStart -= 4;
+                    event.preventDefault();
+                }
+            });
+
+            resumeTimerBtn.addEventListener("click", resumeTimer);
+
+            pauseTimerBtn.addEventListener("click", pauseTimer);
+
+            resetTimerBtn.addEventListener("click", resetTimer);
+
+            //
+            // Setup
+            //
+
+            input.value = localStorage.getItem("editor-content") || "# Welcome to Tadi Lab\n\nWrite **Markdown**, HTML, and JavaScript here.";
+            if (localStorage.getItem("dark-mode") === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+
+            intervalId = setInterval(updateTimer, 1000);
+
+            handleInput();
+
+            //
+            // Functions
+            //
+
+            function handleInput() {
+                // localStorage.setItem("editor-content", input.value); // commented out, find new way to reduce size
+                const parsedMarkdown = marked.parse(replaceEmojis(input.value)); // Apply emoji replacement before parsing
+                preview.innerHTML = parsedMarkdown;
+                Prism.highlightAll();
+                updateStats();
+            }
+
+            function updateStats() {
+                const text = input.value.trim();
+                const words = text ? text.match(/\b\w+\b/g)?.length || 0 : 0;
+                const chars = text.length;
+                stats.textContent = `Words: ${words} | Characters: ${chars}`;
+            }
+
+            function runJavaScript() {
+                errorOutput.textContent = "";
+                const codeBlocks = preview.querySelectorAll("code.language-js");
+                codeBlocks.forEach((block) => {
+                    try {
+                        new Function(block.textContent)();
+                    } catch (e) {
+                        errorOutput.textContent = "JavaScript Error: " + e.message;
+                    }
+                });
+            }
+
+            function insertTextAtCursor(text) {
+                const start = input.selectionStart;
+                const end = input.selectionEnd;
+                const before = input.value.substring(0, start);
+                const after = input.value.substring(end);
+                input.value = before + text + after;
+                input.selectionStart = input.selectionEnd = start + text.length;
+            }
+
+            function replaceEmojis(text) {
+                return text.replace(/:\w+:/g, (match) => emojiMap[match] || match);
+            }
+
+            function formatTime(seconds) {
+                const hrs = Math.floor(seconds / 3600);
+                const mins = Math.floor((seconds % 3600) / 60);
+                const secs = seconds % 60;
+                return `${hrs.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+            }
+
+            function updateTimer() {
+                if (!isPaused) {
+                    const currentTime = performance.now();
+                    elapsedTime = Math.floor((currentTime - startTime) / 1000);
+                    timer.textContent = `Time spent editing: ${formatTime(elapsedTime)}`;
+                }
+            }
+
+            function pauseTimer() {
+                isPaused = true;
+                timer.style.color = "red";
+                pauseTimerBtn.style.display = "none";
+                resumeTimerBtn.style.display = "inherit";
+            }
+
+            function resumeTimer() {
+                isPaused = false;
+                startTime = performance.now() - elapsedTime * 1000;
+                timer.style.color = "inherit";
+                resumeTimerBtn.style.display = "none";
+                pauseTimerBtn.style.display = "inherit";
+            }
+
+            function resetTimer() {
+                startTime = performance.now();
+                elapsedTime = 0;
+                isPaused = false;
+                timer.style.color = "inherit";
+                timer.textContent = "Time spent editing: 00:00:00";
+                lapContainer.innerHTML = ""; // Clear lap times
+                resumeTimerBtn.style.display = "none";
+                pauseTimerBtn.style.display = "inherit";
+            }
+
+            function recordLap() {
+                const lapTime = document.createElement("li");
+                lapTime.textContent = `Lap at: ${formatTime(elapsedTime)}`;
+                lapContainer.appendChild(lapTime);
+            }
+
+            function runTidalCycles() {
+                errorOutput.textContent = "";
+                const codeBlocks = preview.querySelectorAll("code.language-tidalcycles");
+                codeBlocks.forEach((block) => {
+                    try {
+                        const tidalCode = block.textContent;
+                        const base64Code = btoa(unescape(encodeURIComponent(tidalCode))); // Encode to Base64
+                        const iframe = document.createElement("iframe");
+                        iframe.src = `https://strudel.cc/#${base64Code}`;
+                        iframe.width = "100%";
+                        iframe.height = "400px";
+                        iframe.style.border = "none";
+                        // Append the iframe to the preview area
+                        block.replaceWith(iframe);
+                    } catch (e) {
+                        errorOutput.textContent = "TidalCycles Error: " + e.message;
+                    }
+                });
+            }
+
+            function exportLapTimes() {
+                const lapTimes = Array.from(lapContainer.children).map((lap) => lap.textContent);
+                const lapTimesText = lapTimes.join("\n"); // Join lap times with new lines
+                const blob = new Blob([lapTimesText], { type: "text/plain" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "lap_times.txt"; // Name of the file to be downloaded
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url); // Clean up the URL object
+            }
+
+            function runRust() {
+                errorOutput.textContent = "";
+                const codeBlocks = preview.querySelectorAll("code.language-rust");
+                codeBlocks.forEach((block) => {
+                    try {
+                        const code = block.textContent;
+                        const encodedCode = encodeURIComponent(code);
+                        const iframe = document.createElement("iframe");
+                        iframe.src = `https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=${encodedCode}`;
+                        iframe.width = "100%";
+                        iframe.height = "400px";
+                        block.replaceWith(iframe);
+                    } catch (e) {
+                        errorOutput.textContent = "Rust Error: " + e.message;
+                    }
+                });
+            }
+
+            function runCpp() {
+                errorOutput.textContent = "";
+                const codeBlocks = preview.querySelectorAll("code.language-cpp");
+                codeBlocks.forEach((block) => {
+                    try {
+                        const encodedCode = encodeURIComponent(block.textContent);
+                        const iframe = document.createElement("iframe");
+                        iframe.src = `https://cppinsights.io/lnk?code=${encodedCode}`;
+                        iframe.width = "100%";
+                        iframe.height = "400px";
+                        block.replaceWith(iframe);
+                    } catch (e) {
+                        errorOutput.textContent = "C++ Error: " + e.message;
+                    }
+                });
+            }
+
+            function runSwift() {
+                errorOutput.textContent = "";
+                const codeBlocks = preview.querySelectorAll("code.language-swift");
+                codeBlocks.forEach((block) => {
+                    try {
+                        const encodedCode = encodeURIComponent(block.textContent);
+                        const iframe = document.createElement("iframe");
+                        iframe.src = `https://swiftfiddle.com/?code=${encodedCode}`;
+                        iframe.width = "100%";
+                        iframe.height = "400px";
+                        block.replaceWith(iframe);
+                    } catch (e) {
+                        errorOutput.textContent = "Swift Error: " + e.message;
+                    }
+                });
+            }
+
+            function runHaskell() {
+                errorOutput.textContent = "";
+                const codeBlocks = preview.querySelectorAll("code.language-haskell");
+                codeBlocks.forEach((block) => {
+                    try {
+                        const encodedCode = encodeURIComponent(block.textContent);
+                        const iframe = document.createElement("iframe");
+                        iframe.src = `https://tryhaskell.org/?code=${encodedCode}`;
+                        iframe.width = "100%";
+                        iframe.height = "400px";
+                        block.replaceWith(iframe);
+                    } catch (e) {
+                        errorOutput.textContent = "Haskell Error: " + e.message;
+                    }
+                });
+            }
+
+            //
+            // Maps
+            //
+
+            const emojiMap = {
+                ":smile:": "😀",
+                ":laughing:": "😆",
+                ":wink:": "😉",
+                ":heart:": "❤️",
+                ":thumbsup:": "👍",
+                ":star:": "⭐",
+                ":fire:": "🔥",
+                ":rocket:": "🚀",
+                ":coffee:": "☕",
+                ":check:": "✔️",
+                ":x:": "❌",
+                ":warning:": "⚠️",
+                ":question:": "❓",
+                ":exclamation:": "❗",
+                ":js:": '<span class="character-image js-icon"></span>',
+                ":html:": '<span class="character-image html-icon"></span>',
+                ":css:": '<span class="character-image css-icon"></span>',
+                ":bash:": '<span class="character-image bash-icon"></span>',
+                ":c:": '<span class="character-image c-icon"></span>',
+                ":cpp:": '<span class="character-image cpp-icon"></span>',
+                ":csharp:": '<span class="character-image csharp-icon"></span>',
+                ":go:": '<span class="character-image go-icon"></span>',
+                ":java:": '<span class="character-image java-icon"></span>',
+                ":json:": '<span class="character-image json-icon"></span>',
+                ":md:": '<span class="character-image md-icon"></span>',
+                ":php:": '<span class="character-image php-icon"></span>',
+                ":python:": '<span class="character-image python-icon"></span>',
+                ":regex:": '<span class="character-image regex-icon"></span>',
+                ":ts:": '<span class="character-image ts-icon"></span>',
+                ":xml:": '<span class="character-image xml-icon"></span>',
+                ":yaml:": '<span class="character-image yaml-icon"></span>',
+                ":scratch:": '<span class="character-image scratch-icon"></span>',
+                ":spacetode:": '<span class="character-image spacetode-icon"></span>',
+                ":haskell:": '<span class="character-image haskell-icon"></span>',
+                ":tidalcycles:": '<span class="character-image tidalcycles-icon"></span>',
+                ":clojure:": '<span class="character-image clojure-icon"></span>',
+                ":fsharp:": '<span class="character-image fsharp-icon"></span>',
+                ":brainfuck:": '<span class="character-image brainfuck-icon"></span>',
+                ":piet:": '<span class="character-image piet-icon"></span>',
+                ":lua:": '<span class="character-image lua-icon"></span>',
+                ":powershell:": '<span class="character-image powershell-icon"></span>',
+                ":tadilab:": '<span class="character-image tadilab-icon"></span>',
+                ":wasm:": '<span class="character-image wasm-icon"></span>',
+                ":rust:": '<span class="character-image rust-icon"></span>',
+            };
+        </script>
+    </body>
 </html>
