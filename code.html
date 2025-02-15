@@ -171,6 +171,7 @@
         <button class="ui" id="resume-timer">Resume</button>
         <button class="ui" id="reset-timer">Reset</button>
         <button class="ui" id="lap-timer">Lap</button>
+        <button class="ui" id="export-lap">Export Laps</button>
         <ul class="ui" id="lap-list"></ul>
 
     </div>
@@ -209,6 +210,7 @@
         const resetTimerBtn = document.getElementById('reset-timer');
         const lapContainer = document.getElementById('lap-list');
         const lapBtn = document.getElementById('lap-timer');
+        const exportLapTimesBtn = document.getElementById('export-lap');
     
         let startTime = performance.now();
         let elapsedTime = 0;
@@ -270,6 +272,7 @@
         });
 
         lapBtn.addEventListener('click', recordLap);
+        exportLapTimesBtn.addEventListener('click', exportLapTimes);
 
         document.addEventListener("keydown", (event) => {
           if (event.ctrlKey && event.key === "b") {
@@ -420,6 +423,22 @@
           });
         }
 
+        function exportLapTimes() {
+          const lapTimes = Array.from(lapContainer.children).map(lap => lap.textContent);
+          const lapTimesText = lapTimes.join('\n'); // Join lap times with new lines
+          const blob = new Blob([lapTimesText], { type: 'text/plain' });
+          const url = URL.createObjectURL(blob);
+    
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'lap_times.txt'; // Name of the file to be downloaded
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url); // Clean up the URL object
+        }
+
+        
 
         //
         // Maps
