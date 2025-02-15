@@ -242,12 +242,13 @@
         });
 
         runCodeBtn.addEventListener("click", () => {
-          runJavaScript();
-          runTidalCycles();
-          runRust();
-          runCpp()
-          runSwift()
-          runHaskell()
+          languages.forEach(({ lang, execute, urlTemplate }) => {
+              if (execute) {
+                  execute(); // Run JavaScript directly
+              } else {
+                  runCode(lang, urlTemplate);
+              }
+          });
         });
 
 
@@ -326,6 +327,8 @@
           Prism.highlightAll();
           updateStats();
         }
+
+        function runCode(language, urlTemplate) { errorOutput.textContent = ""; document.querySelectorAll(`code.language-${language}`).forEach(block => { try { const encodedCode = encodeURIComponent(block.textContent); const iframe = document.createElement("iframe"); iframe.src = urlTemplate + encodedCode; iframe.width = "100%"; iframe.height = "400px"; block.replaceWith(iframe); } catch (e) { errorOutput.textContent = `${language.toUpperCase()} Error: ${e.message}`; } }); }
     
     
         function updateStats() {
@@ -336,16 +339,8 @@
         }
     
         function runJavaScript() {
-          errorOutput.textContent = "";
-          const codeBlocks = preview.querySelectorAll("code.language-js");
-          codeBlocks.forEach(block => {
-            try {
-              new Function(block.textContent)();
-            } catch (e) {
-              errorOutput.textContent = "JavaScript Error: " + e.message;
-            }
-          });
-        }
+            errorOutput.textContent = "";
+            document.querySelectorAll("code.language-js").forEach(block => { try { new Function(block.textContent)(); } catch (e) { errorOutput.textContent = "JavaScript Error: " + e.message; } }); }
     
         function insertTextAtCursor(text) {
           const start = input.selectionStart;
@@ -563,6 +558,15 @@
           ":wasm:": "<span class=\"character-image wasm-icon\"></span>",
           ":rust:": "<span class=\"character-image rust-icon\"></span>",
         };
+
+        const languages = [
+            { lang: "js", execute: runJavaScript },
+            { lang: "tidalcycles", urlTemplate: "https://strudel.cc/#" },
+            { lang: "rust", urlTemplate: "https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=" },
+            { lang: "cpp", urlTemplate: "https://cppinsights.io/lnk?code=" },
+            { lang: "swift", urlTemplate: "https://swiftfiddle.com/?code=" },
+            { lang: "haskell", urlTemplate: "https://tryhaskell.org/?code=" }
+        ];
     </script>
 </body>
 
