@@ -68,6 +68,7 @@
           border: none;
           cursor: pointer;
           margin-right: 5px;
+          margin-down: 5px;
         }
         .dark-mode {
           background: #222;
@@ -352,20 +353,27 @@
         function pauseTimer() {
           isPaused = true;
           timer.style.color = "red";
+          pauseTimerBtn.style.display = "none";
+          resumeTimerBtn.style.display = "inherit";
         }
     
         function resumeTimer() {
           isPaused = false;
           startTime = performance.now() - elapsedTime * 1000;
           timer.style.color = "inherit";
+          resumeTimerBtn.style.display = "none";
+          pauseTimerBtn.style.display = "inherit";
         }
     
         function resetTimer() {
           startTime = performance.now();
           elapsedTime = 0;
           isPaused = false;
+          timer.style.color = "inherit";
           timer.textContent = "Time spent editing: 00:00:00";
           lapContainer.innerHTML = ""; // Clear lap times
+          resumeTimerBtn.style.display = "none";
+          pauseTimerBtn.style.display = "inherit";
         }
     
         function recordLap() {
