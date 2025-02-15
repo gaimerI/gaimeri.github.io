@@ -150,7 +150,8 @@
         .character-image.powershell-icon { background-image: url('images/powershell.png'); }
         .character-image.tadilab-icon { background-image: url('https://todepond.com/lab/og.png'); }
         .character-image.wasm-icon { background-image: url('images/wasm.png');}
-    
+        .character-image.rust-icon { background-image: url('images/rust.png');}
+        
     
     /* Add more classes as needed for different icons */
     </style>
@@ -439,7 +440,25 @@
           URL.revokeObjectURL(url); // Clean up the URL object
         }
 
-        
+        function runRust() {
+          errorOutput.textContent = "";
+          const codeBlocks = preview.querySelectorAll("code.language-rust");
+
+          codeBlocks.forEach(block => {
+            try {
+              const code = block.textContent;
+              const encodedCode = encodeURIComponent(code);
+              const iframe = document.createElement("iframe");
+              iframe.src = `https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&code=${encodedCode}`;
+              iframe.width = "100%";
+              iframe.height = "400px";
+              block.replaceWith(iframe);
+            } catch (e) {
+              errorOutput.textContent = "Rust Error: " + e.message;
+            }
+          });
+        }
+
 
         //
         // Maps
@@ -489,6 +508,7 @@
           ":powershell:": "<span class=\"character-image powershell-icon\"></span>",
           ":tadilab:": "<span class=\"character-image tadilab-icon\"></span>",
           ":wasm:": "<span class=\"character-image wasm-icon\"></span>",
+          ":rust:": "<span class=\"character-image rust-icon\"></span>",
         };
     </script>
 </body>
