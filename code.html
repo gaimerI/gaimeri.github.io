@@ -27,17 +27,20 @@
           color: #333;
           transition: background 0.3s, color 0.3s;
         }
+        
         main {
           display: flex;
           width: 100%;
           height: calc(100% - 50px);
           overflow: hidden;
         }
+        
         ul {
           height: 100px;
           width: 100px;
           overflow: auto;
         }
+        
         #input {
           width: 50%;
           height: 100%;
@@ -49,6 +52,7 @@
           font-family: monospace;
           tab-size: 4;
         }
+        
         #preview {
           width: 50%;
           padding: 1rem;
@@ -56,6 +60,7 @@
           background: #f9f9f9;
           border-left: 1px solid #ccc;
         }
+        
         #toolbar {
           display: flex;
           padding: 0.5rem;
@@ -63,6 +68,11 @@
           justify-content: space-between;
           align-items: center;
         }
+
+        #pause-timer {
+          display: none;
+        }
+        
         button {
           padding: 0.5rem 1rem;
           border: none;
@@ -70,6 +80,7 @@
           margin-right: 5px;
           margin-down: 5px;
         }
+        
         .dark-mode {
           background: #222;
           color: #fff;
@@ -155,11 +166,11 @@
         </div>
         <span id="stats">Words: 0 | Characters: 0</span>
         <div id="timer">Time spent editing: 00:00:00</div>
-        <button id="pauseButton">Pause</button>
-        <button id="resumeButton">Resume</button>
-        <button id="resetButton">Reset</button>
-        <button id="lapButton">Lap</button>
-        <ul id="lapTimes"></ul>
+        <button id="pause-timer">Pause</button>
+        <button id="resume-timer">Resume</button>
+        <button id="reset-timer">Reset</button>
+        <button id="lap-timer">Lap</button>
+        <ul id="lap-list"></ul>
 
     </div>
 
@@ -192,11 +203,11 @@
         const uploadBtn = document.getElementById("upload-btn");
         const uploadInput = document.getElementById("upload");
         const timer = document.getElementById('timer');
-        const resumeTimerBtn = document.getElementById('resumeButton');
-        const pauseTimerBtn = document.getElementById('pauseButton');
-        const resetTimerBtn = document.getElementById('resetButton');
-        const lapContainer = document.getElementById('lapTimes');
-        const lapBtn = document.getElementById('lapButton');
+        const resumeTimerBtn = document.getElementById('resume-timer');
+        const pauseTimerBtn = document.getElementById('pause-timer');
+        const resetTimerBtn = document.getElementById('reset-timer');
+        const lapContainer = document.getElementById('lap-list');
+        const lapBtn = document.getElementById('lap-timer');
     
         let startTime = performance.now();
         let elapsedTime = 0;
