@@ -154,9 +154,9 @@
         </div>
         <span id="stats">Words: 0 | Characters: 0</span>
         <div id="timer">Time spent editing: 00:00:00</div>
-        <button id="pauseButton" onclick="pauseTimer()">Pause</button>
-        <button id="resumeButton" onclick="resumeTimer()">Resume</button>
-        <button id="resetButton" onclick="resetTimer()">Reset</button>
+        <button id="pauseButton">Pause</button>
+        <button id="resumeButton">Resume</button>
+        <button id="resetButton">Reset</button>
         <button id="lapButton">Lap</button>
         <ul id="lapTimes"></ul>
 
@@ -191,6 +191,9 @@
         const uploadBtn = document.getElementById("upload-btn");
         const uploadInput = document.getElementById("upload");
         const timer = document.getElementById('timer');
+        const resumeTimerBtn = document.getElementById('resumeButton');
+        const pauseTimerBtn = document.getElementById('pauseButton');
+        const resetTimerBtn = document.getElementById('resetButton');
         const lapContainer = document.getElementById('lapTimes');
         const lapBtn = document.getElementById('lapButton');
     
@@ -269,6 +272,10 @@
           }
         });
 
+        resumeTimerBtn.addEventListener("click", resumeTimer);
+        pauseTimerBtn.addEventListener("click", pauseTimer);
+        resetTimerBtn.addEventListener("click", resetTimer);
+
         //
         // Setup
         //
@@ -279,6 +286,8 @@
         }
       
         intervalId = setInterval(updateTimer, 1000);
+
+        handleInput()
     
         //
         // Functions
