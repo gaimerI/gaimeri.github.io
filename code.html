@@ -470,7 +470,7 @@
             try {
               const encodedCode = encodeURIComponent(block.textContent);
               const iframe = document.createElement("iframe");
-              iframe.src = `https://godbolt.org/?code=${encodedCode}`;
+              iframe.src = `https://cppinsights.io/lnk?code=${encodedCode}`;
               iframe.width = "100%";
               iframe.height = "400px";
               block.replaceWith(iframe);
