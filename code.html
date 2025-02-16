@@ -485,6 +485,7 @@
                 codeBlocks.forEach((block) => {
                     try {
                         const userCode = block.textContent;
+
                         const payload = {
                             sessions: [
                                 {
@@ -497,7 +498,9 @@
                                             options: "-std=c++17"
                                         }
                                     ]
-                                };
+                                }
+                            ]
+                        };
                         
                         const encodedCode = btoa(JSON.stringify(payload));
                         const iframe = document.createElement("iframe");
@@ -511,8 +514,7 @@
                 });
             }
 
-
-
+            
             function runSwift() {
                 errorOutput.textContent = "";
                 const codeBlocks = preview.querySelectorAll("code.language-swift");
