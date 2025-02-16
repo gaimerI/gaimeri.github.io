@@ -154,6 +154,8 @@
             .character-image.wasm-icon { background-image: url("images/wasm.png"); }
             .character-image.rust-icon { background-image: url("images/rust.png"); }
 
+            .character-image.gif-gif { background-image: url("https://todepond.com/lab/login/gif.gif"); }
+
         </style>
     </head>
 
@@ -190,7 +192,6 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
 
         <script>
             //
@@ -214,8 +215,7 @@
             const lapContainer = document.getElementById("lap-list");
             const lapBtn = document.getElementById("lap-timer");
             const exportLapTimesBtn = document.getElementById("export-lap");
-
-            let lastSavedContent = localStorage.getItem("editor-content") || ""; 
+            
             let startTime = performance.now();
             let elapsedTime = 0;
             let isPaused = false;
@@ -247,9 +247,9 @@
                 runJavaScript();
                 runTidalCycles();
                 runRust();
-                runCpp();  // wrong url encoding
-                runSwift(); // not tested
-                runHaskell(); // find new compiler
+                runCpp();  // works
+                runSwift(); // use godbolt
+                runHaskell(); // above
             });
 
             uploadBtn.addEventListener("click", () => uploadInput.click());
@@ -336,11 +336,6 @@
 
             intervalId = setInterval(updateTimer, 1000);
 
-            setInterval(autoSaveContent, 5000);
-
-            if (lastSavedContent) {
-                input.value = LZString.decompress(lastSavedContent) || "";
-            }
             handleInput();
 
             //
@@ -360,15 +355,6 @@
                 const words = text ? text.match(/\b\w+\b/g)?.length || 0 : 0;
                 const chars = text.length;
                 stats.textContent = `Words: ${words} | Characters: ${chars}`;
-            }
-
-            function autoSaveContent() {
-                const content = input.value;
-                if (content !== lastSavedContent) {
-                    const compressedContent = LZString.compress(content);
-                    localStorage.setItem("editor-content", compressedContent);
-                    lastSavedContent = content;
-                }
             }
 
             function runJavaScript() {
@@ -614,6 +600,7 @@
                 ":tadilab:": '<span class="character-image tadilab-icon"></span>',
                 ":wasm:": '<span class="character-image wasm-icon"></span>',
                 ":rust:": '<span class="character-image rust-icon"></span>',
+                ":pleaseaddgifs:": '<span class="character-image gif-gif"></span>',
             };
         </script>
     </body>
