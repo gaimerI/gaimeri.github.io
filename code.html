@@ -190,6 +190,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
 
         <script>
             //
@@ -502,11 +503,11 @@
                             ]
                         };
                         
-                        const encodedCode = btoa(JSON.stringify(payload));
+                        const compressedCode = LZString.compressToEncodedURIComponent(JSON.stringify(payload));
                         const iframe = document.createElement("iframe");
-                        iframe.src = `https://compiler-explorer.com/clientstate/${encodedCode}`;
-                        iframe.width = "100%";
-                        iframe.height = "400px";
+                        iframe.src = `https://compiler-explorer.com/e?readOnly=true#z:${compressedCode}`;
+                        iframe.width = "800px";
+                        iframe.height = "200px";
                         block.replaceWith(iframe);
                     } catch (e) {
                         errorOutput.textContent = "C++ Error: " + e.message;
