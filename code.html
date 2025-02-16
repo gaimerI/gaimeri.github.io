@@ -107,13 +107,14 @@
 
             .character-image {
                 display: inline-block;
-                width: 1em;
+                width: auto; /* wide images would be copresded */
                 height: 1em;
                 vertical-align: middle;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
                 max-width: 100%;
+                aspect-ratio: auto; /* also fixes compression */
                 max-height: 100%;
                 line-height: 1;
                 transition: transform 0.2s ease;
