@@ -572,9 +572,26 @@
                 const codeBlocks = preview.querySelectorAll("code.language-cpp");
                 codeBlocks.forEach((block) => {
                     try {
-                        const encodedCode = encodeURIComponent(block.textContent);
+                        const userCode = block.textContent;
+                        const payload = {
+                            sessions: [
+                                {
+                                    id: 1,
+                                    language: "c++",
+                                    source: userCode
+                                }
+                            ],
+                            compilers: [
+                                {
+                                    id: "clang_trunk",
+                                    options: "-std=c++17"
+                                }
+                            ]
+                        };
+                        
+                        const encodedCode = btoa(JSON.stringify(payload));
                         const iframe = document.createElement("iframe");
-                        iframe.src = `https://cppinsights.io/lnk?code=${encodedCode}`;
+                        iframe.src = `https://compiler-explorer.com/clientstate/${encodedCode}`;
                         iframe.width = "100%";
                         iframe.height = "400px";
                         block.replaceWith(iframe);
@@ -583,6 +600,8 @@
                     }
                 });
             }
+
+
 
             function runSwift() {
                 errorOutput.textContent = "";
