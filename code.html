@@ -66,15 +66,8 @@
                 background: #ddd;
                 justify-content: space-between;
                 align-items: center;
-                max-height: none;
-                transition: max-height 0.3s ease-in-out;
             }
 
-            #toolbar.collapsed {
-                max-height: 0;
-                padding: 0;
-            }
-        
             #resume-timer {
                 display: none;
             }
@@ -85,15 +78,6 @@
                 cursor: pointer;
                 margin-right: 5px;
                 margin-down: 5px;
-            }
-
-            #toggle-toolbar {
-                padding: 0.5rem 1rem;
-                border: none;
-                cursor: pointer;
-                background: #444;
-                color: white;
-                margin: 5px;
             }
 
             .dark-mode {
@@ -138,7 +122,6 @@
     </head>
 
     <body>
-        <button id="toggle-toolbar">Toggle Toolbar</button>
         <div id="toolbar">
             <div>
                 <button class="ui" id="clear">Clear</button>
@@ -194,7 +177,6 @@
             const lapContainer = document.getElementById("lap-list");
             const lapBtn = document.getElementById("lap-timer");
             const exportLapTimesBtn = document.getElementById("export-lap");
-            const toggleToolbarBtn = document.getElementById("toggle-toolbar");
             
             let startTime = performance.now();
             let elapsedTime = 0;
@@ -304,10 +286,6 @@
             pauseTimerBtn.addEventListener("click", pauseTimer);
 
             resetTimerBtn.addEventListener("click", resetTimer);
-
-            toggleToolbarBtn.addEventListener("click", () => {
-                toolbar.classList.toggle("collapsed");
-            });
 
             //
             // Setup
