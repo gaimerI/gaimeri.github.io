@@ -118,6 +118,13 @@
                 transform: scale(1.1);
             }
 
+            #resizer {
+                width: 5px;
+                cursor: col-resize;
+                background: #ccc;
+                height: 100%;
+            }
+
         </style>
     </head>
 
@@ -145,6 +152,7 @@
 
         <main>
             <textarea id="input" wrap="off" spellcheck="false"></textarea>
+            <div id="resizer"></div>
             <div id="preview"></div>
         </main>
 
@@ -177,6 +185,7 @@
             const lapContainer = document.getElementById("lap-list");
             const lapBtn = document.getElementById("lap-timer");
             const exportLapTimesBtn = document.getElementById("export-lap");
+            const resizer = document.getElementById("resizer");
             
             let startTime = performance.now();
             let elapsedTime = 0;
@@ -282,10 +291,11 @@
             });
 
             resumeTimerBtn.addEventListener("click", resumeTimer);
-
             pauseTimerBtn.addEventListener("click", pauseTimer);
-
             resetTimerBtn.addEventListener("click", resetTimer);
+
+            resizer.addEventListener("mousedown", startResize);
+            resizer.addEventListener("touchstart", startResize);
 
             //
             // Setup
@@ -513,6 +523,30 @@
                 });
             }
 
+            function startResize(event) {
+                event.preventDefault();
+                document.addEventListener("mousemove",resize);
+                document.addEventListener("mouseup", stopResize);
+                document.addEventListener("touchmove", resize);
+                document.addEventListener("touchend", stopResize);
+            }
+
+            function resize(event) {
+                // Use clientX for mouse events and touches for touch events
+                const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+                let newWidth = clientX / window.innerWidth * 100;
+                if (newWidth > 10 && newWidth < 90) {
+                    input.style.width = `${newWidth}%`;
+                    preview.style.width = `${100 - newWidth}%`;
+                }
+            }
+
+            function stopResize() {
+                document.removeEventListener("mousemove", resize);
+                document.removeEventListener("mouseup", stopResize);
+                document.removeEventListener("touchmove", resize);
+                document.removeEventListener("touchend", stopResize);
+            }
             //
             // Maps
             //
