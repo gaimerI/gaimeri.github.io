@@ -198,12 +198,25 @@
             });
 
             downloadBtn.addEventListener("click", () => {
-                const blob = new Blob([input.value], { type: "text/plain" });
+                if (!input.value.trim()) {
+                    alert("Cannot download an empty file.");
+                    return;
+                }
+                
+                const blob = new Blob([input.value], { type: "text/plain" }); // i have no idea what is a blob
+                const url = URL.createObjectURL(blob);
+
                 const a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
+                a.href = url;
                 a.download = "tadi_lab.txt";
+    
+                document.body.appendChild(a); // apparently required
                 a.click();
+                document.body.removeChild(a);
+    
+                URL.revokeObjectURL(url); // cleanup
             });
+
 
             runCodeBtn.addEventListener("click", () => {
                 runJavaScript();
