@@ -107,14 +107,9 @@
 
             .character-image {
                 display: inline-block;
-                min-width: 1em;
                 height: 1em;
                 vertical-align: middle;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
                 max-width: 100%;
-                max-height: 100%;
                 line-height: 1;
                 transition: transform 0.2s ease;
             }
@@ -122,39 +117,6 @@
             .character-image:hover {
                 transform: scale(1.1);
             }
-
-            .character-image.html-icon { background-image: url("images/html.png"); }
-            .character-image.css-icon { background-image: url("images/css.png"); }
-            .character-image.js-icon { background-image: url("images/js.png"); }
-            .character-image.bash-icon { background-image: url("images/bash.png"); }
-            .character-image.c-icon { background-image: url("images/c.png"); }
-            .character-image.cpp-icon { background-image: url("images/cpp.png"); }
-            .character-image.csharp-icon { background-image: url("images/csharp.png"); }
-            .character-image.go-icon { background-image: url("images/go.png"); }
-            .character-image.java-icon { background-image: url("images/java.png"); }
-            .character-image.json-icon { background-image: url("images/json.png"); }
-            .character-image.md-icon { background-image: url("images/md.png"); }
-            .character-image.php-icon { background-image: url("images/php.png"); }
-            .character-image.python-icon { background-image: url("images/python.png"); }
-            .character-image.regex-icon { background-image: url("images/regex.png"); }
-            .character-image.ts-icon { background-image: url("images/ts.png"); }
-            .character-image.xml-icon { background-image: url("images/xml.png"); }
-            .character-image.yaml-icon { background-image: url("images/yaml.png"); }
-            .character-image.scratch-icon { background-image: url("images/scratch.png"); }
-            .character-image.spacetode-icon { background-image: url("images/spacetode.png"); }
-            .character-image.haskell-icon { background-image: url("images/haskell.png"); }
-            .character-image.tidalcycles-icon { background-image: url("images/tidalcycles.png"); }
-            .character-image.clojure-icon { background-image: url("images/clojure.png"); }
-            .character-image.fsharp-icon { background-image: url("images/fsharp.png"); }
-            .character-image.brainfuck-icon { background-image: url("images/brainfuck.png"); }
-            .character-image.piet-icon { background-image: url("images/piet.png"); }
-            .character-image.lua-icon { background-image: url("images/lua.png"); }
-            .character-image.powershell-icon { background-image: url("images/powershell.png"); }
-            .character-image.tadilab-icon { background-image: url("https://todepond.com/lab/og.png"); }
-            .character-image.wasm-icon { background-image: url("images/wasm.png"); }
-            .character-image.rust-icon { background-image: url("images/rust.png"); }
-
-            .character-image.gif-gif { background-image: url("https://todepond.com/lab/login/gif.gif"); width: 9em; }
 
         </style>
     </head>
@@ -570,37 +532,37 @@
                 ":warning:": "⚠️",
                 ":question:": "❓",
                 ":exclamation:": "❗",
-                ":js:": '<span class="character-image js-icon"></span>',
-                ":html:": '<span class="character-image html-icon"></span>',
-                ":css:": '<span class="character-image css-icon"></span>',
-                ":bash:": '<span class="character-image bash-icon"></span>',
-                ":c:": '<span class="character-image c-icon"></span>',
-                ":cpp:": '<span class="character-image cpp-icon"></span>',
-                ":csharp:": '<span class="character-image csharp-icon"></span>',
-                ":go:": '<span class="character-image go-icon"></span>',
-                ":java:": '<span class="character-image java-icon"></span>',
-                ":json:": '<span class="character-image json-icon"></span>',
-                ":md:": '<span class="character-image md-icon"></span>',
-                ":php:": '<span class="character-image php-icon"></span>',
-                ":python:": '<span class="character-image python-icon"></span>',
-                ":regex:": '<span class="character-image regex-icon"></span>',
-                ":ts:": '<span class="character-image ts-icon"></span>',
-                ":xml:": '<span class="character-image xml-icon"></span>',
-                ":yaml:": '<span class="character-image yaml-icon"></span>',
-                ":scratch:": '<span class="character-image scratch-icon"></span>',
-                ":spacetode:": '<span class="character-image spacetode-icon"></span>',
-                ":haskell:": '<span class="character-image haskell-icon"></span>',
-                ":tidalcycles:": '<span class="character-image tidalcycles-icon"></span>',
-                ":clojure:": '<span class="character-image clojure-icon"></span>',
-                ":fsharp:": '<span class="character-image fsharp-icon"></span>',
-                ":brainfuck:": '<span class="character-image brainfuck-icon"></span>',
-                ":piet:": '<span class="character-image piet-icon"></span>',
-                ":lua:": '<span class="character-image lua-icon"></span>',
-                ":powershell:": '<span class="character-image powershell-icon"></span>',
-                ":tadilab:": '<span class="character-image tadilab-icon"></span>',
-                ":wasm:": '<span class="character-image wasm-icon"></span>',
-                ":rust:": '<span class="character-image rust-icon"></span>',
-                ":pleaseaddgifs:": '<span class="character-image gif-gif"></span>',
+                ":js:": '<img class="character-image" src="images/js.png" alt="JS Icon">',
+                ":html:": '<img class="character-image" src="images/html.png" alt="HTML Icon">',
+                ":css:": '<img class="character-image" src="images/css.png" alt="CSS Icon">',
+                ":bash:": '<img class="character-image" src="images/bash.png" alt="Bash Icon">',
+                ":c:": '<img class="character-image" src="images/c.png" alt="C Icon">',
+                ":cpp:": '<img class="character-image" src="images/cpp.png" alt="C++ Icon">',
+                ":csharp:": '<img class="character-image" src="images/csharp.png" alt="C# Icon">',
+                ":go:": '<img class="character-image" src="images/go.png" alt="Go Icon">',
+                ":java:": '<img class="character-image" src="images/java.png" alt="Java Icon">',
+                ":json:": '<img class="character-image" src="images/json.png" alt="JSON Icon">',
+                ":md:": '<img class="character-image" src="images/md.png" alt="Markdown Icon">',
+                ":php:": '<img class="character-image" src="images/php.png" alt="PHP Icon">',
+                ":python:": '<img class="character-image" src="images/python.png" alt="Python Icon">',
+                ":regex:": '<img class="character-image" src="images/regex.png" alt="Regex Icon">',
+                ":ts:": '<img class="character-image" src="images/ts.png" alt="TypeScript Icon">',
+                ":xml:": '<img class="character-image" src="images/xml.png" alt="XML Icon">',
+                ":yaml:": '<img class="character-image" src="images/yaml.png" alt="YAML Icon">',
+                ":scratch:": '<img class="character-image" src="images/scratch.png" alt="Scratch Icon">',
+                ":spacetode:": '<img class="character-image" src="images/spacetode.png" alt="SpaceTode Icon">',
+                ":haskell:": '<img class="character-image" src="images/haskell.png" alt="Haskell Icon">',
+                ":tidalcycles:": '<img class="character-image" src="images/tidalcycles.png" alt="TidalCycles Icon">',
+                ":clojure:": '<img class="character-image" src="images/clojure.png" alt="Clojure Icon">',
+                ":fsharp:": '<img class="character-image" src="images/fsharp.png" alt="F# Icon">',
+                ":brainfuck:": '<img class="character-image" src="images/brainfuck.png" alt="Brainfuck Icon">',
+                ":piet:": '<img class="character-image" src="images/piet.png" alt="Piet Icon">',
+                ":lua:": '<img class="character-image" src="images/lua.png" alt="Lua Icon">',
+                ":powershell:": '<img class="character-image" src="images/powershell.png" alt="PowerShell Icon">',
+                ":tadilab:": '<img class="character-image" src="https://todepond.com/lab/og.png" alt="Tadi Lab Icon">',
+                ":wasm:": '<img class="character-image" src="images/wasm.png" alt="WASM Icon">',
+                ":rust:": '<img class="character-image" src="images/rust.png" alt="Rust Icon">',
+                ":pleaseaddgifs:": '<img class="character-image" src="https://todepond.com/lab/login/gif.gif" alt="GIF">',
             };
         </script>
     </body>
