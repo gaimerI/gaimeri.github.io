@@ -319,7 +319,7 @@
 
             function handleInput() {
                 // localStorage.setItem("editor-content", input.value); // commented out, find new way to reduce size
-                const parsedMarkdown = marked.parse(replaceEmojis(input.value)); // Apply emoji replacement before parsing
+                const parsedMarkdown = marked.parse(replaceIframes(replaceEmojis(input.value))); // put emoji replacement before parsing and then iframes
                 preview.innerHTML = parsedMarkdown;
                 Prism.highlightAll();
                 updateStats();
@@ -327,7 +327,7 @@
 
             function updateStats() {
                 const text = input.value.trim();
-                const words = text ? text.match(/\b\w+\b/g)?.length || 0 : 0;
+                const words = text ? text.match(/\b\w+\b/g)?.length || 0 : 0; // regex matches all full words of string
                 const chars = text.length;
                 stats.textContent = `Words: ${words} | Characters: ${chars}`;
             }
@@ -426,16 +426,16 @@
 
             function exportLapTimes() {
                 const lapTimes = Array.from(lapContainer.children).map((lap) => lap.textContent);
-                const lapTimesText = lapTimes.join("\n"); // Join lap times with new lines
+                const lapTimesText = lapTimes.join("\n");
                 const blob = new Blob([lapTimesText], { type: "text/plain" });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement("a");
                 a.href = url;
-                a.download = "lap_times.txt"; // Name of the file to be downloaded
+                a.download = "lap_times.txt";
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-                URL.revokeObjectURL(url); // Clean up the URL object
+                URL.revokeObjectURL(url);
             }
 
             function runRust() {
@@ -451,7 +451,7 @@
                         iframe.height = "400px";
                         block.replaceWith(iframe);
                     } catch (e) {
-                        errorOutput.textContent = "Rust Error: " + e.message;
+                        errorOutput.textContent = "Rust Error: " + e.message; // i don't know if this actually does something, since code and its errors are handled by compiler
                     }
                 });
             }
@@ -526,6 +526,32 @@
                 });
             }
 
+            function createSafeIframe(src) {
+                try {
+                    const url = new URL(src);
+                    if (!allowedIframeSources.some(allowed => url.origin.startsWith(allowed))) {
+                        throw new Error("Iframe source not allowed.");
+                    }
+                    const iframe = document.createElement("iframe");
+                    iframe.src = src;
+                    iframe.width = "100%";
+                    iframe.height = "400px";
+                    iframe.sandbox = "allow-scripts allow-same-origin allow-popups";
+                    return iframe;
+                } catch (e) {
+                    console.error("Invalid iframe URL:", e);
+                    return null;
+                }
+            }
+
+            function replaceIframes(text) {
+                return text.replace(/\[iframe src="([^"]+)"\]/g, (match, url) => {
+                const iframe = createSafeIframe(url);
+                return iframe ? iframe.outerHTML : '<p style="color:red;">Invalid or untrusted iframe source.</p>';
+                });
+            }
+
+
             //
             // Maps
             //
@@ -582,6 +608,14 @@
                 ":twitter:": '<img class="character-image" src="https://raw.githubusercontent.com/edent/SuperTinyIcons/d3d6bf112595af3ba4873b5a6900d31fd47aa8f4/images/svg/twitter.svg" alt="GIF">',
                 ":elonmusk:": '<img class="character-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/200px-X_logo_2023.svg.png" alt="GIF">',
             };
+
+            const allowedIframeSources = [
+                "https://cpp.compiler-explorer.com",
+                "https://godbolt.org",
+                "https://todepond.com",
+                "https://www.youtube.com",
+                "https://codesandbox.io"
+            ];
         </script>
     </body>
 </html>
