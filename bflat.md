@@ -277,6 +277,15 @@ Use `has` if you want to know if string contains something.
 (print (has a "llo")) /* true */
 ```
 
+Replacers are a thing.
+
+```
+(print (replace "Hello, World!" "World" "Earth" )) /* Hello, Earth! */
+
+(define a "Hello, this is gaimerI17 speaking!")
+(print (replace a "gaimerI17" "anonymous")) /* Hello, this is anonyymius speaking! */
+```
+
 ----
 
 ## Variables
@@ -428,6 +437,23 @@ This does not necessarily need to be set; `(print (pop a))` works as well.
 (print (has a "mango")) /* true */
 ```
 
+Use `replace` to replace an index or a value with something.
+
+```
+(define a array)
+
+(set a (+ a "apple"))
+(set a (+ a "banana"))
+(set a (+ a "mango"))
+(set a (+ a "pear"))
+(set a (+ a "kiwi"))
+
+(set a (replace a "pear" "orange"))
+(set a (replace a "1" "plum"))
+
+(print a) /* ["apple","plum","mango","orange","kiwi"] */
+```
+
 ----
 
 ## Linked Lists
@@ -453,7 +479,7 @@ Use `assign` to make a key-value pair.
 (print a) /* {"key":"value"} */
 ```
 
-Use `+` to add an assigned pair to a dictionary.
+Use `+` to add an assigned pair to a dictionary, or `-` to remove a key and its value.
 
 ```
 (define a dictionary)
@@ -499,6 +525,31 @@ Even objects allow the use of `has` keyword. Here, it tests if a dictionary cont
 )
 
 (print (has a "spring")) /* true */
+```
+
+Use `replace` to change the value of a key.
+
+```
+(define a dictionary)
+(set a
+  (+ a
+    (assign "key" "value")
+  )
+)
+(set a
+  (+ a
+    (assign "apple" "orange")
+  )
+)
+(set a
+  (+ a
+    (assign "spring" "summer")
+  )
+)
+
+(set a (replace a "spring" "winter"))
+
+(print a) /* {"key":"value","apple":"orange","spring":"winter"} */
 ```
 
 ----
@@ -563,6 +614,12 @@ Factorial
 
 (print (factorial 5) /* 120 */
 ```
+
+----
+
+## Types
+
+Types and casting are an archaic relic of old programming systems. B♭ does not explicitly use them, and casting is never required.
 
 ----
 
@@ -683,7 +740,8 @@ Use `scope` to define a custom scope for variables. This does not loop; just mak
 (print i) /* Error: variable i not found */
 ```
 
-Normally, a variable defined in a function exists throughout it. With scope, you can even make variables that only exist on a single line.
+Normally, a variable defined in a function exists throughout it. With scope, you can even make variables that only exist on a single line.  
+Functions defined with `defun` automatically make their own scope.
 
 ----
 
