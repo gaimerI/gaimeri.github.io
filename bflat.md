@@ -595,7 +595,7 @@ Use `replace` to change the value of a key.
 ## Array and Dictionary Map
 
 Before version 3.5, you could use the `map` keyword to map arrays and dictionaries.  
-However, version 3.5 broke this due to changes in the interpreter. The compiler side still works.  
+However, version 3.5 broke `map`, `sort` and `check` due to changes in the interpreter. The compiler side still works.  
 As of now, `map` returns undefined, **until fixed**.
 
 ----
