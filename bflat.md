@@ -126,15 +126,36 @@ AND:
 (print (and true false) ) /* false */
 ```
 
+| A | B | OUT |
+|---|---|-----|
+| 1 | 0 | 0   |
+| 0 | 1 | 0   |
+| 1 | 1 | 1   |
+| 0 | 0 | 0   |
+
 OR:
 ```
 (print (or true false) ) /* true */
 ```
 
+| A | B | OUT |
+|---|---|-----|
+| 1 | 0 | 1   |
+| 0 | 1 | 1   |
+| 1 | 1 | 1   |
+| 0 | 0 | 0   |
+
 XOR:
 ```
 (print (xor true false) ) /* true */
 ```
+
+| A | B | OUT |
+|---|---|-----|
+| 1 | 0 | 1   |
+| 0 | 1 | 1   |
+| 1 | 1 | 0   |
+| 0 | 0 | 0   |
 
 NOT:
 ```
@@ -151,15 +172,36 @@ NAND:
 (print (and true false) ) /* true */
 ```
 
+| A | B | OUT |
+|---|---|-----|
+| 1 | 0 | 1   |
+| 0 | 1 | 1   |
+| 1 | 1 | 0   |
+| 0 | 0 | 0   |
+
 NOR:
 ```
 (print (or true false) ) /* false */
 ```
 
+| A | B | OUT |
+|---|---|-----|
+| 1 | 0 | 0   |
+| 0 | 1 | 0   |
+| 1 | 1 | 0   |
+| 0 | 0 | 1   |
+
 XNOR:
 ```
 (print (xor true false) ) /* false */
 ```
+
+| A | B | OUT |
+|---|---|-----|
+| 1 | 0 | 0   |
+| 0 | 1 | 0   |
+| 1 | 1 | 1   |
+| 0 | 0 | 1   |
 
 Unary exists. The two people still liking them may use `++` and `--`.
 
