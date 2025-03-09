@@ -193,7 +193,7 @@ NOT:
 
 NAND:
 ```
-(print (and true false) ) /* true */
+(print (nand true false) ) /* true */
 ```
 
 | A | B | OUT |
