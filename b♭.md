@@ -1,6 +1,6 @@
-# StackLisp v3.0 Documentation
+# B♭ v3.0 Documentation
 
-StackLisp is a new and simplistic Lisp-inspired language.
+B♭ is a new and simplistic Lisp-inspired language.
 
 This documentation lists all currently available features.
 
@@ -8,21 +8,22 @@ This documentation lists all currently available features.
 
 ## Syntax
 
-As a Lisp-like language, StackLisp uses parentheses to separate functions.
+As a Lisp-like language, B♭ uses parentheses to separate functions.
 
 ```
 (print "Hello, World!)
 ```
 
 This does not require the use of semicolons.  
-Function arguments are after the operator.  
+Function arguments are after the operator.
+
 Functions can also be chained.
 
 ```
 (print (+ 2 (* 5 6) ) )
 ```
 
-This might a bit easier to see with indentation, which StackLisp supports. It is not required, as all  non-functional whitespace is deleted before parsing.
+This might a bit easier to see with indentation, which B♭ supports. It is not required, as all  non-functional whitespace is deleted before parsing.
 
 ```
 (print
@@ -59,7 +60,7 @@ Comments use the `/* ... */` syntax. Double-slash and -semicolon comments have b
 
 ## Basic Arithmetic
 
-StackLisp supports all basic arithmetic functions.
+B♭ supports all basic arithmetic functions.
 
 Addition:
 ```
@@ -140,9 +141,8 @@ NOT:
 (print (not true) ) /* false */
 ```
 
-Unary exists. The two people liking it may use `++` and `--`.
+Unary exists. The two people still liking them may use `++` and `--`.
 
-Like this:
 ```
 (print (++ 10) ) /* 11 */
 ```
@@ -205,6 +205,14 @@ String concatenation can either be done with `+` or `concat`.
 (print (atob "Hello, World!")) /* BIUwNmD2A0AEDqkBOYAmBCIA */
 
 (print (btoa "BIUwNmD2A0AEDqkBOYAmBCIA")) /* Hello, World! */
+```
+
+Use `has` if you want to know if string contains something.
+
+```
+(define a "Hello, World!")
+
+(print (has a "llo")) /* true */
 ```
 
 ----
@@ -344,11 +352,31 @@ To remove the last item of an array, use `pop`.
 
 This does not necessarily need to be set; `(print (pop a))` works as well.
 
+`has` keyword works with arrays.
+
+```
+(define a array)
+
+(set a (+ a "apple"))
+(set a (+ a "banana"))
+(set a (+ a "mango"))
+(set a (+ a "pear"))
+(set a (+ a "kiwi"))
+
+(print (has a "mango")) /* true */
+```
+
+----
+
+## Linked Lists
+
+Linked lists aren't real. They do not exist.
+
 ----
 
 ## Dictionaries / Objects
 
-As of v3.0, dictionaries are supported.
+As of v2.7, dictionaries are supported.
 
 To use one, define a variable as dictionary.
 
@@ -388,17 +416,40 @@ Use `+` to add an assigned pair to a dictionary.
 
 Like arrays, dictionaries can be defined as escaped strings, and combined with `concat`.
 
+Even objects allow the use of `has` keyword. Here, it tests if a dictionary contains a specified **key**.
+
+```
+(define a dictionary)
+(set a
+  (+ a
+    (assign "key" "value")
+  )
+)
+(set a
+  (+ a
+    (assign "apple" "orange")
+  )
+)
+(set a
+  (+ a
+    (assign "spring" "summer")
+  )
+)
+
+(print (has a "spring")) /* true */
+```
+
 ----
 
 ## JavaScript Embedding
 
-StackLisp allows JavaScript to be embedded in many different places.
+B♭ allows JavaScript to be embedded in many different places. This is inspired by SpaceTode by Lu Wilson.
 
 ```
 (print (js-embed "window.innerWidth")) /* Your screen's inner width */
 ```
 
-The JavaScript is, by default, sandboxed.
+The JavaScript is hardcode to be sandboxed. _(subject to change)_
 
 ----
 
@@ -414,7 +465,7 @@ To define a function, use `defun`. Functions accept arguments and return values.
 (print (add 5 6)) /* 11 */
 ```
 
-There can be as many arguments as you want. We really encourage you to use this.
+There can be as many arguments as you want. We really encourage you to use this, due to limited arguments of built-in functions.
 
 ```
 (defun add a b c d e f
@@ -545,16 +596,18 @@ This makes the script run in a single frame.
 
 ### scope
 
-Use `scope` to define a scope for variables. This does not loop; just makes variables defined there only exist inside it.
+Use `scope` to define a custom scope for variables. This does not loop; just makes variables defined there only exist inside it.
 
 ```
 (scope
   (define i 0)
-  (print i)
+  (print i) /* i only exists here */
 )
 
 (print i) /* Error: variable i not found */
 ```
+
+Normally, a variable defined in a function exists throughout it. With scope, you can even make variables that only exist on a single line.
 
 ----
 
@@ -567,7 +620,7 @@ Use `get-input` to get user input.
 ```
 
 The argument specifies the text / question the user sees.  
-This does not work inside `no-refresh`.
+This does not work inside `no-refresh`, due to user input possibly taking longer.
 
 For output, you can use `clipboard-copy` 
 
@@ -575,7 +628,7 @@ For output, you can use `clipboard-copy`
 (clipboard-copy "Copied text)
 ```
 
-This cannot be used inside `no-refresh` or `forever`.
+This cannot be used inside `no-refresh` or `forever`, to not clutter user's clipboard.
 
 ----
 
