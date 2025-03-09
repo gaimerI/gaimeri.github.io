@@ -33,7 +33,7 @@ This might a bit easier to see with indentation, which B♭ supports. It is not 
 )
 ```
 
-All functions either take zero, one or two arguments. For longer operations, please chain them, or better yet, create functions.
+All built-in functions take a strict number of arguments. For longer operations, please chain them, or better yet, create functions.
 
 ```
 (print
@@ -49,6 +49,30 @@ Comments use the `/* ... */` syntax. Double-slash and -semicolon comments have b
 
 ```
 (print "Hello, World!") /* Prints Hello, World to the console */
+```
+
+----
+
+## Terminal
+
+Use `print` to write to terminal.
+
+```
+(print "Hello, World!")
+```
+
+Use `clear` to clear the terminal.
+
+```
+(clear)
+```
+
+Use `error` to throw an error. You can also use `exception` for this; however exceptions stop the script.
+
+```
+(error "Something happened")
+
+(exception "Please stop.")
 ```
 
 ----
@@ -177,7 +201,7 @@ NAND:
 | 1 | 0 | 1   |
 | 0 | 1 | 1   |
 | 1 | 1 | 0   |
-| 0 | 0 | 0   |
+| 0 | 0 | 1   |
 
 NOR:
 ```
@@ -311,7 +335,7 @@ To change or redefine it, use `set`.
 (print a) /* Hello */
 ```
 
-Immutable data is on todo-list for v4.0.
+Constants can be defined with `const`. Constants cannot be redefined or changed.
 
 Variables can be in global scope or block scope.
 
