@@ -140,9 +140,9 @@ NOT:
 (print (not true) ) /* false */
 ```
 
-Unary exists. The two people using it may use `++` and `--`.
+Unary exists. The two people liking it may use `++` and `--`.
 
-Addition:
+Like this:
 ```
 (print (++ 10) ) /* 11 */
 ```
@@ -435,6 +435,21 @@ There can be as many arguments as you want. We really encourage you to use this.
 ```
 
 Return does not necessarily need a value. You can also use it to end the function prematurely.
+
+### Examples
+
+Factorial
+
+```
+(defun factorial n
+  (if (<= n 1)
+    (return 1)
+    (return (* n (factorial (- n 1))))
+  )
+)
+
+(print (factorial 5) /* 120 */
+```
 
 ----
 
