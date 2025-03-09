@@ -310,6 +310,18 @@ Replacers are a thing.
 (print (replace a "gaimerI17" "anonymous")) /* Hello, this is anonyymius speaking! */
 ```
 
+Strings can be formatted. Currently uppercase and lowercase are supported, as well as shuffling and reversing.
+
+```
+(print (format "uppercase" "hello")) /* HELLO */
+
+(print (format "lowercase" "wOrLD" /* world */
+
+(print (format "shuffle" "apple")) /* letters of "apple" in randomised order */
+
+(print (format "reverse" "orange" /* egnaro */
+```
+
 ----
 
 ## Variables
@@ -383,7 +395,7 @@ To remove an item from the array, use `-`.
 
 (print a) /* ["apple","banana", "mango", "pear", "kiwi"] */
 
-(set a (- a 1)
+(set a (- a 1))
 
 (print a) /* ["apple", "mango", "pear", "kiwi"] */
 ```
@@ -477,6 +489,8 @@ Use `replace` to replace an index or a value with something.
 
 (print a) /* ["apple","plum","mango","orange","kiwi"] */
 ```
+
+Arrays work with `format "reverse` and `format "shuffle"`.
 
 ----
 
