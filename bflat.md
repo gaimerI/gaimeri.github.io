@@ -33,7 +33,7 @@ This might a bit easier to see with indentation, which B♭ supports. It is not 
 )
 ```
 
-All functions either take zero, one or two arguments. For longer operations, please chain them.
+All functions either take zero, one or two arguments. For longer operations, please chain them, or create functions.
 
 ```
 (print
@@ -42,12 +42,7 @@ All functions either take zero, one or two arguments. For longer operations, ple
       (+ 2
         (+ 2
           (+ 2
-          )
-        )
-      )
-    )
-  )
-)
+))))))
 ```
 
 Comments use the `/* ... */` syntax. Double-slash and -semicolon comments have been deleted to make the codebase more consistent.
@@ -539,6 +534,20 @@ If you don't want to use else-branch, use `when` instead of `if`.
   (print "Hello")
   (print "World") /* Both are in if branch */
 ) /* No else branch */
+```
+
+Else-if or elif can be made as follows.
+
+```
+(define a (rand 1 5))
+(if (= a 1)
+  (print 1)
+(if (= a 2)
+  (print 2)
+(if (= a 3)
+  (print 3)
+  (print "?")
+)))
 ```
 
 ### while
