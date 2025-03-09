@@ -473,7 +473,7 @@ Use `replace` to replace an index or a value with something.
 (set a (+ a "kiwi"))
 
 (set a (replace a "pear" "orange"))
-(set a (replace a "1" "plum"))
+(set a (replace a 1 "plum"))
 
 (print a) /* ["apple","plum","mango","orange","kiwi"] */
 ```
