@@ -33,7 +33,7 @@ This might a bit easier to see with indentation, which B♭ supports. It is not 
 )
 ```
 
-All functions either take zero, one or two arguments. For longer operations, please chain them, or create functions.
+All functions either take zero, one or two arguments. For longer operations, please chain them, or better yet, create functions.
 
 ```
 (print
@@ -131,9 +131,34 @@ OR:
 (print (or true false) ) /* true */
 ```
 
+XOR:
+```
+(print (xor true false) ) /* true */
+```
+
 NOT:
 ```
 (print (not true) ) /* false */
+```
+
+| IN | OUT |
+|----|-----|
+| 1  | 0   |
+| 0  | 1   |
+
+NAND:
+```
+(print (and true false) ) /* true */
+```
+
+NOR:
+```
+(print (or true false) ) /* false */
+```
+
+XNOR:
+```
+(print (xor true false) ) /* false */
 ```
 
 Unary exists. The two people still liking them may use `++` and `--`.
@@ -151,7 +176,7 @@ Use `rand` to get a random integer from a range.
 This can also generate decimals, if specified.
 
 ```
-(print (rand 1.0 100.0)) /* Prints a random floating-point number */
+(print (rand 1.0 100.0)) /* Prints a random floating-point number in specified range */
 ```
 
 Non-basic arithmetic is also supported.
