@@ -205,7 +205,7 @@ NAND:
 
 NOR:
 ```
-(print (or true false) ) /* false */
+(print (nor true false) ) /* false */
 ```
 
 | A | B | OUT |
@@ -217,7 +217,7 @@ NOR:
 
 XNOR:
 ```
-(print (xor true false) ) /* false */
+(print (xnor true false) ) /* false */
 ```
 
 | A | B | OUT |
@@ -227,7 +227,7 @@ XNOR:
 | 1 | 1 | 1   |
 | 0 | 0 | 1   |
 
-Unary exists. The two people still liking them may use `++` and `--`.
+Unary sadly exists. The two people still liking them may use `++` and `--`.
 
 ```
 (print (++ 10) ) /* 11 */
@@ -257,6 +257,15 @@ atan
 sqrt
 ```
 
+For complicated single-line math expressions, please use `math`. It supports variables and JavaScript -like syntax.
+
+```
+(print (math "(10 * 10) / 7")) /* 14.285714285714286 */
+
+(define a 10.6)
+(print (math "(a * 10) / a")) /* 10 */
+```
+
 ----
 
 ## String Manipulation
@@ -266,7 +275,7 @@ Strings use double quotes. (`""`).
 Use `letter` to get a letter of a string.
 
 ```
-(print (letter 1 "Hello") ) /* e */
+(print (letter 1 "Hello")) /* e */
 ```
 
 All indices are zero-based.
@@ -274,7 +283,7 @@ All indices are zero-based.
 Use `length` to get the length of a string.
 
 ```
-(print (length "Hello") ) /* 5 */
+(print (length "Hello")) /* 5 */
 ```
 
 String concatenation can either be done with `+` or `concat`.
@@ -315,11 +324,11 @@ Strings can be formatted. Currently uppercase and lowercase are supported, as we
 ```
 (print (format "uppercase" "hello")) /* HELLO */
 
-(print (format "lowercase" "wOrLD" /* world */
+(print (format "lowercase" "wOrLD")) /* world */
 
 (print (format "shuffle" "apple")) /* letters of "apple" in randomised order */
 
-(print (format "reverse" "orange" /* egnaro */
+(print (format "reverse" "orange")) /* egnaro */
 ```
 
 ----
