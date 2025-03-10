@@ -75,6 +75,8 @@ Use `error` to throw an error. You can also use `exception` for this; however ex
 (exception "Please stop.")
 ```
 
+Other operators such as `warn` and `log` exist for semantic purposes.
+
 ----
 
 ## Basic Arithmetic
@@ -310,6 +312,12 @@ Use `has` if you want to know if string contains something.
 (print (has a "llo")) /* true */
 ```
 
+Use `splice` to get a substring.
+
+```
+(print (splice "Hello" 2 4)) /* llo */
+```
+
 Replacers are a thing.
 
 ```
@@ -378,16 +386,16 @@ Alternatively, you can write the array as a string. Remember to escape inner quo
 (define a "[\"apple\",\"banana\",\"pear\"]"
 ```
 
-To add an item to the array, use `+`.
+To add an item to the array, set it with `+` or use `push`.
 
 ```
 (define a array)
 
 (set a (+ a "apple"))
 (set a (+ a "banana"))
-(set a (+ a "mango"))
-(set a (+ a "pear"))
-(set a (+ a "kiwi"))
+(push a "mango")
+(push a "pear")
+(push a "kiwi")
 
 (print a) /* ["apple","banana", "mango", "pear", "kiwi"] */
 ```
@@ -468,7 +476,7 @@ To remove the last item of an array, use `pop`.
 
 This does not necessarily need to be set; `(print (pop a))` works as well.
 
-`has` keyword works with arrays.
+`has` and `splice` keywords work with arrays.
 
 ```
 (define a array)
