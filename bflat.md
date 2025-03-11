@@ -33,7 +33,7 @@ This might a bit easier to see with indentation, which B♭ supports. It is not 
 )
 ```
 
-All built-in functions take a strict number of arguments. For longer operations, please chain them, or better yet, create functions.
+All built-in functions take a strict number of arguments. For longer operations, please chain them, or better yet, create functions. We understand that this is overly verbose, but it simplifies parsing and reading.
 
 ```
 (print
@@ -52,6 +52,10 @@ Comments use the `/* ... */` syntax. Double-slash and -semicolon comments have b
 ```
 
 ----
+
+## Details for nerds
+
+B♭ uses both a compiler and interpreter. First, the B♭ code is compiled to Assembly. This Assembly is then interpreted to run the code.
 
 ## Terminal
 
@@ -393,9 +397,9 @@ To add an item to the array, set it with `+` or use `push`.
 
 (set a (+ a "apple"))
 (set a (+ a "banana"))
-(push a "mango")
-(push a "pear")
-(push a "kiwi")
+(set a (push a "mango"))
+(set a (push a "pear"))
+(set a (push a "kiwi"))
 
 (print a) /* ["apple","banana", "mango", "pear", "kiwi"] */
 ```
@@ -474,7 +478,18 @@ To remove the last item of an array, use `pop`.
 (print a) /* ["apple","banana","mango","pear"] */
 ```
 
-This does not necessarily need to be set; `(print (pop a))` works as well.
+NOTE: Only `set` can update a variable's value. Repeated `pop` or `push` does **not** work.  
+But, things like `(print (pop a))` work. It still does not update the variable's value.
+
+```
+(define a array)
+(set a (push a "apple"))
+(print a) /* ["apple"] */
+
+(print (push a "banana")) /* ["apple", "banana"] */
+
+(print a) /* ["apple"]
+```
 
 `has` and `splice` keywords work with arrays.
 
@@ -829,4 +844,5 @@ This cannot be used inside `no-refresh` or `forever`, to not clutter user's clip
 
 ----
 
-You have now read the entire documentation. More features are coming; keep an eye out for updates!
+You have now read the entire documentation. More features are coming; keep an eye out for updates!  
+We are also open-source and accept pull requests.
