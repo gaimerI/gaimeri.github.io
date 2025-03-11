@@ -251,15 +251,29 @@ This can also generate decimals, if specified.
 (print (rand 1.0 100.0)) /* Prints a random floating-point number in specified range */
 ```
 
+Rounding is done via `round`, `floor` and `ceiling`.
+
+```
+(print (round 10.5)) /* 11 */
+(print (floor 10.9)) /* 10 */
+(print (ceiling 10.1)) /* 11 */
+```
+
 Non-basic arithmetic is also supported.
 ```
 abs
 sin
 cos
 tan
+csc
+sec
+cot
 asin
 acos
 atan
+acsc
+asec
+acot
 sqrt
 ```
 
@@ -390,19 +404,22 @@ Alternatively, you can write the array as a string. Remember to escape inner quo
 (define a "[\"apple\",\"banana\",\"pear\"]"
 ```
 
-To add an item to the array, set it with `+` or use `push`.
+To add an item to the array, set it with `+` or use `pushto`.
 
 ```
 (define a array)
 
 (set a (+ a "apple"))
 (set a (+ a "banana"))
-(set a (push a "mango"))
-(set a (push a "pear"))
-(set a (push a "kiwi"))
+(set a (pushto a "mango"))
+(set a (pushto a "pear"))
+(set a (pushto a "kiwi"))
 
 (print a) /* ["apple","banana", "mango", "pear", "kiwi"] */
 ```
+
+The function `pushto` is called so because `push` is already used by the assembly compiler and interpreter. We apologize for needing to write two extra characters.
+
 To remove an item from the array, use `-`.
 
 ```
