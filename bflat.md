@@ -639,6 +639,8 @@ Use `replace` to change the value of a key.
 (print a) /* {"key":"value","apple":"orange","spring":"winter"} */
 ```
 
+Use `letter` to get the value of a key. More semantic naming is planned.
+
 ----
 
 ## Array and Dictionary Map
@@ -858,6 +860,31 @@ For output, you can use `clipboard-copy`
 ```
 
 This cannot be used inside `no-refresh` or `forever`, to not clutter user's clipboard.
+
+----
+
+## HTTP
+
+HTTP is in experimental phase; things may change. Only GET is supported, POST and others are on todo-list.
+
+All HTTP functions start with namespace `http-` and end with uppercase function name. We call these subfunctions.
+
+```
+(http-GET "https://extensions.turbowarp.org/hello.txt")
+```
+
+`http-GET` can be used to fetch data. It does not return it, for that you need the next *few* subfunctions.
+
+```
+(http-GET "https://extensions.turbowarp.org/hello.txt")
+(print (http-RESPONSE))
+(print (http-ERROR))
+(print (http-STATUS))
+```
+
+`RESPONSE`, `ERROR` and `STATUS` subfunctions return the data of **previous** fetch. This data persists until the next request.
+
+More HTTP functions are planned.
 
 ----
 
