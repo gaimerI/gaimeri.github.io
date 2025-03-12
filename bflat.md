@@ -824,7 +824,7 @@ By default, all loops have some latency. To get rid if this, use `no-refresh`.
 )
 ```
 
-This makes the script run in a single frame.
+This makes the script run in a single cycle, but removes certain small functionalities..
 
 ### scope
 
