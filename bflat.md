@@ -763,13 +763,15 @@ Else-if or elif can be made as follows.
 (define a (rand 1 5))
 (if (= a 1)
   (print 1)
-(if (= a 2)
+(elif (= a 2)
   (print 2)
-(if (= a 3)
+(elif (= a 3)
   (print 3)
   (print "?")
 )))
 ```
+
+`elif` only exists for semantic purposes. Elif and if are completely interchangeable.
 
 ### while
 
