@@ -894,7 +894,7 @@ All HTTP functions start with namespace `http-` and end with uppercase function 
 (print (http-HEADERS_JSON))
 ```
 
-`RESPONSE`, `ERROR` and `STATUS` subfunctions return the data of **previous** fetch. This data persists until the next request.
+`RESPONSE`, `ERROR`, `STATUS` etc. subfunctions return the data of **previous** fetch. This data persists until the next request.
 
 Other supported subfunctions include:
 
