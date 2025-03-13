@@ -357,6 +357,12 @@ Strings can be formatted. Currently uppercase and lowercase are supported, as we
 (print (format "reverse" "orange")) /* egnaro */
 ```
 
+Ternary function is available. It creatively uses the `ternary` keyword.
+
+```
+(print (ternary (= 1 1) "Apple" "Orange")) /* if condition then Apple, else Orange */
+```
+
 ----
 
 ## Variables
@@ -882,11 +888,32 @@ All HTTP functions start with namespace `http-` and end with uppercase function 
 (print (http-RESPONSE))
 (print (http-ERROR))
 (print (http-STATUS))
+(print (http-HAS_RESPONDED))
+(print (http-HAS_FAILED))
+(print (http-HAS_SUCCEEDED))
 ```
 
 `RESPONSE`, `ERROR` and `STATUS` subfunctions return the data of **previous** fetch. This data persists until the next request.
 
 More HTTP functions are planned.
+
+----
+
+## Regex
+
+Regex uses namespace `regex-` and contains the following subfunctions:
+
+```
+(print (regex-MATCH "Foo Bar" "(Foo)" "g")) /* ["Foo"] */
+```
+
+`regex-MATCH` returns an array of strings that match the regex. The third input is a flag.
+
+```
+(print (regex-TEST "Foo Bar" "(Foo)" "g")) /* true */
+```
+
+`regex-TEST` returns true if the string matches the regex, otherwise it returns false.
 
 ----
 
