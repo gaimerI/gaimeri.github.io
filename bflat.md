@@ -1,4 +1,4 @@
-# B♭ v3.0 Documentation
+# B♭ v4.0 Documentation
 
 B♭ is a new and simplistic Lisp-inspired language.
 
@@ -873,29 +873,41 @@ This cannot be used inside `no-refresh` or `forever`, to not clutter user's clip
 
 ## HTTP
 
-HTTP is in experimental phase; things may change. Only GET is supported, POST and others are on todo-list.
+HTTP is in experimental phase; things may change.
 
 All HTTP functions start with namespace `http-` and end with uppercase function name. We call these subfunctions.
 
 ```
-(http-GET "https://extensions.turbowarp.org/hello.txt")
+(http-GET "https://gaimeri17-httpmethodtestserver.web.val.run")
 ```
 
 `http-GET` can be used to fetch data. It does not return it, for that you need the next *few* subfunctions.
 
 ```
-(http-GET "https://extensions.turbowarp.org/hello.txt")
+(http-GET "https://gaimeri17-httpmethodtestserver.web.val.run")
 (print (http-RESPONSE))
 (print (http-ERROR))
 (print (http-STATUS))
 (print (http-HAS_RESPONDED))
 (print (http-HAS_FAILED))
 (print (http-HAS_SUCCEEDED))
+(print (http-HEADERS_JSON))
 ```
 
 `RESPONSE`, `ERROR` and `STATUS` subfunctions return the data of **previous** fetch. This data persists until the next request.
 
-More HTTP functions are planned.
+Other supported subfunctions include:
+
+```
+http-POST
+http-PUT
+http-PATCH
+http-DELETE
+http-HEAD
+http-OPTIONS
+```
+
+If you want to get rid of the previous fetch data, use `http-CLEAR`.
 
 ----
 
