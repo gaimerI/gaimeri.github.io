@@ -711,8 +711,8 @@ Factorial
 (defun factorial n
   (if (<= n 1)
     (return 1)
-    (return (* n (factorial (- n 1))))
   )
+  (return (* n (factorial (- n 1))))
 )
 
 (print (factorial 5) /* 120 */
@@ -723,6 +723,15 @@ Factorial
 ## Types
 
 Types and casting are an archaic relic of old programming systems. B♭ does not explicitly use them, and casting is never required.
+
+You may still use type annotations, if they help you sleep better at night.
+
+```
+(define a:int 5) /* it's an integer */
+(print a)
+
+(set a "Hello") /* or so you thought */
+```
 
 ----
 
