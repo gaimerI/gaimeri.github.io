@@ -1,33 +1,98 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>gaimerI's website</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      :root {
+        --togeYellow: #fef87d;
+
+        --togeBrown: #7c6140;
+
+        --togeGray: #d3d7d6;
+
+        --togeBlack: #444545;
+
+        background-color: var(--togeGray);
+
+        color: var(--togeBlack);
+      }
+
+      a:link:not(.no-style),
+      a:visited:not(.no-style) {
+        color: black;
+
+        border: 2px solid var(--togeBrown);
+
+        padding: 10px 20px;
+
+        text-align: center;
+
+        text-decoration: none;
+
+        display: inline-block;
+      }
+
+      a:hover,
+      a:active {
+        background-color: var(--togeBrown);
+
+        color: white;
+      }
+
+      td, th {
+        border-style: none solid solid none;
+      }
+
+      td:hover, th:hover {
+        background-color: var(--togeYellow);
+      }
+    </style>
   </head>
-  
+
   <body>
     <h1>
       Hello there!
     </h1>
+
     <p>
-        I'm gaimerI17.
-        
-        I'm a random nerd from Finland.
-        I like math, programming, music and other such stuff.
-        My favourite Pokémon is Togedemaru.
+      I'm gaimerI17. I'm a random nerd from Finland. I like math, programming, music and other such stuff. My favourite Pokémon is Togedemaru.
     </p>
-    <p>
-      <a rel="me" href="https://mas.to/@gaimerI17">Mastodon</a>
-    </p>
-    <p>
-      
-    </p>
+
+    <p></p>
+
     <h2>
       Where to find me
     </h2>
+
     <p>
-      
+      <a rel="me" href="https://mas.to/@gaimerI17">Mastodon</a>
     </p>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>30</td>
+        <td>London</td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>25</td>
+        <td>Los Angeles</td>
+      </tr>
+      <tr>
+        <td>Mike Johnson</td>
+        <td>35</td>
+        <td>Capetown</td>
+      </tr>
+    </table>
   </body>
 </html>
