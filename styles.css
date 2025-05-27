@@ -48,3 +48,8 @@ details[open] summary {
 summary:hover {
   background-color: var(--togeYellow);
 }
+
+::selection {
+  text-decoration-line: underline;
+  background-color: var(--togeYellow);
+}
