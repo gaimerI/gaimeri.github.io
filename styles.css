@@ -3,6 +3,7 @@
   --togeBrown: #7c6140;  /* Borders */
   --togeGray: #d3d7d6;   /* Backgrounds */
   --togeBlack: #444545;  /* Text */
+  --togeWhite: #eaecec;
 
   background-color: var(--togeGray);
   color: var(--togeBlack);
@@ -52,4 +53,31 @@ summary:hover {
 ::selection {
   text-decoration-line: underline;
   background-color: var(--togeYellow);
+}
+
+input[type="text"] {
+  width: auto;
+  border: 2px solid var(--togeBrown);
+  border-radius: 0px;
+  background-color: var(--togeGray);
+}
+
+input[type="text"]:hover {
+  background-color: var(--togeYellow);
+}
+
+kbd {
+  background-color: var(--togeWhite);
+  border-radius: 3px;
+  border: 1px solid var(--togeBrown);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0),
+    0 2px 0 0 var(--togeBrown) inset;
+  color: var(--togeBlack);
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
 }
