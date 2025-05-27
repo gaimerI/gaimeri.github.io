@@ -17,35 +17,34 @@ a:link, a:visited {
   border: 2px solid var(--togeBrown);
   padding: 10px 20px;
   text-align: center;
-        text-decoration: none;
-        display: inline-block;
-      }
+  text-decoration: none;
+  display: inline-block;
+}
 
-      a:hover,
-      a:active {
-        background-color: var(--togeYellow);
-      }
+a:hover, a:active {
+  background-color: var(--togeYellow);
+}
 
-      td, th {
-        border-style: none solid solid none;
-        border-color: var(--togeBrown);
-        border-width: 2px;
-      }
+td, th {
+  border-style: none solid solid none;
+  border-color: var(--togeBrown);
+  border-width: 2px;
+}
 
-      td:hover, th:hover {
-        background-color: var(--togeYellow);
-      }
+td:hover, th:hover {
+  background-color: var(--togeYellow);
+}
 
-      details {
-        border: 2px solid var(--togeBrown);
-        display: inline-block;
-        width: 25%;
-      }
+details {
+  border: 2px solid var(--togeBrown);
+  display: inline-block;
+  width: 50%;
+}
 
-      details[open] summary {
-        border-bottom: 2px solid var(--togeBrown);
-      }
+details[open] summary {
+  border-bottom: 2px solid var(--togeBrown);
+}
 
-      summary:hover {
-        background-color: var(--togeYellow);
-      }
+summary:hover {
+  background-color: var(--togeYellow);
+}
