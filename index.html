@@ -58,9 +58,7 @@
       
       // Set each element as indeterminate
       indeterminateElements.forEach(element => {
-        if (element instanceof HTMLInputElement && element.type === 'checkbox') {
-          element.indeterminate = true;
-        }
+        element.indeterminate = true; // it's okay for divs to be indeterminate
       });
     </script>
   </body>
