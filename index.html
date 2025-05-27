@@ -48,15 +48,17 @@
         <td>Capetown</td>
       </tr>
     </table>
-
-    <input type="checkbox" id="checkbox" class="indeterminate" name="checkbox">
+    
+    <input type="text" id="checkbox" class="indeterminate" name="checkbox">
     <label for="checkbox">What am I?</label>
+
+    <p>
+      Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.
+    </p>
     
     <script>
-      // Select all elements with the class "indeterminate"
       const indeterminateElements = document.querySelectorAll('.indeterminate');
-      
-      // Set each element as indeterminate
+     
       indeterminateElements.forEach(element => {
         element.indeterminate = true; // it's okay for divs to be indeterminate
       });
