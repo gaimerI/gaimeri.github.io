@@ -49,14 +49,19 @@
       </tr>
     </table>
 
-    <details open>
-      <summary>Open Details</summary>
-      <p>Hello</p>
-    </details>
-
-    <details>
-      <summary>Closed Details</summary>
-      <p>olleH</p>
-    </details>
+    <input type="checkbox" id="checkbox" class="indeterminate" name="checkbox">
+    <label for="checkbox">What am I?</label>
+    
+    <script>
+      // Select all elements with the class "indeterminate"
+      const indeterminateElements = document.querySelectorAll('.indeterminate');
+      
+      // Set each element as indeterminate
+      indeterminateElements.forEach(element => {
+        if (element instanceof HTMLInputElement && element.type === 'checkbox') {
+          element.indeterminate = true;
+        }
+      });
+    </script>
   </body>
 </html>
