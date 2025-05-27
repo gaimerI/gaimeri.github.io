@@ -81,3 +81,60 @@ kbd {
   padding: 2px 4px;
   white-space: nowrap;
 }
+
+.error {
+  border-left: 5px solid rgba(255, 0, 0, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.info {
+  border-left: 5px solid rgba(0, 0, 255, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(0, 0, 255, 0.5);
+}
+
+
+.warn {
+  border-left: 5px solid rgba(255, 255, 0, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(255, 255, 0, 0.5);
+}
+
+.success {
+  border-left: 5px solid rgba(0, 255, 0, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(0, 255, 0, 0.5);
+}
+
+.critical {
+  border-left: 5px solid rgba(127, 0, 0, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(127, 0, 0, 0.5);
+}
+
+.confirm {
+  border-left: 5px solid rgba(127, 127, 255, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(127, 127, 255, 0.5);
+}
+
+.notice {
+  border-left: 5px solid rgba(255, 255, 255, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.debug {
+  border-left: 5px solid rgba(127, 0, 127, 1);
+  padding: 1em;
+  padding-left: 2em;
+  background: rgba(127, 0, 127, 0.5);
+}
