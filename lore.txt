@@ -1,0 +1,3 @@
+The current ZenithOS version is "1.35.0 Bromine". The next version will be named "1.36.0 Krypton".
+
+ZenithOS versions are named after chemical elements. Beta versions - if any - are named after their ions. (Bromine -> Bromide etc.)
