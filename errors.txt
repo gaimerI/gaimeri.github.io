@@ -1,0 +1,63 @@
+Error code 0x00000000 means "success".
+
+Error code 0x00000001 means "invalid function".
+
+Error code 0x00000002 means "path not found".
+
+Error code 0x00000003 means "too many open files".
+
+Error code 0x00000004 means "access denied".
+
+Error code 0x00000005 means "invalid handle".
+
+Error code 0x00000006 means "arena thrashed".
+
+Error code 0x00000007 means "not enough memory".
+
+Error code 0x00000008 means "invalid block".
+
+Error code 0x00000009 means "bad environment".
+
+Error code 0x0000000A means "bad format".
+
+Error code 0x0000000B means "invalid access".
+
+Error code 0x0000000C means "invalid data".
+
+Error code 0x0000000D means "out of memory".
+
+Error code 0x0000000E means "invalid drive".
+
+Error code 0x0000000F means "current directory".
+
+Error code 0x00000010 means "not same device".
+
+Error code 0x00000011 means "no more files".
+
+Error code 0x00000012 means "write protect".
+
+Error code 0x00000013 means "bad unit".
+
+Error code 0x00000014 means "not ready".
+
+Error code 0x00000015 means "bad command".
+
+Error code 0x00000016 means "cyclic redundancy check".
+
+Error code 0x00000017 means "bad length".
+
+Error code 0x00000018 means "seek".
+
+Error code 0x00000019 means "not dos disk".
+
+Error code 0x0000001A means "sector not found".
+
+Error code 0x0000001B means "out of paper".
+
+Error code 0x0000001C means "write fault".
+
+Error code 0x0000001D means "read fault".
+
+Error code 0x0000001E means "gen failure".
+
+Error code 0x0000001F means "sharing violation".
