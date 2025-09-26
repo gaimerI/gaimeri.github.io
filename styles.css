@@ -139,102 +139,10 @@ kbd {
   background: rgba(127, 0, 127, 0.5);
 }
 
-/* maybe scale all these by font size and calc */
-
-.cm-pixel {
-  width: 1cm;
-  max-width: 1cm;
-  height: 1cm;
-  max-height; 1cm;
+.grid {
+  display: grid;
 }
 
-.mm-pixel {
-  width: 1mm;
-  max-width: 1mm;
-  height: 1mm;
-  max-height; 1mm;
-}
-
-.in-pixel {
-  width: 1in;
-  max-width: 1in;
-  height: 1in;
-  max-height; 1in;
-}
-
-.px-pixel {
-  width: 1px;
-  max-width: 1px;
-  height: 1px;
-  max-height; 1px;
-}
-
-.pt-pixel {
-  width: 1pt;
-  max-width: 1pt;
-  height: 1pt;
-  max-height; 1pt;
-}
-
-.pc-pixel {
-  width: 1pc;
-  max-width: 1pc;
-  height: 1pc;
-  max-height; 1pc;
-}
-
-.em-pixel {
-  width: 1em;
-  max-width: 1em;
-  height: 1em;
-  max-height; 1em;
-}
-
-.ex-pixel {
-  width: 1ex;
-  max-width: 1ex;
-  height: 1ex;
-  max-height; 1ex;
-}
-
-.ch-pixel {
-  width: 1ch;
-  max-width: 1ch;
-  height: 1ch;
-  max-height; 1ch;
-}
-
-.rem-pixel {
-  width: 1rem;
-  max-width: 1rem;
-  height: 1rem;
-  max-height; 1rem;
-}
-
-.vw-pixel {
-  width: 1vw;
-  max-width: 1vw;
-  height: 1vw;
-  max-height; 1vw;
-}
-
-.vh-pixel {
-  width: 1vh;
-  max-width: 1vh;
-  height: 1vh;
-  max-height; 1vh;
-}
-
-.vmin-pixel {
-  width: 1vmin;
-  max-width: 1vmin;
-  height: 1vmin;
-  max-height; 1vmin;
-}
-
-.vmax-pixel {
-  width: 1vmax;
-  max-width: 1vmax;
-  height: 1vmax;
-  max-height; 1vmax;
+.flex {
+  display: flex;
 }
