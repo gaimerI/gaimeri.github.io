@@ -6,6 +6,7 @@
   --togeWhite: #eaecec;  /* Something :) */
 
   background-color: var(--togeGray);
+  font-family: serif;
   color: var(--togeBlack);
 }
 
